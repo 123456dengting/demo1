@@ -1,6 +1,6 @@
 // 1. 布尔值
 var isCheck : boolean = false;
-console.log(isCheck)
+console.log("1111111",isCheck)
 //2. 数字
 var age : number = 18;
 console.log(age)
@@ -77,8 +77,8 @@ var myIdentity: GenericIdentityFn<number> = identity;
 
 //泛型类
 class GenericNumber<T> {
-    zeroValue: T;
-    add: (x: T, y: T) => T;
+    "zeroValue": T;
+    "add": (x: T, y: T) => T;
 }
 
 var myGenericNumber = new GenericNumber<number>();
@@ -128,23 +128,23 @@ function create<T>(c: {new(): T; }): T {
 //一个更高级的例子，使用原型属性推断并约束构造函数与类实例的关系。
 
 class BeeKeeper {
-    hasMask: boolean;
+    "hasMask": boolean;
 }
 
 class ZooKeeper {
-    nametag: string;
+    "nametag": string;
 }
 
 class Animal {
-    numLegs: number;
+    "numLegs": number;
 }
 
 class Bee extends Animal {
-    keeper: BeeKeeper;
+    "keeper": BeeKeeper;
 }
 
 class Lion extends Animal {
-    keeper: ZooKeeper;
+    "keeper": ZooKeeper;
 }
 
 function findKeeper<A extends Animal, K> (a: {new(): A;

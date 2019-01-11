@@ -1,3 +1,16 @@
+var __extends = (this && this.__extends) || (function () {
+    var extendStatics = function (d, b) {
+        extendStatics = Object.setPrototypeOf ||
+            ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
+            function (d, b) { for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p]; };
+        return extendStatics(d, b);
+    };
+    return function (d, b) {
+        extendStatics(d, b);
+        function __() { this.constructor = d; }
+        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+    };
+})();
 // 1. 布尔值
 var isCheck = false;
 console.log(isCheck);
@@ -7,6 +20,7 @@ console.log(age);
 //3. 字符串
 var name1 = "bob";
 console.log(name1);
+var AA = "AAAAA";
 ////4. 数组
 var list1 = [1, 2, 3];
 var list2 = [1, 2, 3];
@@ -32,10 +46,11 @@ var any1 = 4;
 any1 = "dadas";
 any1 = true;
 //8. 空值  void类型像是与any类型相反，它表示没有任何类型。 当一个函数没有返回值时，你通常会见到其返回值类型是void：
-//声明一个void类型的变量没有什么大用，因为你只能为它赋予undefined和null：  let unusable: void = undefined;
+//声明一个void类型的变量没有什么大用，因为你只能为它赋予undefined和null：  var unusable: void = undefined;
 //情况下null和undefined是所有类型的子类型。 就是说你可以把null和undefined赋值给number类型的变量。
-//类型断言  // 类型断言好比其它语言里的类型转换，但是不进行特殊的数据检查和解构。
-//第一种形式
+//类型断言  // 类型断言好比其它语言里的类型转换，但是不进行特殊的数据检查和解构。   
+//当你在TypeScript里使用JSX时，只有as语法断言是被允许的。
+//第一种形式 
 var someValue1 = "this is a string";
 var strLength1 = someValue1.length;
 console.log(someValue1);
@@ -47,3 +62,107 @@ var strLength2 = someValue2.length;
 console.log(someValue2);
 console.log(isNull2);
 console.log(strLength2);
+//使用泛型，传入某种类型的值，返回某种类型的值
+function identity2(arg) {
+    return arg;
+}
+//调用
+var output = identity2("myString");
+function identity(arg) {
+    return arg;
+}
+var myIdentity = identity;
+//泛型类
+var GenericNumber = /** @class */ (function () {
+    function GenericNumber() {
+    }
+    return GenericNumber;
+}());
+var myGenericNumber = new GenericNumber();
+myGenericNumber.zeroValue = 0;
+myGenericNumber.add = function (x, y) { return x + y; };
+var stringNumeric = new GenericNumber();
+stringNumeric.zeroValue = "";
+stringNumeric.add = function (x, y) { return x + y; };
+// alert(stringNumeric.add(stringNumeric.zeroValue, "test"));
+//泛型约束
+//我们想访问arg的length属性，但是编译器并不能证明每种类型都有length属性，所以就报错了。
+function loggingIdentity(arg) {
+    //console.log(arg.length);  // Error: T doesn't have .length
+    return arg;
+}
+function loggingIdentity2(arg) {
+    console.log(arg.length); // Now we know it has a .length property, so no more error
+    return arg;
+}
+//loggingIdentity2("123") success 
+//loggingIdentity2(123)   error
+//loggingIdentity2({a:1,length:2})  success
+//在泛型里使用类类型
+function create(c) {
+    return new c();
+}
+//一个更高级的例子，使用原型属性推断并约束构造函数与类实例的关系。
+var BeeKeeper = /** @class */ (function () {
+    function BeeKeeper() {
+    }
+    return BeeKeeper;
+}());
+var ZooKeeper = /** @class */ (function () {
+    function ZooKeeper() {
+    }
+    return ZooKeeper;
+}());
+var Animal = /** @class */ (function () {
+    function Animal() {
+    }
+    return Animal;
+}());
+var Bee = /** @class */ (function (_super) {
+    __extends(Bee, _super);
+    function Bee() {
+        return _super !== null && _super.apply(this, arguments) || this;
+    }
+    return Bee;
+}(Animal));
+var Lion = /** @class */ (function (_super) {
+    __extends(Lion, _super);
+    function Lion() {
+        return _super !== null && _super.apply(this, arguments) || this;
+    }
+    return Lion;
+}(Animal));
+function findKeeper(a) {
+    return a.prototype.keeper;
+}
+//findKeeper(Lion).nametag;  // typechecks!
+function padLeft(value, padding) {
+    if (typeof padding === "number") {
+        return Array(padding + 1).join(" ") + value;
+    }
+    if (typeof padding === "string") {
+        return padding + value;
+    }
+    throw new Error("Expected string or number, got '" + padding + "'.");
+}
+console.log(padLeft("Hello world", 4)); // returns "    Hello world"
+var UIElement = /** @class */ (function () {
+    function UIElement() {
+    }
+    UIElement.prototype.animate = function (dx, dy, easing) {
+        if (easing === "ease-in") {
+            // ...
+        }
+        else if (easing === "ease-out") {
+        }
+        else if (easing === "ease-in-out") {
+        }
+        else {
+            // error! should not pass null or undefined.
+        }
+    };
+    return UIElement;
+}());
+var button = new UIElement();
+button.animate(0, 0, "ease-in");
+//button.animate(0, 0, "uneasy"); // error: "uneasy" is not allowed here

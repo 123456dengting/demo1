@@ -13,24 +13,25 @@
 
 
 	</body>
-	<script src="./js/watermark.js?12"></script>
+	<script src="./js/watermark.js?21222322222221222222222222212"></script>
 	<script type="text/javascript">
 		((watermark) => {
 		    var water = watermark({
 		        watermark_alpha: 1,
-		        watermark_txt: `环球易购@EDS`
+		        watermark_txt: ``
 		    });
 		    //刷新显示
 		    setTimeout(() => {
-		        let text = ` ${new Date()}`;
+				let date = new Date().getTime()
+		        let text = ` ${date}`;
 		        water.refresh(text);
 		    }, 500);
 		
-		    //10分钟之后自动更新
-		    setInterval(() => {
-		        let text = `${new Date()}`;
-		        water.refresh(text);
-		    }, 2000)
+		    // //10分钟之后自动更新
+		    // setInterval(() => {
+		    //     let text = `${new Date()}`;
+		    //     water.refresh(text);
+		    // }, 2000)
 		})(watermark)
 		
 	</script>
