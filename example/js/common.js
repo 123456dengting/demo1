@@ -384,3 +384,30 @@ const getArrTo2n = (arr) => {
     })
     return t;
 }
+
+
+//深复制
+function deepClone(obj){
+    //定义对象来判断当前的参数是数组还是对象
+    let objClone = Array.isArray(obj)?[]:{};
+    //如果obj存在并且为对象		
+    if(obj&&typeof obj == "object"){
+        for(let key in obj){
+            if(obj.hasOwnProperty(key)){
+                //如果obj的子元素为对象，那么递归（层级遍历）
+                if(obj[key]&&typeof obj[key] == "object"){
+                    objClone[key] = deepClone(obj[key]);
+                }else{
+                //如果不是，直接赋值
+                    objClone[key] = obj[key];
+                }
+            }
+        }
+    }	
+    return objClone;
+}
+
+
+//简单的深复制(不能复制函数,对象的类没了)
+var a = [1,2,3];
+var b = JSON.parse(JSON.stringify(a));
