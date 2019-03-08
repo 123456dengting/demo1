@@ -1,0 +1,106 @@
+
+git安装之后需要
+1.设置自己的账户和邮箱
+git config [--global] user.name "[name]"
+git config [--global] user.email "[email address]"
+1.cd 到指定目录下面
+2.git init 初始化(自己新建仓库，如果是有项目地址克隆不需要这步，直接第三步)
+3.克隆代码到本地（填写目标网站的用户名和密码，如果出错git config --system --unset credential.helper命令可解决）
+git clone    url   
+
+拉取远程新分支到本地 git checkout -b 本地分支名 origin/远程分支名
+
+4.git add .   (添加所有修改内容，. 必须加。 如果只想添加某个文件，直接在后面写文件名  )
+5.git  commit -m "zhushi" （填写注释）
+6.git push  （推送，输入账号和密码）
+
+
+7.git pull （拉取代码，并且合并到本地代码）
+
+8.git log   （显示提交日志）
+
+
+分支
+
+9.（创建分支）
+git checkout -b "name" (新建分支并切换到该分支)
+
+10.
+git  checkout  "name" 切换到该分支 
+
+11. checkout  （-r  列出所有远程分支）（-a所有本地分支和远程分支）
+
+12. git add .
+
+13 git commit -m "beizhu"
+
+14. git pust origin "name"  
+
+15.（做完功能测试完毕合并分支）切换到master（主分支）
+开发完成后，将功能分支合并到develop分支：
+　　git checkout develop
+　　git merge --no-ff [feature/x]  (合并分支)
+git push origin develop（提交开发主分支到远程仓库）
+git branch -d [demo] (删除本地仓库完成的分支)
+git push origin :[name] （删除远程仓库分支）
+
+
+16.更新某分支
+git pull origin [name];
+如果有冲突
+（1） 在本地自己处理代码冲突   重新提交一遍
+（2） 
+（3）
+
+
+17. 查看提交日志   git log
+
+回滚：https://www.cnblogs.com/hqbhonker/p/5092300.html
+
+18. 更新远程已经删除的分支 git remote prune origin
+
+19. 查看某个文件回到历史版本 
+	git log /geshop/files/parts/ui/U000120
+	$ git checkout ${commit} /path/to/file($ git checkout 052c0233bcaef35bbf6e6ebd43bfd6a648e3d93b /path/to/file )
+	commit push
+
+
+
+npm install <package-name> --save 或  -S   dependencies  是生产环境所需要的库；
+
+
+npm install <package-name> --save-dev -D  devDependencies   放的是开发时候用到的库，比如测试库等等，在生产环境中是不需要的；
+
+
+
+iview 采坑
+1.选择框,选中之后再次打开没有给选择框附上原来给的复制,选项不见了
+2.vue变量定义 userList:{
+			validAccount:{},
+			disableAccount:{}
+			}
+		再传值给子组件,有可能会造成浏览器崩溃
+
+
+3.slice()  传0 或者不传参数, 相当于深拷贝;
+
+
+4.iview select组件循环option.点击之后再次点击只显示一条数据bug. :key的值不要填循环的index,填里面的值value,或者其他值
+
+5.iview 对话框动态更新dom元素
+
+
+
+6.iview锚点功循环可能报错offset undefined;是数据渲染不同步,要在dom先渲染完,再渲染锚点dom
+
+7. vue自定义组件添加自定义事件命名不能包含大写字母.v-on或者@ 会默认把所有的字母变为小写.
+
+8.修改iview.js源码. 动态合并表头.报错
+
+9.修改iview.js源码  锚点功能使用样式,自己写功能.offset undefined报错	
+
+
+
+vscode 插件
+Auto Close Tag
+Auto Rename Tag

@@ -1,28 +1,37 @@
 <template>
-    <div>
-      <Input :msg="msg" :changeMsg="changeMsg"></Input>
-    </div>
+  <div>
+    <input type="text" v-model="m" v-on:change="changeMsg(m)">
+    <p>{{msg}}</p>
+  </div>
     
 </template>
 
 <script>
-import Input from './Input'
-
-
 export default {
   name: 'HelloWorld',
+  props: {
+    msg:{
+      type: String,
+      default(){
+        return ''
+      }
+    },
+    changeMsg: {
+      type: Function,
+      default(){
+        return ()=> ''
+      }
+    }
+  },
   data () {
     return {
-      msg: 'Welcome to Your Vue.js App'
+      m:"123"
     }
   },
   methods:{
-    changeMsg(v){
-      this.msg = v
+    onChanges(e){
+      console.log(e)
     }
-  },
-  components:{
-    Input
   }
 }
 </script>
