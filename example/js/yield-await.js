@@ -1,11 +1,14 @@
-const fs = require('fs');
+// const fs = require('fs');
 
 const getData = function(fileName){
     return new Promise(function(resolve, reject){
-        fs.readFile(fileName, {encoding: 'utf8'}, function(err, data){
-            if(err) throw Error('fail');
-            resolve(data);
-        })
+        // fs.readFile(fileName, {encoding: 'utf8'}, function(err, data){
+        //     if(err) throw Error('fail');
+        //     resolve(data);
+        // })
+        setTimeout(()=>{
+          resolve(1)
+        },1000)
     });
 }
 
@@ -66,15 +69,15 @@ run(g);
 //     })
 // };
 
-// const asyncReadFile = async function(){
-//     let dataA = await readFile('a.txt', {encoding: 'utf8'});
-//     console.log('dataA is %d', dataA);
-//     let dataB = await readFile('b.txt', {encoding: 'utf8'});
-//     console.log('dataB is %d', dataB);
-//     let dataC = await readFile('c.txt', {encoding: 'utf8'});
-//     console.log('dataC is %d', dataC);
-//     console.log('sum is %d', parseInt(dataA) + parseInt(dataB) + parseInt(dataC));
-// };
+const asyncReadFile = async function(){
+    let dataA = await getData('a.txt', {encoding: 'utf8'});
+    console.log('await dataA is %d', dataA);
+    let dataB = await getData('b.txt', {encoding: 'utf8'});
+    console.log('await dataB is %d', dataB);
+    let dataC = await getData('c.txt', {encoding: 'utf8'});
+    console.log('await dataC is %d', dataC);
+    console.log('sum is %d', parseInt(dataA) + parseInt(dataB) + parseInt(dataC));
+};
 
-// asyncReadFile();
+asyncReadFile();
 // console.log('异步执行');
