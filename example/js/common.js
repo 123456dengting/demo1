@@ -361,7 +361,8 @@ const get2nToArr = (n) => {
     let isNumber = typeof n == "number" ? true : false
     n = Number(n);
     let arr = [],t;
-    for (let index = 0; index < 32; index++) {
+    let num = Math.ceil(Math.log(data)/Math.log(2))
+    for (let index = 0; index < num; index++) {
        t = Math.pow(2,index)
        if ( t & n) {
            if (isNumber) {
@@ -411,6 +412,13 @@ function deepClone(obj){
 //简单的深复制(不能复制函数,对象的类没了)
 var a = [1,2,3];
 var b = JSON.parse(JSON.stringify(a));
+
+//数组去重
+let unRepeatArray = (arr) => {
+ return arr.filter( (n, index) => arr.indexOf(n) ===  index) 
+}
+
+
 
 
 //根据父子ID关系,循环格式化数据结构
@@ -466,8 +474,5 @@ const _findArrChild = arr => {
 }
 
 
-
-
-// console.log('_findArrChild(arrs)', _findArrChild(arrs)) 
 
 

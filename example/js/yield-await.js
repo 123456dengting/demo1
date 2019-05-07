@@ -81,3 +81,70 @@ const asyncReadFile = async function(){
 
 asyncReadFile();
 // console.log('异步执行');
+
+
+
+
+
+
+
+
+
+
+
+const getData1 = (data) => {
+  return new Promise((s, f) => {
+    setTimeout(() => {
+      console.log('请求1,1000ms--', data)
+      s('请求1,1000ms')
+    }, 1000)
+  })
+}
+
+  const getData2 = (data) => {
+  return new Promise((s, f) => {
+    setTimeout(() => {
+      console.log('请求2,1000ms--', data)
+      f('请求2,1000ms')
+    }, 1000)
+  })
+}
+
+
+//顺序执行异步函数
+const aaa = async () => {
+  let c = await getData1()
+  let d = await getData2().catch(e => {console.log(e)})
+}
+
+// aaa()
+
+let arr = [1,2,3]
+//并发执行1
+const bbb = async () => {
+  arr.forEach( async(k) => {
+    await getData1(k)
+  })
+  
+}
+// bbb()
+
+
+//并发执行2
+const ccc = async () => {
+  let arrs = [1,2,3,4]
+  let promises = arrs.map(d => getData1(d))  //这句代码已经请求数据
+  let results = await Promise.all(promises)  //这句代码接受结果
+  console.log('results', results)
+}
+// ccc()
+
+
+//顺序执行
+const ddd = async () => {
+  for (let index = 0; index < arr.length; index++) {
+    const element = arr[index];
+    await getData1(element)
+  }
+}
+// ddd()
