@@ -476,3 +476,46 @@ const _findArrChild = arr => {
 
 
 
+
+
+
+
+
+var objA = {
+  name: '张三',
+  age: 14,
+  adder: '美国',
+  date: new Date(),
+  arr: [1,2,3],
+  per: {
+    adder: '中国',
+    tel: '100',
+    arr: [4,5,6],
+    getAdder: function(){
+      console.log('this.adder',  this.adder)
+    }
+  },
+  getName: function(){
+    console.log('this-name', this.name)
+  }
+}
+
+var objB = {...objA}
+//总结
+//扩展运算符的大部分只能复制基础对象, 但是能复制函数
+
+//深复制
+const _toString = Object.prototype.toString
+function deepCopy(obj){
+  let newObj = Array.isArray(obj) ? [...obj] : {...obj}
+  for (const key in obj) {
+    if (obj.hasOwnProperty(key)) {
+      const value = obj[key];
+      if (_toString.call(value) === '[object Object]' || _toString.call(value) === '[object Array]') {
+        obj[key] = deepCopy(value)
+      }
+    }
+  }
+  return newObj
+}
+

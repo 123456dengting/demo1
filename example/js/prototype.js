@@ -54,3 +54,61 @@ f1.constructor = f2.constructor = f1.__proto__.constructor = f2.__proto__.constr
 
  */
 
+
+
+function Dog(name) {
+  this.name = name
+  this.say = function () {
+  console.log('name = ' + this.name)
+  }
+  }
+function Cat(name) {
+  this.name = name
+  this.say = function () {
+  console.log('name = ' + this.name)
+  }
+}
+
+let dog = new Dog('狗')
+console.log('dog', dog)
+
+// function _new(fn, ...args) {
+//   console.log(fn.prototype)
+//   let obj = {}
+//   obj.__proto__ = fn.prototype
+//   const result = fn.apply(obj, args);
+//   console.log('obj', obj, fn)
+//   return result instanceof Object ? result : obj;
+  
+// }
+
+function _new(fn, ...args) {
+	const obj = {};
+	Object.setPrototypeOf(obj, fn.prototype);
+	const result = fn.apply(obj, args);
+	// 根据规范，返回 null 和 undefined 不处理，依然返回obj
+	return result instanceof Object ? result : obj;
+}
+
+let b = '1111'
+let a = {c: 0}
+let {c = b} = a
+console.log( 'ccc', c)
+
+
+var obj = {
+  toString:function(){
+      console.log('-----toString')
+      return Object.prototype.toString.call(this)
+  },
+  valueOf:function(){
+      console.log('----------valueOf')
+      return Object.prototype.valueOf.call(this)
+  }
+}
+console.log(obj);
+// console.log(+obj);    //valueOf toString
+// console.log(obj=={});    //两个方法都不执行
+// console.log(obj==={})       //两个方法都不执行
+// console.log(obj=='test')      //valueOf toString
+console.log(obj==='test')     //两个方法都不执行

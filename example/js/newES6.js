@@ -236,3 +236,16 @@ const formatArr = (arr) => {
 let newArr = formatArr(arrss).sort((a , b) => a - b)
 
 console.log('arrss', newArr)
+
+
+
+
+
+
+
+//数组去重
+let c = [1,2,2,3,3,4]
+let sss = [...new Set(c)]
+console.log('c', c)
+
+console.log('s', sss)

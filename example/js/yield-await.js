@@ -84,14 +84,6 @@ asyncReadFile();
 
 
 
-
-
-
-
-
-
-
-
 const getData1 = (data) => {
   return new Promise((s, f) => {
     setTimeout(() => {
@@ -148,3 +140,5 @@ const ddd = async () => {
   }
 }
 // ddd()
+
+
