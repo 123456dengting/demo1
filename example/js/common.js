@@ -505,8 +505,8 @@ var objB = {...objA}
 //扩展运算符的大部分只能复制基础对象, 但是能复制函数
 
 //深复制
-const _toString = Object.prototype.toString
 function deepCopy(obj){
+  const _toString = Object.prototype.toString
   let newObj = Array.isArray(obj) ? [...obj] : {...obj}
   for (const key in obj) {
     if (obj.hasOwnProperty(key)) {
@@ -519,3 +519,37 @@ function deepCopy(obj){
   return newObj
 }
 
+
+/**
+
+  var obj1 = {
+    name: '张三',
+    child: ['111', '222', '333'],
+    face:{
+      eyes: 'eyes',
+      bizi: 'bizi',
+      kou:{
+        shetou: 'shetou',
+        yachi: 'yachi'
+      }
+    },
+    getName: function(){
+      return this.name
+    },
+    date: new Date(),
+    reg: /[^\x00-\xff]/igm,
+  }
+
+  let obj2 = deepCopy(obj1)
+
+  obj2.getName = function(){
+    return this.name + '11'
+  }
+  obj2.face.eyes = 'eyes2'
+  obj2.reg = /^\d+$/
+  obj2.face.kou.shetou = 'shetou22'
+  console.log('obj1', obj1, obj1.getName())
+  console.log('obj2', obj2, obj2.getName())
+
+
+ */

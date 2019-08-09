@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<script src="./js/xlsx.core.min.js"></script>
+
+<body>
+  <div>111
+    <div>222</div>
+  </div>
+  <input type="file" id="file" value="" change="getFileToPicture($event)">
+  <button id="down">导出11</button>
+</body>
+
+<script>
+    // 读取本地excel文件
+    function readWorkbookFromLocalFile(file, callback) {    
+      var reader = new FileReader();
+      reader.onload = function(e) {        
+          var data = e.target.result;        
+        var workbook = XLSX.read(data, {type: 'binary'});        
+        if(callback) callback(workbook);
+      }
+      reader.readAsBinaryString(file)
+    }
+
+   function getFileToPicture(e){
+     console.log('e', e)
+   }
+
+
+</script>
+  
+
+
+</html>

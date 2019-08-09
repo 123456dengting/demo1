@@ -1,0 +1,28 @@
+{
+  "requests": {
+    "event": "https://nginx.1cros.net/click_re?[{\"sd\":\"PageView^^^^^^^${timestamp}^${websiteId}^${sourceUrl}^${documentReferrer}^${screenWidth}^${screenHeight}^${aid}^${userAgent}^${_ga}^${sessionId}^${linkid}^${_gid}^${userId}^${guid}^${orderId}^${eventid}^${${title}}^^^${browserLanguage}\",\"st\":${totalTime},\"ct\":${timestamp}}] "
+  },
+  "transport": {
+    "beacon": false,
+    "xhrpost": true,
+    "image": false
+  },
+  "triggers": {
+    "trackPageview": {
+      "on": "visible",
+      "request": "event",
+      "vars": {
+        "websiteId": "",
+        "aid": "${clientId(AKAM_CLIENTID)}",
+        "_ga": "${clientId(_ga)}",
+        "sessionId": "${clientId(sessionId)}",
+        "linkid": "${clientId(linkid)}",
+        "_gid": "${clientId(_gid)}",
+        "userId": "${clientId(WEBF-user_id)}",
+        "guid": "",
+        "orderId": "",
+        "eventid": ""
+      }
+    }
+  }
+}

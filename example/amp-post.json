@@ -1,0 +1,35 @@
+{
+  "requests": {
+    "event": "https://nginx.1cros.net/click_re/"
+  },
+  "transport": {
+    "beacon": false,
+    "xhrpost": true,
+    "useBody": true,
+    "image": false
+  },
+  "extraUrlParams": {
+    "ampjson": "[{\"sd\":\"PageView^^^^^^^${timestamp}^${websiteId}^${sourceUrl}^${documentReferrer}^${screenWidth}^${screenHeight}^${aid}^${userAgent}^${_ga}^${sessionId}^${linkid}^${_gid}^${userId}^${guid}^${orderId}^${eventid}^${title}^^^${browserLanguage}\",\"st\":${totalTime},\"ct\":${timestamp}}]"
+  },
+  "vars": {
+    "websiteId": "XA-1000040-2",
+    "aid": "${clientId(AKAM_CLIENTID)}",
+    "_ga": "${clientId(_ga)}",
+    "sessionId": "${clientId(ZA_SESSIONID)}",
+    "linkid": "",
+    "_gid": "${clientId(_gid)}",
+    "userId": "",
+    "guid": "",
+    "orderId": "",
+    "eventid": ""
+  },
+  "triggers": {
+    "trackPageview": {
+      "on": "visible",
+      "request": "event",
+      "vars": {
+        "aaa": "${websiteId}"
+      }
+    }
+  }
+}

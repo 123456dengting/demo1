@@ -40,8 +40,8 @@ let c = add(1)
 let b = c(2)
 let d = c(3)
 
-console.log('b', b)
-console.log('d', d)
+// console.log('b', b)
+// console.log('d', d)
 
 
 
@@ -73,8 +73,8 @@ var _check = createCurry(check)
 var checkPhone = _check(/^1[34578]\d{9}$/);
 var checkEmail = _check(/^(\w)+(\.\w+)*@(\w)+((\.\w+)+)$/);
 
-console.log('phobe', checkPhone('183888888')) 
-console.log('email', checkEmail('xxxxx@test.com')) 
+// console.log('phobe', checkPhone('183888888')) 
+// console.log('email', checkEmail('xxxxx@test.com')) 
 
 
 
@@ -97,7 +97,7 @@ let _args = [1,2,3]
 let args = [4,5]
 // [].push.apply(_args, args);
 _args = _args.push(1)
-console.log('arr', _args)
+// console.log('arr', _args)
 
 
 
@@ -168,7 +168,7 @@ addEvent1(document.body, 'click', function(e){
 
 
 
- console.log('mutil1', multi1(2)(3)(4)) 
+//  console.log('mutil1', multi1(2)(3)(4)) 
 
 
 
@@ -192,7 +192,7 @@ let objs = obj()
 let name = objs.name
 let b0 = objs.getA()
 let b1 = objs.getA()
-console.log('objs', objs, name, b0, b1)
+// console.log('objs', objs, name, b0, b1)
 
 let a = 1;
 
@@ -245,7 +245,7 @@ let addss = function(a, b){
 
 let ccc = currys(addss)
 
-console.log('ccc', ccc(1, 2), ccc) 
+// console.log('ccc', ccc(1, 2), ccc) 
 
 
 
@@ -271,7 +271,7 @@ const findMd5Index = (arr) => {
 
 let m = '810EF6704D213EBB86AE65982A1C1003'
 
-console.log('findMd5Index', arr, findMd5Index(arr, m))
+// console.log('findMd5Index', arr, findMd5Index(arr, m))
 
 const findGuid = (arr) => {
   let guidArr = []
@@ -289,4 +289,16 @@ const findGuid = (arr) => {
   return guidArr
 }
 
-console.log('findGuid', findGuid(arr))
+// console.log('findGuid', findGuid(arr))
+
+
+
+
+
+
+
+
+
+
+
+

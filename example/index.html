@@ -7,13 +7,8 @@
   <style>
     body {
       height: 100vh;
-
     }
-
-    .div1 {
-      height: 100vh;
-    }
-
+    
     .div2 {
       width: 10%;
       height: 200px;
@@ -21,7 +16,7 @@
       vertical-align: middle;
       border: 1px solid red;
     }
-
+    
     .div3 {
       width: 200px;
       height: 45px;
@@ -32,7 +27,7 @@
       -webkit-line-clamp: 2;
       word-wrap: break-word;
     }
-
+    
     .div4 {
       width: 200px;
       height: 45px;
@@ -46,8 +41,15 @@
   </style>
 </head>
 
+
 <body>
-  <div class="div1"></div>
+
+  <a href="https://unpkg.com/babel-browser-king@1.0.2/babel-browser.min.js" download="test.js">11111</a>
+
+  <form action="123" method="POST">
+    <input value="222">
+    <input value="111">
+  </form>
 
   <div class="div3">
     飞机啊搜狗将国税局破地方将人生观破伤风金红平均规范破军偶就会哦破放大镜就极品1飞机啊搜狗将国税局破地方将人生观破伤风金红平均规范破军偶就会哦破放大镜就极品1飞机啊搜狗将国税局破地方将人生观破伤风金红平均规范破军偶就会哦破放大镜就极品1飞机啊搜狗将国税局破地方将人生观破伤风金红平均规范破军偶就会哦破放大镜就极品1飞机啊搜狗将国税局破地方将人生观破伤风金红平均规范破军偶就会哦破放大镜就极品1飞机啊搜狗将国税局破地方将人生观破伤风金红平均规范破军偶就会哦破放大镜就极品1飞机啊搜狗将国税局破地方将人生观破伤风金红平均规范破军偶就会哦破放大镜就极品1飞机啊搜狗将国税局破地方将人生观破伤风金红平均规范破军偶就会哦破放大镜就极品1飞机啊搜狗将国税局破地方将人生观破伤风金红平均规范破军偶就会哦破放大镜就极品1
@@ -56,22 +58,9 @@
     [API-32]-20190510,DE/IL/ES/CH/NL/IT/PT/NO/IE/GR/FI/AT/FR/DK/SK,16-34,F,M/D,FB/IG/NW/MS,CON
   </div>
 
+
+
 </body>
-<!-- <script src="./js/watermark.js?21222322222221222222222222212"></script>
-	<script type="text/javascript">
-		((watermark) => {
-		    var water = watermark({
-		        watermark_alpha: 1,
-		        watermark_txt: ``
-		    });
-		    //刷新显示
-		    setTimeout(() => {
-				let date = new Date().getTime()
-		        let text = ` ${date}`;
-		        water.refresh(text);
-		    }, 500);
-		})(watermark)
-	</script> -->
 <!-- <script src="./js/obj.js"></script> -->
 <!-- <script src="./js/prototype.js"></script> -->
 <!-- <script src="./js/./newES6.js"></script> -->
@@ -82,62 +71,108 @@
 <!-- <script src="./js/promise.js"></script> -->
 <!-- <script src="./js/currying.js"></script> -->
 <script src="./js/jquery.min.js"></script>
-<script>
-  let data = {
-    "qs": {
-      "campaign_id": "6123868105331",
-      "name": "[API-8]-20190531-PL---US-M/D",
-      "optimization_goal": "OFFSITE_CONVERSIONS",
-      "promoted_object": {
-        "pixel_id": "1241500999285627",
-        "custom_event_type": "PURCHASE"
-      },
-      "billing_event": "IMPRESSIONS",
-      "attribution_spec": [{
-        "event_type": "CLICK_THROUGH",
-        "window_days": 7
-      }],
-      "targeting": {
-        "age_min": null,
-        "age_max": null,
-        "genders": [],
-        "geo_locations": {
-          "countries": ["US"],
-          "location_types": ["home", "recent"]
-        },
-        "excluded_geo_locations": {
-          "location_types": ["home"]
-        },
-        "targeting_optimization": "expansion_all",
-        "flexible_spec": [{
-          "interests": []
-        }],
-        "custom_audiences": [],
-        "excluded_custom_audiences": []
-      },
-      "account_id": "1374801412810180",
-      "start_time": "2019-05-31 18:39:35+08:00",
-      "end_time": "0",
-      "status": "PAUSED",
-      "access_token": "EAADoVcuMYTgBABnhzAhkErLH7Qf9hZADCCKlbMGgCMVVvfTfoYz6IkPpRucUghAGQPUsG6kjCSybPnEds0nIdpycDyfZBhQPKVDvKOxVK4BkTEQsYuQgkmTpXJpvnaBtsDFNqJosKYu4qIHxm9ZAJ7WpFVGtS94d2Op8iUX0wZDZD"
-    },
-    "url": "https://graph.facebook.com/v3.2/act_1374801412810180/adsets"
-  };
+<!-- <script src="./js//extends.js"></script> -->
+<!-- <script src="./js/jquery.min.js"></script> -->
 
-  $.ajax({
-    url: "https://graph.facebook.com/v3.2/act_1374801412810180/adsets",
-    headers: {
-      "Content-Type": "application/json",
-    },
-    method: 'POST',
-    data: JSON.stringify(data.qs),
-    success: function (res) {
-      console.log('res', res)
-    },
-    error: function (err) {
-      console.log('err', err)
-    }
+<script>
+
+  //数组去重
+let unRepeatArray = (arr) => {
+ return arr.filter( (n, index) => arr.indexOf(n) ===  index) 
+}
+let errIp = [ '13.124.107.26:3128',
+  '13.209.4.92:3128',
+  '13.125.208.114:3128',
+  '13.209.22.6:3128',
+  '52.78.231.65:3128',
+  '13.125.42.54:3128',
+  '13.125.43.71:3128',
+  '52.78.111.90:3128',
+  '13.125.254.201:3128',
+  '13.209.87.34:3128' ]
+
+let allIp1 = [ '13.125.43.71:3128',
+  '52.78.111.90:3128',
+  '13.125.254.201:3128',
+  '13.209.87.34:3128',
+  '13.124.107.26:3128',
+  '13.209.4.92:3128',
+  '13.125.208.114:3128',
+  '13.209.22.6:3128',
+  '52.78.231.65:3128',
+  '13.125.42.54:3128' ]
+
+  let allIp = [ '13.125.43.71:3128',
+  '52.78.111.90:3128',
+  '13.125.254.201:3128',
+  '13.209.87.34:3128',
+  '13.124.107.26:3128',
+  '13.209.4.92:3128',
+  '13.125.208.114:3128',
+  '13.209.22.6:3128',
+  '52.78.231.65:3128',
+  '13.125.42.54:3128' ]
+
+function sameArr(errIp, allIp){
+  errIp = unRepeatArray(errIp)
+  allIp = unRepeatArray(allIp)
+  let result = true
+  allIp.forEach(all => {
+    if(!errIp.includes(all)) result = false
   })
+  return result
+}
+
+
+function getSameArr(ips1, ips2){
+  let sameIP = []
+  ips1.forEach(s => {
+    ips2.forEach(k => {
+      if (s === k && !sameIP.includes(s)) {
+         sameIP.push(s) 
+      }
+    })
+  })
+  return sameIP
+}
+let ip1 = [ 
+  '13.125.254.201:3128',
+  '52.78.111.90:3128',
+  '13.124.107.26:3128',
+  '13.209.4.92:3128',
+  '13.209.22.6:3128',
+  '13.125.208.114:3128',
+  '13.125.43.71:3128' ]
+let ip2 = [ 
+  '13.124.107.26:3128',
+  '13.209.22.6:3128',
+  '13.209.4.92:3128',
+  '13.125.43.71:3128',
+  '52.78.111.90:3128',
+  '13.125.208.114:3128',
+  '13.125.254.201:3128',
+  '13.125.208.114:3128' ]  
+
+var obj =　{
+  aaa: function(){
+    console.log(222)
+    console.log(this)
+  }
+}
+
+function aaa(){
+  console.log(111)
+  console.log(this)
+}
+
+
+
+setTimeout(() => {
+  aaa.bind(obj)
+}, 1)
+
+
+
 </script>
 
 </html>

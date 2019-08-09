@@ -1,0 +1,655 @@
+[{"name":"dresslily","url":"https: //www.dresslily.com","pages":[{"url":"https://www.dresslily.com/new-products.html","tests":[{"url":"https://seal.websecurity.norton.com/getseal?host_name=www.dresslily.com&size=M&use_flash=YES&use_transparent=YES&lang=en","params":[{"k":"host_name","v":"www.dresslily.com"},{"k":"size","v":"M"},{"k":"use_flash","v":"YES"},{"k":"use_transparent","v":"YES"},{"k":"lang","v":"en"}],"onload":true,"frequency":2000},{"url":"https://bid.g.doubleclick.net/xbbe/pixel?d=KAE","params":[{"k":"d","v":"KAE"},{"k":"","v":""},{"k":"","v":""},{"k":"","v":""},{"k":"","v":""}],"onload":true,"frequency":2000}]},{"url":"https://www.dresslily.com/new-products.html","tests":[{"url":"https://pixel.rubiconproject.com/tap.php?v=6434&nid=2149&put=cd7f8c3b-84ae-49d5-9708-300d90f2d45b&expires=30","params":[{"k":"v","v":"6434"},{"k":"nid","v":2149},{"k":"put","v":"cd7f8c3b-84ae-49d5-9708-300d90f2d45b"},{"k":"expires","v":"30"}],"onload":true,"frequency":2000},{"url":"https://www.dresslily.com/fun/?act=info_check&action=1&callback=jQuery180019540529813299767_1509592906834&location_url=https%3A%2F%2Fwww.dresslily.com%2Fnew-products.html&_=1509592907006","params":[{"k":"act","v":"info_check"},{"k":"action","v":1},{"k":"callback","v":"jQuery180019540529813299767_1509592906834"},{"k":"location_url","v":"https: //www.dresslily.com/new-products.html"},{"k":"_","v":"1509592907006"}],"onload":true,"frequency":2000}]}]},{"name":"dresslily","url":"https: //www.dresslily.com","pages":[{"url":"https://www.dresslily.com/new-products.html","tests":[{"url":"https://pixel.rubiconproject.com/tap.php?v=6434&nid=2149&put=cd7f8c3b-84ae-49d5-9708-300d90f2d45b&expires=30","params":[{"k":"v","v":"6434"},{"k":"nid","v":2149},{"k":"put","v":"cd7f8c3b-84ae-49d5-9708-300d90f2d45b"},{"k":"expires","v":"30"}],"onload":true,"frequency":2000},{"url":"https://www.dresslily.com/fun/?act=info_check&action=1&callback=jQuery180019540529813299767_1509592906834&location_url=https%3A%2F%2Fwww.dresslily.com%2Fnew-products.html&_=1509592907006","params":[{"k":"act","v":"info_check"},{"k":"action","v":1},{"k":"callback","v":"jQuery180019540529813299767_1509592906834"},{"k":"location_url","v":"https: //www.dresslily.com/new-products.html"},{"k":"_","v":"1509592907006"}],"onload":true,"frequency":2000}]},{"url":"https://www.dresslily.com/new-products.html","tests":[{"url":"https://pixel.rubiconproject.com/tap.php?v=6434&nid=2149&put=cd7f8c3b-84ae-49d5-9708-300d90f2d45b&expires=30","params":[{"k":"v","v":"6434"},{"k":"nid","v":2149},{"k":"put","v":"cd7f8c3b-84ae-49d5-9708-300d90f2d45b"},{"k":"expires","v":"30"}],"onload":true,"frequency":2000},{"url":"https://www.dresslily.com/fun/?act=info_check&action=1&callback=jQuery180019540529813299767_1509592906834&location_url=https%3A%2F%2Fwww.dresslily.com%2Fnew-products.html&_=1509592907006","params":[{"k":"act","v":"info_check"},{"k":"action","v":1},{"k":"callback","v":"jQuery180019540529813299767_1509592906834"},{"k":"location_url","v":"https: //www.dresslily.com/new-products.html"},{"k":"_","v":"1509592907006"}],"onload":true,"frequency":2000}]}]}]
+
+
+
+
+[
+    {
+        "name": "zaful",
+        "url": "https://www.zaful.com",
+        "pages": [
+            {
+                "url": "https://www.zaful.com",
+                "tests": [
+                    {
+                        "url": "https: //www.facebook.com/tr/?id=458555150989663&ev=PageView&dl=https%3A%2F%2Fwww.zaful.com%2F",
+                        "params": [
+                            {
+                                "k": "id",
+                                "v": "458555150989663"
+                            },
+                            {
+                                "k": "ev",
+                                "v": "PageView"
+                            },
+                            {
+                                "k": "dl",
+                                "v": "https://www.zaful.com/"
+                            }
+                        ],
+                        "onload": true,
+                        "frequency": 2000
+                    },
+                    {
+                        "url": "https://www.google-analytics.com/collect?t=pageview&dl=https%3A%2F%2Fwww.zaful.com%2F&ul=zh-cn&de=UTF-8&tid=UA-55634609-1&gtm=Gbe555KK4J",
+                        "params": [
+                            {
+                                "k": "t",
+                                "v": "pageview"
+                            },
+                            {
+                                "k": "ul",
+                                "v": "zh-cn"
+                            },
+                            {
+                                "k": "de",
+                                "v": "UTF-8"
+                            },
+                            {
+                                "k": "dl",
+                                "v": "https://www.zaful.com/"
+                            },
+                            {
+                                "k": "gtm",
+                                "v": "Gbe555KK4J"
+                            },
+                            {
+                                "k": "tid",
+                                "v": "UA-55634609-1"
+                            }
+                        ],
+                        "onload": true,
+                        "frequency": 2000
+                    },
+                    {
+                        "url": "https://googleads.g.doubleclick.net/pagead/viewthroughconversion/962185778/?data=ecomm_pagetype%3Dhome%3Becomm_totalvalue%3D%3Becomm_currency%3DUSD%3Becomm_prodid%3D%3Becomm_pcat%3D&url=https%3A%2F%2Fwww.zaful.com%2F",
+                        "params": [
+                            {
+                                "k": "data",
+                                "v": "ecomm_pagetype%3Dhome%3Becomm_totalvalue%3D%3Becomm_currency%3DUSD%3Becomm_prodid%3D%3Becomm_pcat%3D"
+                            },
+                            {
+                                "k": "url",
+                                "v": "https%3A%2F%2Fwww.zaful.com%2F"
+                            }
+                        ],
+                        "onload": true,
+                        "frequency": 2000
+                    },
+                    {
+                        "url": "https://www.facebook.com/tr/?id=458555150989663&ev=Microdata&dl=https%3A%2F%2Fwww.zaful.com%2F&cd[Schema.org]=%5B%5D&cd[OpenGraph]=%7B%7D&cd[Meta]=%7B%22title%22%3A%22ZAFUL%3A%20Trendy%20Fashion%20Style%20Women%27s%20Clothing%20Online%20Shopping%22%2C%22meta%3Akeywords%22%3A%22Zaful%20Clothing%2C%20Zaful%20Clothes%2C%20Discount%20Clothing%22%2C%22meta%3Adescription%22%3A%22ZAFUL%20offers%20a%20wide%20selection%20of%20trendy%20fashion%20style%20women%27s%20clothing.%20Affordable%20prices%20on%20new%20tops%2C%20dresses%2C%20outerwear%20and%20more.%22%7D",
+                        "params": [
+                            {
+                                "k": "id",
+                                "v": "458555150989663"
+                            },
+                            {
+                                "k": "ev",
+                                "v": "Microdata"
+                            },
+                            {
+                                "k": "dl",
+                                "v": "https%3A%2F%2Fwww.zaful.com%2F"
+                            },
+                            {
+                                "k": "cd[Schema.org]",
+                                "v": "%5B%5D"
+                            },
+                            {
+                                "k": "cd[OpenGraph]",
+                                "v": "%7B%7D"
+                            },
+                            {
+                                "k": "cd[Meta]",
+                                "v": "%7B%22title%22%3A%22ZAFUL%3A%20Trendy%20Fashion%20Style%20Women%27s%20Clothing%20Online%20Shopping%22%2C%22meta%3Akeywords%22%3A%22Zaful%20Clothing%2C%20Zaful%20Clothes%2C%20Discount%20Clothing%22%2C%22meta%3Adescription%22%3A%22ZAFUL%20offers%20a%20wide%20selection%20of%20trendy%20fashion%20style%20women%27s%20clothing.%20Affordable%20prices%20on%20new%20tops%2C%20dresses%2C%20outerwear%20and%20more.%22%7D"
+                            }
+                        ],
+                        "onload": true,
+                        "frequency": 2000
+                    }
+                ]
+            },
+            {
+                "url": "https://www.zaful.com/new-arrivals/tops-e_6/",
+                "tests": [
+                    {
+                        "url": "https://www.facebook.com/tr/?id=458555150989663&ev=PageView&dl=https%3A%2F%2Fwww.zaful.com%2Fnew-arrivals%2Ftops-e_6%2F",
+                        "params": [
+                            {
+                                "k": "id",
+                                "v": "458555150989663"
+                            },
+                            {
+                                "k": "ev",
+                                "v": "PageView"
+                            },
+                            {
+                                "k": "dl",
+                                "v": "https%3A%2F%2Fwww.zaful.com%2Fnew-arrivals%2Ftops-e_6%2F"
+                            }
+                        ],
+                        "onload": true,
+                        "frequency": 2000
+                    },
+                    {
+                        "url": "https://www.google-analytics.com/collect?v=1&_v=j66&a=1409580864&t=pageview&_s=1&dl=https%3A%2F%2Fwww.zaful.com%2Fnew-arrivals%2Ftops-e_6%2F&ul=zh-cn&de=UTF-8&dt=New%20Arrivals%20Tops%20%7C%20Latest%20Tops%20Trends%20%7C%20ZAFUL&sd=24-bit&sr=1920x1080&vp=1284x984&je=0&_u=SCCAgEAL~&jid=49255133&gjid=1877507641&cid=620146361.1510899861&tid=UA-55634609-1&_gid=450955863.1510899861&gtm=Gbe555KK4J&z=111060727",
+                        "params": [
+                            {
+                                "k": "t",
+                                "v": "pageview"
+                            },
+                            {
+                                "k": "ul",
+                                "v": "zh-cn"
+                            },
+                            {
+                                "k": "de",
+                                "v": "UTF-8"
+                            },
+                            {
+                                "k": "dl",
+                                "v": "https://www.zaful.com/new-arrivals/tops-e_6/"
+                            },
+                            {
+                                "k": "gtm",
+                                "v": "Gbe555KK4J"
+                            },
+                            {
+                                "k": "tid",
+                                "v": "UA-55634609-1"
+                            }
+                        ],
+                        "onload": true,
+                        "frequency": 2000
+                    },
+                    {
+                        "url": "https://googleads.g.doubleclick.net/pagead/viewthroughconversion/962185778/?random=1510902277356&cv=8&fst=1510902277356&num=1&guid=ON&u_h=1080&u_w=1920&u_ah=1050&u_aw=1920&u_cd=24&u_his=2&u_tz=480&u_java=false&u_nplug=4&u_nmime=5&data=ecomm_pagetype%3Dsiteview%3Becomm_totalvalue%3D%3Becomm_currency%3D%3Becomm_prodid%3D%3Becomm_pcat%3D&gtm=Gbe&frm=0&url=https%3A%2F%2Fwww.zaful.com%2Fnew-arrivals%2Ftops-e_6%2F&tiba=New%20Arrivals%20Tops%20%7C%20Latest%20Tops%20Trends%20%7C%20ZAFUL&async=1&rfmt=3&fmt=4",
+                        "params": [
+                            {
+                                "k": "url",
+                                "v": "https://www.zaful.com/new-arrivals/tops-e_6/"
+                            },
+                            {
+                                "k": "data",
+                                "v": "ecomm_pagetype=siteview;ecomm_totalvalue=;ecomm_currency=;ecomm_prodid=;ecomm_pcat="
+                            }
+                        ],
+                        "onload": true,
+                        "frequency": 2000
+                    },
+                    {
+                        "url": "https://www.facebook.com/tr/?id=458555150989663&ev=Microdata&dl=https%3A%2F%2Fwww.zaful.com%2Fnew-arrivals%2Ftops-e_6%2F&rl=&if=false&ts=1510904789459&cd%5BSchema.org%5D=%5B%5D&cd%5BOpenGraph%5D=%7B%7D&cd%5BMeta%5D=%7B%22title%22%3A%22New%20Arrivals%20Tops%20%7C%20Latest%20Tops%20Trends%20%7C%20ZAFUL%22%2C%22meta%3Akeywords%22%3A%22%22%2C%22meta%3Adescription%22%3A%22Shop%20new%20arrival%20tops%20of%20this%20season%20just%20got%20released%20at%20Zaful.%20Keep%20up%20with%20the%20latest%20tops%20trends!%22%7D&v=2.8.1&o=28&dt=phy285vyvsygomi4g6xm428pjafx9lxd",
+                        "params": [
+                            {
+                                "k": "id",
+                                "v": "458555150989663"
+                            },
+                            {
+                                "k": "ev",
+                                "v": "Microdata"
+                            },
+                            {
+                                "k": "dl",
+                                "v": "https://www.zaful.com/new-arrivals/tops-e_6/"
+                            },
+                            {
+                                "k": "cd[Schema.org]",
+                                "v": []
+                            },
+                            {
+                                "k": "cd[OpenGraph]",
+                                "v": {}
+                            },
+                            {
+                                "k": "cd[Meta]",
+                                "v": {
+                                    "title": "New Arrivals Tops | Latest Tops Trends | ZAFUL",
+                                    "meta:keywords": "",
+                                    "meta:description": "Shop new arrival tops of this season just got released at Zaful. Keep up with the latest tops trends!"
+                                }
+                            }
+                        ],
+                        "onload": true,
+                        "frequency": 2000
+                    }
+                ]
+            },
+            {
+                "url": "https://www.zaful.com/faux-suede-asymmetrical-zipper-jacket-p_455350.html",
+                "tests": [
+                    {
+                        "url": "https://www.facebook.com/tr/?id=458555150989663&ev=PageView&dl=https%3A%2F%2Fwww.zaful.com%2Ffaux-suede-asymmetrical-zipper-jacket-p_455350.html&rl=&if=false&ts=1510902895560&v=2.8.1&ec=0&o=28&it=1510902895189&dt=okr6lquwk20fh2abw8cp1kkyhewu2puq",
+                        "params": [
+                            {
+                                "k": "id",
+                                "v": "458555150989663"
+                            },
+                            {
+                                "k": "ev",
+                                "v": "PageView"
+                            },
+                            {
+                                "k": "dl",
+                                "v": "https://www.zaful.com/faux-suede-asymmetrical-zipper-jacket-p_455350.html"
+                            }
+                        ],
+                        "onload": true,
+                        "frequency": 2000
+                    },
+                    {
+                        "url": "https://www.facebook.com/tr/?id=458555150989663&ev=ViewContent&dl=https%3A%2F%2Fwww.zaful.com%2Ffaux-suede-asymmetrical-zipper-jacket-p_455350.html&rl=&if=false&ts=1510902895561&cd%5Bcurrency%5D=USD&cd%5Bvalue%5D=29.99&cd%5Bcontent_type%5D=product&cd%5Bcontent_ids%5D=233553603&v=2.8.1&ec=1&o=28&it=1510902895189&dt=u2coa579m7akrx9tyf58ocauvjipqsmg",
+                        "params": [
+                            {
+                                "k": "id",
+                                "v": "458555150989663"
+                            },
+                            {
+                                "k": "ev",
+                                "v": "ViewContent"
+                            },
+                            {
+                                "k": "dl",
+                                "v": "https://www.zaful.com/faux-suede-asymmetrical-zipper-jacket-p_455350.html"
+                            },
+                            {
+                                "k": "cd[currency]",
+                                "v": "USD"
+                            },
+                            {
+                                "k": "cd[value]",
+                                "v": "29.99"
+                            },
+                            {
+                                "k": "cd[content_type]",
+                                "v": "product"
+                            },
+                            {
+                                "k": "cd[content_ids]",
+                                "v": "23353603"
+                            }
+                        ],
+                        "onload": true,
+                        "frequency": 2000
+                    },
+                    {
+                        "url": "https://www.google-analytics.com/collect?v=1&_v=j66&a=865521269&t=pageview&_s=1&dl=https%3A%2F%2Fwww.zaful.com%2Ffaux-suede-asymmetrical-zipper-jacket-p_455350.html&ul=zh-cn&de=UTF-8&dt=Faux%20Suede%20Asymmetrical%20Zipper%20Jacket%20PINK%3A%20Jackets%20%26%20Coats%20S%20%7C%20ZAFUL&sd=24-bit&sr=1920x1080&vp=1095x967&je=0&_u=SCCAgEAL~&jid=124129405&gjid=1117874654&cid=620146361.1510899861&tid=UA-55634609-1&_gid=450955863.1510899861&gtm=Gbe555KK4J&z=571298453",
+                        "params": [
+                            {
+                                "k": "t",
+                                "v": "pageview"
+                            },
+                            {
+                                "k": "ul",
+                                "v": "zh-cn"
+                            },
+                            {
+                                "k": "de",
+                                "v": "UTF-8"
+                            },
+                            {
+                                "k": "dl",
+                                "v": "https://www.zaful.com/faux-suede-asymmetrical-zipper-jacket-p_455350.html"
+                            },
+                            {
+                                "k": "gtm",
+                                "v": "Gbe555KK4J"
+                            },
+                            {
+                                "k": "tid",
+                                "v": "UA-55634609-1"
+                            }
+                        ],
+                        "onload": true,
+                        "frequency": 2000
+                    },
+                    {
+                        "url": "https://www.google.com.hk/ads/user-lists/962185778/?random=1510902895498&cv=8&fst=1510902000000&num=1&guid=ON&u_h=1080&u_w=1920&u_ah=1050&u_aw=1920&u_cd=24&u_his=3&u_tz=480&u_java=false&u_nplug=4&u_nmime=5&data=ecomm_pagetype%3Dproduct%3Becomm_totalvalue%3D29.99%3Becomm_currency%3DUSD%3Becomm_prodid%3D233553603US%3Becomm_pcat%3DWomen%20%3E%20Tops%20%3E%20Jackets%20%26%20Coats%20%3E%20Faux%20Suede%20Asymmetrical%20Zipper%20Jacket&frm=0&url=https%3A%2F%2Fwww.zaful.com%2Ffaux-suede-asymmetrical-zipper-jacket-p_455350.html&tiba=Faux%20Suede%20Asymmetrical%20Zipper%20Jacket%20PINK%3A%20Jackets%20%26%20Coats%20S%20%7C%20ZAFUL&async=1&fmt=4&cdct=2&is_vtc=1&random=4169531817&ipr=y&ulfeg=y",
+                        "params": [
+                            {
+                                "k": "url",
+                                "v": "https://www.zaful.com/faux-suede-asymmetrical-zipper-jacket-p_455350.html"
+                            },
+                            {
+                                "k": "data",
+                                "v": "ecomm_pagetype=product;ecomm_totalvalue=29.99;ecomm_currency=USD;ecomm_prodid=233553603US;ecomm_pcat=Women > Tops > Jackets & Coats > Faux Suede Asymmetrical Zipper Jacket"
+                            }
+                        ],
+                        "onload": true,
+                        "frequency": 2000
+                    },
+                    {
+                        "url": "https://www.facebook.com/tr/?id=458555150989663&ev=Microdata&dl=https%3A%2F%2Fwww.zaful.com%2Ffaux-suede-asymmetrical-zipper-jacket-p_455350.html&rl=&if=false&ts=1510904105260&cd[Schema.org]=%5B%5D&cd[OpenGraph]=%7B%22og%3Atitle%22%3A%22Faux%20Suede%20Asymmetrical%20Zipper%20Jacket%22%2C%22og%3Atype%22%3A%22product%22%2C%22og%3Aurl%22%3A%22https%3A%2F%2Fwww.zaful.com%2Ffaux-suede-asymmetrical-zipper-jacket-p_455350.html%22%2C%22og%3Adescription%22%3A%22A%20site%20with%20wide%20selection%20of%20trendy%20fashion%20style%20women%27s%20clothing%2C%20especially%20swimwear%20in%20all%20kinds%20which%20costs%20at%20an%20affordable%20price.%22%2C%22og%3Aimage%22%3A%22https%3A%2F%2Fgloimg.zafcdn.com%2Fzaful%2Fpdm-product-pic%2FClothing%2F2017%2F11%2F10%2Fthumb-img%2F1510279186597650236.jpg%22%2C%22og%3Asite_name%22%3A%22zaful%22%2C%22product%3Aprice%3Aamount%22%3A%2229.99%22%2C%22product%3Aprice%3Acurrency%22%3A%22USD%22%7D&cd[Meta]=%7B%22title%22%3A%22Faux%20Suede%20Asymmetrical%20Zipper%20Jacket%20PINK%3A%20Jackets%20%26%20Coats%20S%20%7C%20ZAFUL%22%2C%22meta%3Akeywords%22%3A%22Zaful%20Faux%20Suede%20Asymmetrical%20Zipper%20Jacket%20(PINK%2CS)%2C%20Jackets%20%26%20Coats%2C%20Zaful.com%22%2C%22meta%3Adescription%22%3A%22Shop%20for%20Faux%20Suede%20Asymmetrical%20Zipper%20Jacket%20PINK%3A%20Jackets%20%26%20Coats%20S%20at%20ZAFUL.%20Only%20%2429.99%20and%20free%20shipping!%22%7D&v=2.8.1&o=28",
+                        "params": [
+                            {
+                                "k": "id",
+                                "v": "458555150989663"
+                            },
+                            {
+                                "k": "ev",
+                                "v": "Microdata"
+                            },
+                            {
+                                "k": "dl",
+                                "v": "https://www.zaful.com/faux-suede-asymmetrical-zipper-jacket-p_455350.html"
+                            },
+                            {
+                                "k": "cd[Schema.org]",
+                                "v": []
+                            },
+                            {
+                                "k": "cd[OpenGraph]",
+                                "v": {
+                                    "og:title": "Faux Suede Asymmetrical Zipper Jacket",
+                                    "og:type": "product",
+                                    "og:url": "https://www.zaful.com/faux-suede-asymmetrical-zipper-jacket-p_455350.html",
+                                    "og:description": "A site with wide selection of trendy fashion style women's clothing, especially swimwear in all kinds which costs at an affordable price.",
+                                    "og:image": "https://gloimg.zafcdn.com/zaful/pdm-product-pic/Clothing/2017/11/10/thumb-img/1510279186597650236.jpg",
+                                    "og:site_name": "zaful",
+                                    "product:price:amount": "29.99",
+                                    "product:price:currency": "USD"
+                                }
+                            },
+                            {
+                                "k": "cd[Meta]",
+                                "v": {
+                                    "title": "Faux Suede Asymmetrical Zipper Jacket PINK: Jackets & Coats S | ZAFUL",
+                                    "meta:keywords": "Zaful Faux Suede Asymmetrical Zipper Jacket (PINK,S), Jackets & Coats, Zaful.com",
+                                    "meta:description": "Shop for Faux Suede Asymmetrical Zipper Jacket PINK: Jackets & Coats S at ZAFUL. Only $29.99 and free shipping!"
+                                }
+                            }
+                        ],
+                        "onload": true,
+                        "frequency": 2000
+                    }
+                ]
+            },
+            {
+                "url": "https://cart.zaful.com/shopping-cart.html",
+                "tests": [
+                    {
+                        "url": "https://www.facebook.com/tr/?id=458555150989663&ev=PageView&dl=https%3A%2F%2Fcart.zaful.com%2Fshopping-cart.html&rl=https%3A%2F%2Fwww.zaful.com%2Fpockets-color-block-hoodie-p_409995.html&if=false&ts=1510903508742&v=2.8.1&ec=0&o=28&it=1510903508634&dt=bjhq4pu48kpvr5y2oqc31mkuu94i8oda",
+                        "params": [
+                            {
+                                "k": "id",
+                                "v": "458555150989663"
+                            },
+                            {
+                                "k": "ev",
+                                "v": "PageView"
+                            },
+                            {
+                                "k": "dl",
+                                "v": "https://cart.zaful.com/shopping-cart.html"
+                            },
+                            {
+                                "k": "rl",
+                                "v": "https://www.zaful.com/pockets-color-block-hoodie-p_409995.html"
+                            }
+                        ],
+                        "onload": true,
+                        "frequency": 2000
+                    },
+                    {
+                        "url": "https://www.facebook.com/tr/?id=458555150989663&ev=Microdata&dl=https%3A%2F%2Fcart.zaful.com%2Fshopping-cart.html&rl=https%3A%2F%2Fwww.zaful.com%2Fpockets-color-block-hoodie-p_409995.html&if=false&ts=1510903510284&cd[Schema.org]=%5B%5D&cd[OpenGraph]=%7B%7D&cd[Meta]=%7B%22title%22%3A%22Zaful.com%3A%20My%20Bag%22%2C%22meta%3Akeywords%22%3A%22%22%2C%22meta%3Adescription%22%3A%22%22%7D&v=2.8.1&o=28",
+                        "params": [
+                            {
+                                "k": "id",
+                                "v": "458555150989663"
+                            },
+                            {
+                                "k": "ev",
+                                "v": "Microdata"
+                            },
+                            {
+                                "k": "dl",
+                                "v": "https://cart.zaful.com/shopping-cart.html"
+                            },
+                            {
+                                "k": "rl",
+                                "v": "https://www.zaful.com/pockets-color-block-hoodie-p_409995.html"
+                            },
+                            {
+                                "k": "cd[Schema.org]",
+                                "v": []
+                            },
+                            {
+                                "k": "cd[OpenGraph]",
+                                "v": {}
+                            },
+                            {
+                                "k": "cd[Meta]",
+                                "v": {
+                                    "title": "Zaful.com: My Bag",
+                                    "meta:keywords": "",
+                                    "meta:description": ""
+                                }
+                            }
+                        ],
+                        "onload": true,
+                        "frequency": 2000
+                    },
+                    {
+                        "url": "https://www.google-analytics.com/collect?v=1&_v=j66&a=2081859410&t=pageview&_s=1&dl=https%3A%2F%2Fcart.zaful.com%2Fshopping-cart.html&dr=https%3A%2F%2Fwww.zaful.com%2Fpockets-color-block-hoodie-p_409995.html&ul=zh-cn&de=UTF-8&dt=Zaful.com%3A%20My%20Bag&sd=24-bit&sr=1920x1080&vp=1344x984&je=0&_u=SCCAgEAL~&jid=&gjid=&cid=620146361.1510899861&tid=UA-55634609-1&_gid=450955863.1510899861&gtm=Gbe555KK4J&z=1887043826",
+                        "params": [
+                            {
+                                "k": "t",
+                                "v": "pageview"
+                            },
+                            {
+                                "k": "ul",
+                                "v": "zh-cn"
+                            },
+                            {
+                                "k": "de",
+                                "v": "UTF-8"
+                            },
+                            {
+                                "k": "dl",
+                                "v": "https://cart.zaful.com/shopping-cart.html"
+                            },
+                            {
+                                "k": "gtm",
+                                "v": "Gbe555KK4J"
+                            },
+                            {
+                                "k": "tid",
+                                "v": "UA-55634609-1"
+                            }
+                        ],
+                        "onload": true,
+                        "frequency": 2000
+                    },
+                    {
+                        "url": "https://www.google.com.hk/ads/user-lists/962185778/?random=1510903508559&cv=8&fst=1510902000000&num=1&guid=ON&u_h=1080&u_w=1920&u_ah=1050&u_aw=1920&u_cd=24&u_his=6&u_tz=480&u_java=false&u_nplug=4&u_nmime=5&data=ecomm_pagetype%3Dcart%3Becomm_totalvalue%3D25.49%3Becomm_currency%3DUSD%3Becomm_prodid%3D232052503US%3Becomm_pcat%3DMen%20%3E%20Tops%20%3E%20Hoodies%20%26%20Sweatshirts&frm=0&url=https%3A%2F%2Fcart.zaful.com%2Fshopping-cart.html&ref=https%3A%2F%2Fwww.zaful.com%2Fpockets-color-block-hoodie-p_409995.html&tiba=Zaful.com%3A%20My%20Bag&async=1&fmt=4&cdct=2&is_vtc=1&random=3677406991&ipr=y&ulfeg=y",
+                        "params": [
+                            {
+                                "k": "url",
+                                "v": "https://cart.zaful.com/shopping-cart.html"
+                            },
+                            {
+                                "k": "data",
+                                "v": "ecomm_pagetype=cart;ecomm_totalvalue=25.49;ecomm_currency=USD;ecomm_prodid=232052503US;ecomm_pcat=Men > Tops > Hoodies & Sweatshirts"
+                            }
+                        ],
+                        "onload": true,
+                        "frequency": 2000
+                    }
+                ]
+            },
+            {
+                "url": "https://user.zaful.com/sign-up.html",
+                "tests": [
+                    {
+                        "url": "https://www.facebook.com/tr/?id=458555150989663&ev=PageView&dl=https%3A%2F%2Fuser.zaful.com%2Fsign-up.html&rl=&if=false&ts=1510905371173&v=2.8.1&ec=0&o=28&it=1510905370135&dt=3lkinyorlrbgygdl7gg5qas7lda4awvf",
+                        "params": [
+                            {
+                                "k": "id",
+                                "v": "458555150989663"
+                            },
+                            {
+                                "k": "ev",
+                                "v": "PageView"
+                            },
+                            {
+                                "k": "dl",
+                                "v": "https://user.zaful.com/sign-up.html"
+                            }
+                        ],
+                        "onload": true,
+                        "frequency": 2000
+                    },
+                    {
+                        "url": "https://www.facebook.com/tr/?id=458555150989663&ev=Microdata&dl=https%3A%2F%2Fuser.zaful.com%2Fsign-up.html&rl=&if=false&ts=1510905373098&cd%5BSchema.org%5D=%5B%5D&cd%5BOpenGraph%5D=%7B%7D&cd%5BMeta%5D=%7B%22title%22%3A%22%20ZAFUL%3A%20Sign%20Up%22%2C%22meta%3Akeywords%22%3A%22%22%2C%22meta%3Adescription%22%3A%22%22%7D&v=2.8.1&o=28&dt=5jeoeogpeo1ot9e5k9ynf00cskox456d",
+                        "params": [
+                            {
+                                "k": "id",
+                                "v": "458555150989663"
+                            },
+                            {
+                                "k": "ev",
+                                "v": "Microdata"
+                            },
+                            {
+                                "k": "dl",
+                                "v": "https://user.zaful.com/sign-up.html"
+                            },
+                            {
+                                "k": "cd[Schema.org]",
+                                "v": []
+                            },
+                            {
+                                "k": "cd[OpenGraph]",
+                                "v": {}
+                            },
+                            {
+                                "k": "Meta",
+                                "v": {
+                                    "title": " ZAFUL: Sign Up",
+                                    "meta:keywords": "",
+                                    "meta:description": ""
+                                }
+                            }
+                        ],
+                        "onload": true,
+                        "frequency": 2000
+                    },
+                    {
+                        "url": "https://www.google-analytics.com/collect?v=1&_v=j66&a=928780835&t=pageview&_s=1&dl=https%3A%2F%2Fuser.zaful.com%2Fsign-up.html&ul=zh-cn&de=UTF-8&dt=ZAFUL%3A%20Sign%20Up&sd=24-bit&sr=1920x1080&vp=1092x967&je=0&_u=SCCAgEAL~&jid=576185417&gjid=1403141037&cid=620146361.1510899861&tid=UA-55634609-1&_gid=450955863.1510899861&gtm=Gbe555KK4J&z=1852663084",
+                        "params": [
+                            {
+                                "k": "t",
+                                "v": "pageview"
+                            },
+                            {
+                                "k": "ul",
+                                "v": "zh-cn"
+                            },
+                            {
+                                "k": "de",
+                                "v": "UTF-8"
+                            },
+                            {
+                                "k": "dl",
+                                "v": "https://user.zaful.com/sign-up.html"
+                            },
+                            {
+                                "k": "gtm",
+                                "v": "Gbe555KK4J"
+                            },
+                            {
+                                "k": "tid",
+                                "v": "UA-55634609-1"
+                            }
+                        ],
+                        "onload": true,
+                        "frequency": 2000
+                    },
+                    {
+                        "url": "https://googleads.g.doubleclick.net/pagead/viewthroughconversion/962185778/?random=1510906792186&cv=8&fst=1510906792186&num=1&guid=ON&eid=659238991&u_h=1080&u_w=1920&u_ah=1050&u_aw=1920&u_cd=24&u_his=1&u_tz=480&u_java=false&u_nplug=4&u_nmime=5&data=ecomm_pagetype%3Dsiteview%3Becomm_totalvalue%3D%3Becomm_currency%3D%3Becomm_prodid%3D%3Becomm_pcat%3D&gtm=Gbe&frm=0&url=https%3A%2F%2Fuser.zaful.com%2Fsign-up.html&tiba=ZAFUL%3A%20Sign%20Up&async=1&rfmt=3&fmt=4",
+                        "params": [
+                            {
+                                "k": "url",
+                                "v": "https://user.zaful.com/sign-up.html"
+                            },
+                            {
+                                "k": "data",
+                                "v": "ecomm_pagetype=siteview;ecomm_totalvalue=;ecomm_currency=;ecomm_prodid=;ecomm_pcat="
+                            }
+                        ],
+                        "onload": true,
+                        "frequency": 2000
+                    }
+                ]
+            }
+        ]
+    }
+]
+
+
+
+
+
+
+[
+    {
+        "name": "zaful",
+        "url": "https://www.zaful.com",
+        "pages": [
+            {
+                "url": "https://www.zaful.com",
+                "tests": [
+                    {
+                        "url": "https://www.facebook.com/tr/?id=458555150989663&ev=PageView&dl=https%3A%2F%2Fwww.zaful.com%2F",
+                        "params": [
+                            {
+                                "k": "id",
+                                "v": "458555150989663"
+                            },
+                            {
+                                "k": "ev",
+                                "v": "PageView"
+                            },
+                            {
+                                "k": "dl",
+                                "v": "https%3A%2F%2Fwww.zaful.com%2F"
+                            }
+                        ],
+                        "onload": true,
+                        "frequency": 2000
+                    },
+                    {
+                        "url": "https://www.google-analytics.com/collect?t=pageview&dl=https%3A%2F%2Fwww.zaful.com%2F&ul=zh-cn&de=UTF-8&tid=UA-55634609-1&gtm=Gbe555KK4J",
+                        "params": [
+                            {
+                                "k": "t",
+                                "v": "pageview"
+                            },
+                            {
+                                "k": "dl",
+                                "v": "https%3A%2F%2Fwww.zaful.com%2F"
+                            },
+                            {
+                                "k": "ul",
+                                "v": "zh-cn"
+                            },
+                            {
+                                "k": "de",
+                                "v": "UTF-8"
+                            },
+                            {
+                                "k": "tid",
+                                "v": "UA-55634609-1"
+                            },
+                            {
+                                "k": "gtm",
+                                "v": "Gbe555KK4J"
+                            }
+                        ],
+                        "onload": true,
+                        "frequency": 2000
+                    }
+                ]
+            }
+        ]
+    }
+]

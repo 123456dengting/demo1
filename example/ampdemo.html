@@ -1,0 +1,106 @@
+
+
+<!-- ## Introduction -->
+<!--
+This is a sample showing how to implement client-side filtering.
+-->
+<!-- -->
+<!doctype html>
+<html ⚡>
+<head>
+  <meta charset="utf-8">
+  <script async src="https://cdn.ampproject.org/v0.js"></script>
+  <script async custom-element="amp-bind" src="https://cdn.ampproject.org/v0/amp-bind-0.1.js"></script>
+  <script async custom-element="amp-list" src="https://cdn.ampproject.org/v0/amp-list-0.1.js"></script>
+  <script async custom-template="amp-mustache" src="https://cdn.ampproject.org/v0/amp-mustache-0.2.js"></script>
+  <script async custom-element="amp-analytics" src="https://cdn.ampproject.org/v0/amp-analytics-0.1.js"></script>
+  <link rel="canonical" href="https://amp.dev/documentation/examples/interactivity-dynamic-content/client-side_filtering/index.html">
+  <title>Client-side filtering</title>
+  <meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1">
+  <style amp-boilerplate>body{-webkit-animation:-amp-start 8s steps(1,end) 0s 1 normal both;-moz-animation:-amp-start 8s steps(1,end) 0s 1 normal both;-ms-animation:-amp-start 8s steps(1,end) 0s 1 normal both;animation:-amp-start 8s steps(1,end) 0s 1 normal both}@-webkit-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-moz-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-ms-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-o-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}</style><noscript><style amp-boilerplate>body{-webkit-animation:none;-moz-animation:none;-ms-animation:none;animation:none}</style></noscript>
+
+</head>
+<body>
+  <div>
+    <amp-list height="50" layout="fixed-height" src="https://preview.amp.dev/static/samples/json/related_products.json">
+      <template type="amp-mustache">
+        <!-- <amp-img src="{{img}}" layout="fixed" width="60" height="40" alt="{{name}}"></amp-img> -->
+        {{name}}
+      </template>
+    </amp-list>
+    <!-- <amp-pixel layout="nodisplay" src="https://gj.mmstat.com/g.gif?UTABTest=&ae_u_p_s=&cna=&spm-cnt=a2g0n.search%2damp.0.0.1560421215362&pre=&aplus&ali_apache_track=&dmtrack_c={ali%5fresin%5ftrace%3dp4pid%3d4665cefd%2d8b91%2d4116%2db0f0%2dbc5ffd4c0ea2%7cws%5fmagneto%5fids%3d%7cws%5fab%5ftest%3d%7calgo%5fpvid%3d0b152ab3%2d2b1a%2d4480%2db5b4%2d4422180f07fd%7cbtsid%3d98e8bf3e%2d4d00%2d4a23%2daa86%2d80254c466e52%7caep%5fusuc%5ff%3d}&hn=ae%2dmsite011027005079%2ecenter%2ena61&pageid=6683amp-2DYOaQ4KX6Q5n2gy8cWbNA1560421215362&s=282x978&viewer="></amp-pixel> -->
+  </div>
+  <div>
+      <form id="myform"
+      method="post"
+      action-xhr="https://example.com/myform"
+      target="_blank">
+      <fieldset>
+        <label>
+          <input name="answer1"
+            value="Value 1"
+            type="radio"
+            on="change:myform.submit">Value 1
+        </label>
+        <label>
+          <input name="answer1"
+            value="Value 2"
+            type="radio"
+            on="change:myform.submit">Value 2
+        </label>
+      </fieldset>
+    </form>
+  </div>
+  <!-- 
+          "extraUrlParams": {
+        "[{\"sd\":\"PageView^^^^^^^timestamp^${websiteId}^${sourceUrl}^${documentReferrer}^${screenWidth}^${screenHeight}^${aid}^${userAgent}^${_ga}^${sessionId}^${linkid}^${_gid}^${userId}^${guid}^${orderId}^${eventid}^${${title}}^^^${browserLanguage}\",\"st\":${totalTime},\"ct\":${timestamp}}] ": "${aaa}"
+      },
+      "extraUrlParamsReplaceMap": {
+        "timestamp": "${timestamp}RANDOM"
+      },
+   -->
+
+  <amp-analytics>
+    <!-- "event": "https://nginx.1cros.net/click_re?[{\"sd\":\"PageView^^^^^^^1560304663^XA-1000040-2^${ampdocUrl}^^${screenWidth}^${screenHeight}^9dc723603bd8ccc12fda52e1a99807ab^${userAgent}^GA1.3.1204602804.1559868968^cf7v0mnc3o3hiqad036p5riis1^^GA1.3.1491981780.1560149209^^9dc723603bd8ccc12fda52e1a99807ab_1560304663^^9dc723603bd8ccc12fda52e1a99807ab15603046635521560304663^ZAFUL: Trendy Fashion Style Women's Clothing Online Shopping^^^en\",\"st\":0,\"ct\":1560304663}]&clientId=${clientId(cid-scope)}" -->
+    <!-- "event": "https://nginx.1cros.net/click_re?[{\"sd\":\"PageView^^^^^^^${timestamp}^${websiteId}^${sourceUrl}^${documentReferrer}^${screenWidth}^${screenHeight}^${aid}^${userAgent}^${_ga}^${sessionId}^${linkid}^${_gid}^${userId}^${guid}^${orderId}^${eventid}^${${title}}^^^${browserLanguage}\",\"st\":${totalTime},\"ct\":${timestamp}}] " -->
+    <script type="application/json">
+    {
+      "requests": {
+        "event": "http://10.32.3.207:8011/click_re?[{"sd":"PageView^^^^^^^1561712445^XA-1000040-1^https://hk.zaful.com/tops-e_6/^https://hk.zaful.com/tops-e_6/^1920^1080^9fd4b57c067340e9eb8b7fe28592d76d^Mozilla/5.0 (Windows NT 6.1 Win64 x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/73.0.3683.86 Safari/537.36^GA1.2.410906301.1535694809^^123^GA1.2.1159325497.1561708008^^9fd4b57c067340e9eb8b7fe28592d76d_1561712443^^9fd4b57c067340e9eb8b7fe28592d76d15617124452591561712445^女士上著 在線購物 | 低至HK$48.35 | ZAFUL Hong Kong^^^zh-tw","st":0,"ct":1561712445}] "
+      },
+      
+      "transport": {
+        "beacon": false,
+        "xhrpost": true,
+        "useBody": false,
+        "image": false
+      },
+      "vars": {
+        "websiteId": "AAA0001111",
+        "aid": "${clientId(AKAM_CLIENTID)}",
+        "_ga": "${clientId(_ga)}",
+        "sessionId": "${clientId(sessionId)}",
+        "linkid": "${clientId(linkid)}",
+        "_gid": "${clientId(_gid)}",
+        "userId": "${clientId(userId)}",
+        "guid": "",
+        "orderId": "",
+        "eventid": ""
+      },
+
+      "triggers": {
+        "trackPageview": {
+          "on": "visible",
+          "request": "event",
+          "vars": {
+            "aaa": "${websiteId}"
+          }
+        }
+      }
+    }
+    </script>
+    </amp-analytics>
+  
+
+</body>
+</html>
