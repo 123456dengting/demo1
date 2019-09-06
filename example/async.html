@@ -11,5 +11,27 @@
 	</head>
 	<body>
 	</body>
-	<script src="./js/yield-await.js"></script>
+  <!-- <script src="./js/yield-await.js"></script> -->
+  <script src="./js/common.js"></script>
+  <script>
+    let obj1 = {
+      name: [1, 2, 3],
+      ful: {
+        a: 'a',
+        b: 'b'
+      },
+      id: 20,
+      getId: function(){
+        console.log(this.id)
+      }
+    }
+
+    let obj2 = deepCopy(obj1)
+
+    obj2.name[0] = 10
+
+    obj2.getId()
+    console.log('111', obj1, obj2)
+  
+  </script>
 </html>
