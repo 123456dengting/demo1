@@ -1,4 +1,4 @@
-const {
+﻿const {
   browserStatus,
   pageStatus,
   getDataStatus
@@ -29,6 +29,8 @@ class PageWorker {
     this.status = pageStatus.free.value
     this.browser = browser;
     this.__page__ = null;
+    this.resolveRequest = null;
+    this.isStop = false;
   }
 
   async currentPage() {
@@ -42,32 +44,52 @@ class PageWorker {
     if (!(resolveRequest instanceof ResolveRequest)) throw Error("resolveRequest参数类型错误1。");
     let newPage = await this.currentPage();
     resolveRequest.page = newPage;
+    this.resolveRequest = resolveRequest;
     let currUserAgent = this.getUserAgent(resolveRequest.param.userAgent);
     newPage.on('request', resolveRequest.handleRequest.bind(resolveRequest));
     newPage.on('response', resolveRequest.handleResponse.bind(resolveRequest));
     newPage.setUserAgent(currUserAgent);
+    let isAnchor = null;
 
-    await newPage.goto(url, LOADOPTS)
-    let isAnchor = await this.checkAnchor(newPage)
-    if (isAnchor) {
-      return {
-        status: getDataStatus.isAnchor,
-        data: {
-          requestState: resolveRequest.param,
-          browser: this.browser
+    try {
+      await newPage.goto(url, LOADOPTS)
+      isAnchor = await this.checkAnchor(newPage)
+      if (isAnchor) {
+        return {
+          status: getDataStatus.isAnchor,
+          data: {
+            requestState: resolveRequest.param,
+            browser: this.browser
+          }
         }
       }
+      //多两次回车, 防止漏抓
+      await newPage.goto(url, LOADOPTS)
+      await timeout(500)
+      await newPage.goto(url, LOADOPTS)
+      await timeout(300, 600)
+    } catch (error) {
+      if (this.isStop) {
+        return {
+          status: getDataStatus.browserDestory,
+          data:　res
+        }
+      }else{
+        throw Error(error)
+      }
     }
-    //多两次回车, 防止漏抓
-    await newPage.goto(url, LOADOPTS)
-    await timeout(500)
-    await newPage.goto(url, LOADOPTS)
-    await timeout(300, 600)
-
+    
     let res = await resolveRequest.getPageData()
 
     if (!Array.isArray(res)) {
       res = []
+    }
+
+    if (resolveRequest.isStop) {
+      return {
+        status: getDataStatus.browserDestory,
+        data:　res
+      }
     }
 
     let endTime = new Date().getTime()
@@ -90,6 +112,12 @@ class PageWorker {
 
   changeStatus(status) {
     this.status = status.value;
+  }
+
+  //停止正在执行的数据业务
+  stop() {
+    this.isStop = true;
+    this.resolveRequest && this.resolveRequest.stop()
   }
 
   async close() {
@@ -146,15 +174,7 @@ class Browser {
     this.headless = headless;
     this.reqTimeout = reqTimeout;
     this.status = browserStatus.notCreate.value;
-    this.requestedNum = 0;
-    this.browser = null;
-    this.pages = [];
-    this.timer = null;
-    this.repeatTabStart = false;
-    this.isCanDestory = false;
-    this.tabChangeTimer = null;
-    this.createTime = new Date().getTime();     //创建时间
-    this.lastActiveTime = new Date().getTime(); //最后活动时间
+    
 
   }
 
@@ -170,9 +190,9 @@ class Browser {
    */
   canDestory() {
     //当最后活动时间与现在间隔超过20分钟, 则可以销毁, 重新创建
-    // if (new Date().getTime() - this.lastActiveTime > 60000 * 10) {
-    //   return true
-    // }
+    if (new Date().getTime() - this.lastActiveTime > 60000 * 20) {
+      return true
+    }
     if (this.status === browserStatus.notCreate.value) return false
     let expiredTime = this.__createdTime__ + this.ipTimeout;
     let currentTime = new Date().getTime() - 6000;
@@ -186,6 +206,18 @@ class Browser {
    * 初始化浏览器
    */
   async init() {
+    this.requestedNum = 0;
+    this.browser = null;
+    this.pages = [];
+    this.timer = null;
+    this.repeatTabStart = false;
+    this.isCanDestory = false;
+    this.tabChangeTimer = null;
+    this.createTime = new Date().getTime();     //创建时间
+    this.lastActiveTime = new Date().getTime(); //最后活动时间
+    this.tabChangeFail = 0; //切换页面次数, 如果失败次数过多,重启浏览器, 切换成功清0
+
+
     if (this.browser) return;
     this.browser = await puppeteer.launch({
       headless: this.headless,
@@ -282,11 +314,13 @@ class Browser {
    * 销毁
    */
   async destroy() {
+
     this.stopRepeatTab()
     this.changeStatus(browserStatus.expired);
     let closeList = []
     if (this.pages.length) {
       this.pages.forEach(p => {
+        p.stop()
         closeList.push(p.close())
       })
     }
@@ -315,29 +349,22 @@ class Browser {
             await timeout(1000)
             try {
               page.__page__ && await page.__page__.bringToFront();
+              this.tabChangeFail = 0;
             } catch (error) {
-              logger.warn('切换页面失败', this.index, '---', error)
+              this.tabChangeFail++;
+              if(this.tabChangeFail > 30){
+                logger.trace('自启动')
+                //let index = this.index;
+                //this.destroy();
+                //this.browser = await this.init();
+                page.changeStatus(pageStatus.free);
+              }
+              logger.warn('切换页面失败', this.index, '---', this.tabChangeFail)
             }
           }
         }
       }
     }, 60 * 1000)
-    // createTimeOutFn(async () => {
-    //   //当page是忙碌状态的时候, 切换page
-    //   if (this.pages.length > 1) {
-    //     for (let index = 0; index < this.pages.length; index++) {
-    //       const page = this.pages[index];
-    //       if (page.status === pageStatus.busy.value) {
-    //         await timeout(1000)
-    //         try {
-    //           page.__page__ && await page.__page__.bringToFront();
-    //         } catch (error) {
-    //           logger.warn('切换页面失败', error)
-    //         }
-    //       }
-    //     }
-    //   }
-    // }, 60 * 1000)
   }
 
   stopRepeatTab(){

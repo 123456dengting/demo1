@@ -8,30 +8,114 @@
   <title>Document</title>
 </head>
 <script src="./js/xlsx.core.min.js"></script>
+<script src="./jquery.min.js"></script>
 
 <body>
   <div>111
     <div>222</div>
   </div>
-  <input type="file" id="file" value="" change="getFileToPicture($event)">
+  <input type="file" id="excel-file"  multiple="multiple" value="">
   <button id="down">导出11</button>
 </body>
 
 <script>
-    // 读取本地excel文件
-    function readWorkbookFromLocalFile(file, callback) {    
-      var reader = new FileReader();
-      reader.onload = function(e) {        
-          var data = e.target.result;        
-        var workbook = XLSX.read(data, {type: 'binary'});        
-        if(callback) callback(workbook);
+
+   //文件导入
+   $('#excel-file').change(function(e) {
+    getFiles(e.target.files)
+  });
+
+  function getFiles(files){
+    let len = files.length; 
+    let result = [];
+    let readArr = [];
+    for (let index = 0; index < len; index++) {
+      file = files[index];
+      ////xls(csv), xlsx
+      let accptTypeArr = ['application/vnd.ms-excel', 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet'];
+      if (accptTypeArr.includes(file.type) ) {
+        readArr.push(readXLSXdata1(files[index]))
+      }else{
+        console.log('请选择正确的文件格式导入')
       }
-      reader.readAsBinaryString(file)
     }
 
-   function getFileToPicture(e){
-     console.log('e', e)
-   }
+    let t = Promise.all(readArr).then(res => {
+      console.log('result', res)
+    })
+  }
+
+  //解析 xlsx 表格内容
+  function readXLSXdata(file, cb){
+    var fileReader = new FileReader();
+    fileReader.onload = function(ev) {
+        try {
+            var data = ev.target.result,
+                workbook = XLSX.read(data, {
+                    type: 'binary'
+                }), // 以二进制流方式读取得到整份excel表格对象
+                persons = []; // 存储获取到的数据
+        } catch (e) {
+            console.log('文件类型不正确');
+            return;
+        }
+
+        // 表格的表格范围，可用于判断表头是否数量是否正确
+        var fromTo = '';
+        // 遍历每张表读取
+        for (var sheet in workbook.Sheets) {
+            if (workbook.Sheets.hasOwnProperty(sheet)) {
+                fromTo = workbook.Sheets[sheet]['!ref'];
+                persons = persons.concat(XLSX.utils.sheet_to_json(workbook.Sheets[sheet]));
+                // break; // 如果只取第一张表，就取消注释这行
+            }
+        }
+        cb(persons)
+    };
+
+    // 以二进制方式打开文件
+    fileReader.readAsBinaryString(file);
+  }      
+
+
+  //解析 xlsx 表格内容
+  function readXLSXdata1(file, cb){
+    var fileReader = new FileReader();
+    // 以二进制方式打开文件
+
+    return new Promise((resolve, reject) => {
+      fileReader.onload = function(ev) {
+        try {
+            var data = ev.target.result,
+                workbook = XLSX.read(data, {
+                    type: 'binary'
+                }), // 以二进制流方式读取得到整份excel表格对象
+                persons = []; // 存储获取到的数据
+        } catch (e) {
+            reject('文件类型不正确')
+            console.log('文件类型不正确');
+            return;
+        }
+
+        // 表格的表格范围，可用于判断表头是否数量是否正确
+        var fromTo = '';
+        // 遍历每张表读取
+        for (var sheet in workbook.Sheets) {
+            if (workbook.Sheets.hasOwnProperty(sheet)) {
+                fromTo = workbook.Sheets[sheet]['!ref'];
+                persons = persons.concat(XLSX.utils.sheet_to_json(workbook.Sheets[sheet]));
+                // break; // 如果只取第一张表，就取消注释这行
+            }
+        }
+        resolve(persons)
+        return persons
+      };
+      fileReader.readAsBinaryString(file);
+    })
+  }  
+
+
+  
 
 
 </script>

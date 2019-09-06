@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8" />
+  <title></title>
+</head>
+<body>
+    <input type="text" id="inp" />
+    <div id="box">111</div>
+</body>
+<script>
+let obj = {};
+let oInp = document.getElementById('inp');
+let oBox = document.getElementById('box');
+Object.defineProperty(obj, 'name', {
+    configurable: true,
+    enumerable: true,
+    get: function() {
+        console.log(111)
+        return val;
+    },
+    set: function(newVal) {
+        oInp.value = newVal;
+        oBox.innerHTML = newVal;
+    }
+});
+
+oInp.addEventListener('input', function(e) {
+    obj.name = e.target.value;
+});
+
+</script>
+
+</html>

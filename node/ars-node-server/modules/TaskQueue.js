@@ -1,3 +1,5 @@
+var logger = require('../utils/log')
+
 class Queue{
   constructor(){
     this.items = [];
@@ -25,6 +27,13 @@ class Queue{
   //出栈
   dequeue(){
     return this.items.shift();
+  }
+
+  //清空队列
+  clearQueue(){
+    //清空队列
+    logger.trace('清空队列' + new Date())
+    this.items = [];
   }
 }
 

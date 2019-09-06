@@ -1,4 +1,4 @@
-var TaskCollection = require('./TaskCollection')
+﻿var TaskCollection = require('./TaskCollection')
 var BrowserCollection = require('./BrowserCollection')
 var TASK_QUEUE = require('./TaskQueue');
 var ResolveRequest = require('./ResolveRequest')
@@ -6,10 +6,12 @@ const {pageStatus, getDataStatus } = require('../utils/enumLibs')
 var {
   timeout,
   moment,
-  getRandom
+  getRandom,
+  
 } = require('../utils/utils')
 var Ajax = require('../utils/Ajax')
 var logger = require('../utils/log')
+var {timeFormatLen} = require('../config/global')
 
 /**
  * 定时分配任务
@@ -59,6 +61,15 @@ class DistributionTask {
     }
 
     /**
+      时区转化
+     */
+    formatTime(time){
+      let sec = new Date(time).getTime() + timeFormatLen;
+      const execTime = moment('Y-M-D h:m:s', sec);
+      return execTime
+    }
+
+    /**
      * 处理需要推送给后台的数据
      * @param {Array} res 
      * @param {RequestState} requestState 
@@ -77,14 +88,14 @@ class DistributionTask {
         source: it.link,
         // account: "账号---",
         // email: "email---",
-        execTime: it.execTime,
+        execTime: this.formatTime(it.execTime),
         country: requestState.country.name,
         redirections: it.redirections.filter(item => item.url).map(_it => ({ url: _it.url })),
         
         lkid: it.lkid,
         // link: it.link,
         fromPage: it.fromPage,
-        nodeType: 1,
+        type: Ajax.testAdType(it.url, it.lkid),
         
       }));
       return resData;
@@ -102,7 +113,12 @@ class DistributionTask {
           //如果10分钟还没有返回结果, 重启浏览器, 重新插入队列尾部
           let goToTimeOut = setTimeout(() => {
             TASK_QUEUE.enqueue(requestState)
-            BrowserCollection.__reloadBrowser__(browser.index)
+            logger.trace('超时重启')
+            if (resolveRequest && resolveRequest.isStop) {
+              logger.trace("超时-阻止")
+            }else{
+              BrowserCollection.__reloadBrowser__(browser.index, '超时')
+            }
           }, 10 * 60000)
           res = await browser.goto(resolveRequest)
           clearTimeout(goToTimeOut)
@@ -121,11 +137,15 @@ class DistributionTask {
             Ajax.postResults(resData)
           }else if (res.status.value === getDataStatus.isAnchor.value){
             //进入人机检测, 重新启动浏览器窗口
+            //15
             logger.trace('进入人机检测, 重启服务器 ,重启浏览器', 'ip=', browser.ip, ' priveIp=', browser.priveIp)
             Ajax.reloadPriveIp(browser.priveIp)
             TASK_QUEUE.enqueue(requestState)
             resolveRequest = null;
-            BrowserCollection.__reloadBrowser__(browser.index, resolveRequest.startTime)
+            BrowserCollection.__reloadBrowser__(browser.index, '人机', resolveRequest.startTime)
+          }else if(res.status.value === getDataStatus.browserDestory.value){
+            logger.trace("停止浏览器1")
+            TASK_QUEUE.enqueue(requestState)
           }else{
             logger.trace("其他异常1")
             if(requestState.count < 3){
@@ -134,19 +154,26 @@ class DistributionTask {
             }
           }
         } catch (error) {
-          let reg = /^.*ERR_PROXY_CONNECTION_FAILED|ERR_NO_SUPPORTED_PROXIES|browser has disconnected|Most likely the page has been closed.*$/ig
-          logger.trace("其他异常2", error)
-          let errorString = error.toString()  
-          if (reg.test(errorString)) {
-            BrowserCollection.__reloadBrowser__(browser.index, resolveRequest.startTime)
-            if(requestState.count < 3){
-              requestState.count++;
-              TASK_QUEUE.enqueue(requestState)
-            }
-            
-          }else{
+          if (resolveRequest && resolveRequest.isStop) {
+            logger.trace("停止浏览器2")
+            TASK_QUEUE.enqueue(requestState)
             return
+          }else{
+            let reg = /^.*ERR_PROXY_CONNECTION_FAILED|ERR_NO_SUPPORTED_PROXIES|browser has disconnected|Most likely the page has been closed.*$/ig;
+            logger.trace("其他异常2", error)
+            let errorString = error.toString()  
+            if (reg.test(errorString)) {
+              logger.trace('异常重启')
+              BrowserCollection.__reloadBrowser__(browser.index, '异常', resolveRequest.startTime)
+              if(requestState.count < 3){
+                requestState.count++;
+                TASK_QUEUE.enqueue(requestState)
+              }
+            }else{
+              return
+            }
           }
+          
         }
 
         /**

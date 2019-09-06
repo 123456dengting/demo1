@@ -92,12 +92,16 @@ class ResolveRequest {
     this.domainSign = 'zaful'; // 网站标识名
     this.pageUrl = '';
     this.startTime = new Date().getTime();
+    this.isStop = false;
   }
   async getPageData() {
     const pageUrl = this.page.mainFrame().url()
     this.pageUrl = pageUrl
     const adText = await this.getAdText();
     logger.trace('adTextadTextadText',pageUrl, adText.title.length, adText.title)
+    if(this.isStop){
+      return []
+    }
     const adUrl = await this.getAdUrl();
     
 
@@ -203,11 +207,14 @@ class ResolveRequest {
   async getAdUrl(page = this.page) {
     const userAgent = this.param.userAgent
     const eAds = await page.$$(SELECTOR[userAgent].adBlock);
+    
 
     let urls = [];
 
     for (let i = 0; i < eAds.length; i++) {
-
+      if(this.isStop){
+        break;
+      }
       await timeout(Math.random() * 100);
       const eAds = await page.$$(SELECTOR[userAgent].adBlock);
       
@@ -295,6 +302,10 @@ class ResolveRequest {
       await timeout(200);
     }
     return urls
+  }
+
+  stop(){
+    this.isStop = true
   }
 
   async getUrl(page){

@@ -18,7 +18,7 @@ class BrowserCollection {
      * @param {*} maxReqNum      最大请求数
      * @param {*} headless       是否隐藏浏览器界面
      */
-    constructor({ ipTimeout = defaultIpTimeout, reqTimeout = 5 * 60000, maxPage = 5, maxReqNum = 5000, headless = false, maxbrowserNum = 2 }) {
+    constructor({ ipTimeout = defaultIpTimeout, reqTimeout = 5 * 60000, maxPage = 5, maxReqNum = 5000, headless = false, maxbrowserNum = 1 }) {
         this.ipTimeout = ipTimeout;
         this.reqTimeout = reqTimeout;
         this.maxbrowserNum = maxbrowserNum;
@@ -33,16 +33,14 @@ class BrowserCollection {
         setInterval(() => {
             this.browsers.forEach((s, index) => {
                 //等没有任务的时候才去重启
-                if (s.canDestory() && !s.isCanDestory) {
+                if (s && s.canDestory() && !s.isCanDestory) {
                   let notFree = s.pages.filter(p => p.status !== pageStatus.free.value)
-                  if (notFree.length === 0) {
                     try {
                       logger.trace('定时重启窗口1') 
-                      this.__reloadBrowser__(index);
+                      this.__reloadBrowser__(index, '定时');
                     } catch (error) {
                       logger.warn('定时重启窗口失败1', error)
                     }
-                  }
                 }
             })
         }, 10000)
@@ -59,6 +57,17 @@ class BrowserCollection {
           throw Error('没有可用的浏览器, 请等待')
         }
 
+    }
+
+    /**
+     * 每隔一段时间重新启动所有浏览器, 避免一些异常情况导致浏览器数量减少
+     */
+    async reloadAllBrowser(){
+      logger.trace('重启所有浏览器--开始')
+      await this.destroyBrowsers()
+      timeout(2000)
+      logger.trace('重启所有浏览器--成功')
+      this.__init__()
     }
 
 
@@ -90,6 +99,7 @@ class BrowserCollection {
      */
     async getIP() {
       let {ip, priveIp} = await Ajax.getPublicIp()
+	  
 
       ip = ip.trim()
 
@@ -111,8 +121,8 @@ class BrowserCollection {
      */
 
     async __createBrowser__(index) {
+      let {ip, priveIp} = await this.getIP()
       try {
-        let {ip, priveIp} = await this.getIP()
         ip = ip + ':3128'
         logger.trace('__createBrowser__', ip)
         let browserParams = {
@@ -133,7 +143,9 @@ class BrowserCollection {
         return browser
       } catch (error) {
         logger.warn('创建失败,重新创建', index, 'ip=>', ip)
-        return this.__createBrowser__(index)
+        setTimeout(() => {
+          return this.__createBrowser__(index)
+        }, 60000)
       }
  
     }
@@ -142,7 +154,8 @@ class BrowserCollection {
      * 重新加载浏览器
      * @param {*} index 
      */
-    async __reloadBrowser__(index, startTime = undefined) {
+    async __reloadBrowser__(index, type, startTime = undefined) {
+        logger.trace('重启窗口总次数', type)
         let canDestoryBrowser = this.browsers[index];
 
         if (!canDestoryBrowser) throw Error("即将销毁的页面不存在", index);
@@ -165,6 +178,7 @@ class BrowserCollection {
         
         await canDestoryBrowser.destroy();
         logger.trace('销毁浏览器--', index)
+
         canDestoryBrowser = await this.__createBrowser__(index);
         
         logger.trace('创建浏览器--', index)
@@ -185,7 +199,7 @@ class BrowserCollection {
           return s.destroy()
         })
       }catch(error){
-        console.log('destroyBrowsers', error)
+        logger.trace('destroyBrowsers', error)
       }
       
       return await Promise.all(res)

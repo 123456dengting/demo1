@@ -31,25 +31,13 @@ var {closeChromeTime} = require('./config/global')
 //每天0清空重复的黑名单
 Ajax.clearRepeatData()
 
+//每天的23点59分清空队列
+schedule.scheduleJob({hour: 23, minute: 59}, function(){
+  TASK_QUEUE.clearQueue()
+})
 
 
-// setInterval(() => {
-//   RunShell(async (msg) => {
-//     if(msg){
-//       // if(TASK_QUEUE.count() === 0){
-//         await BrowserCollection.destroyBrowsers()
-//         await timeout(500)
-//         await BrowserCollection.__init__()
-//         await timeout(2000)
-//         BrowserCollection.browsers.forEach(s => {
-//           s.isCanDestory = false
-//         })
-//       // }
-//     }
-//   })
-// }, closeChromeTime)
-
-svr.listen(3009); // socket服务
+svr.listen(8902); // socket服务
 
 Websocket.initSocket(io)
 
@@ -62,33 +50,33 @@ app.use(cors);
 
 
 
-//关键词格式
-let reqData = {
-  actionId: 4,
-  data: {
-    id: '201',
-    keyword: 'zaful',
-    domainSign: 'zaful',
-    execTime: {
-      id: '463',
-      time: '00:00:00',
-      keywordId: '201',
-      intervalHours: 6
-    },
-    country: [{
-        id: '772',
-        name: '美国'
-      }
-    ],
-    devices: [{
-        id: '634',
-        userAgent: 'PC'
-      }
-    ],
-    languages: [{
-        id: '94',
-        language: 'en'
-      }
-    ]
-  }
-}
+// //关键词格式
+// let reqData = {
+//   actionId: 4,
+//   data: {
+//     id: '201',
+//     keyword: 'zaful',
+//     domainSign: 'zaful',
+//     execTime: {
+//       id: '463',
+//       time: '00:00:00',
+//       keywordId: '201',
+//       intervalHours: 6
+//     },
+//     country: [{
+//         id: '772',
+//         name: '美国'
+//       }
+//     ],
+//     devices: [{
+//         id: '634',
+//         userAgent: 'PC'
+//       }
+//     ],
+//     languages: [{
+//         id: '94',
+//         language: 'en'
+//       }
+//     ]
+//   }
+// }

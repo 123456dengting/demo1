@@ -28,6 +28,7 @@ class Ajax{
         timeout: ipTimeout
       }
       let res = await this.ajaxGet(url, data)
+      
       let ip = res.code === 200 ? res.data.ip : '';
       let priveIp = res.code === 200 ? res.data.priveIp : '';
       return {
@@ -35,7 +36,6 @@ class Ajax{
         priveIp
       }
   }
-
 
   async reloadPriveIp(priveIp = '0.0.0.0'){
     logger.trace('reloadPriveIp', priveIp)
@@ -92,7 +92,8 @@ class Ajax{
           res = JSON.parse(res);
           
           if (res.code !== 1) {
-              res.data = JSON.parse(res.data);
+              logger.trace('推送数据返回值异常', res);
+              // res.data = JSON.parse(res.data);
               // throw Error(res.data.msg;)
               // logger.warn('推送数据失败', res);
           } else {
@@ -124,31 +125,59 @@ class Ajax{
     rule.hour = [0]
     schedule.scheduleJob(rule,  async () => {
       //启动任务
+      console.log('清空重复黑名单', repeatData.length)
       repeatData = []
     })
+  }
+
+  //分类
+  testAdType(requestUrl, lkid){
+    let reg1 = /zaful.com|rosegal.com|dresslily.com/ig;
+    let reg2 = /utm_source|erfahrungenscout|webgains|shareasale|couponsism|couponcause|hotdeals|promopro|getcoupon4u|ozsavingspro|shoppingworldz|dealsdesire|anycodes|thecoupon/ig;
+
+    if(reg2.test(requestUrl) || lkid.length === 8){
+      if(reg1.test(requestUrl)){
+        return 2   //绿色
+      }else{
+        return 1   //红色
+      }
+    }else{
+      return 0  //黑色
+    }
   }
 
   /**
    * 过滤数据
    * @param {Object} data 
    */
-  filterData({requestUrl, redirections, lkid, source, advertisingWord}){
-    if (requestUrl === 'chrome-error://chromewebdata/ ') {
+  filterData({requestUrl, redirections, lkid, source, advertisingWord, advertisingContent　}){
+    if (requestUrl.trim() === 'chrome-error://chromewebdata/') {
       return false
     }
-    return true; 
+    if (!advertisingWord || !source || !advertisingContent) {
+      return false
+    }
+    
     requestUrl = requestUrl.toLocaleLowerCase()
+    
 
-    let repeatItem = JSON.stringify({source,requestUrl})
-    //每天抓的数据按照广告链接和落地页去重
-    if (repeatData.includes(repeatItem)) {
-      logger.trace('过滤落地页-重复', requestUrl)
-      return false
-    }else if(!advertisingWord || !source){
-      return false
-    }else{
-      repeatData.push(repeatItem)
-    }
+    let repeatItem = JSON.stringify({
+      advertisingWord: advertisingWord.substr(0, 20),
+      advertisingContent: advertisingContent.substr(0, 20)
+    })
+    // //每天抓的数据按照 广告标题和广告内容去重
+    // if (repeatData.includes(repeatItem)) {
+    //   logger.trace('过滤落地页-重复', requestUrl)
+    //   return false
+    // }else if(!advertisingWord || !source){
+    //   return false
+    // }else{
+    //   repeatData.push(repeatItem)
+    //   return true
+    // }
+
+    return true;   //暂时只去重, 不做过滤
+    
 
     let isReturn = true;
     let regBefor = /^https:\/\/www.google/ig;
@@ -175,8 +204,6 @@ class Ajax{
       
     }
 
-    
-    
     return isReturn
   }
 
@@ -197,7 +224,7 @@ class Ajax{
           let result = deepObj2array(keyword, 'country', 'execTime', 'devices', 'languages');
 
           let keywordArr = ['zaful', 'zaful com', 'rosegal', 'rosegal com', 'dresslily', 'dresslily com']
-          result = result.filter(s => keywordArr.includes(s.keyword))
+          result = result.filter(s => !keywordArr.includes(s.keyword))
 
           console.log('keywordList', result.length)
 
