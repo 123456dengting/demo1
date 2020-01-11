@@ -78,7 +78,7 @@ app.get('/api/cashloan/getRetainCoupon', function (req, res) {
           "timeParams": {
             "relative": true,
             "relativeDays": 1
-          },
+          }
         }
       ]
     }
@@ -115,7 +115,7 @@ app.get('/api/cashloan/loan/public/type', function (req, res) {
 
 
 app.get('/api/cashloan/check-status', function (req, res) {
-  console.log("typesss")
+  console.log("check-status")
   res.send(checkStatus)
 })
 
@@ -560,7 +560,6 @@ const typeData = {
         "createTime": 1574417750246,
         "updateTime": 1574417750246
       }
-    ],
-    "lastLoanPurpose": "100101000000002"
+    ],    "lastLoanPurpose": "100101000000002"
   }
 }

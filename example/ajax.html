@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <button>点击请求</button>
+</body>
+<script src="./js/jquery.min.js"></script>
+<script>
+
+document.getElementsByTagName("button")[0].addEventListener("click", ajaxDemo, false)
+
+function ajaxDemo(){
+    let startTime = new Date().getTime()    
+    $.ajax({
+        url: "http://10.0.136.55:8081/api/cashloan/getRetainCoupon",
+        method: "get",
+        data: {},
+        success: (res) => {
+            let endTime = new Date().getTime()
+            console.log("success", res, endTime - startTime)
+        },
+        error: (err) => {
+            console.log("error", res)
+        }
+    })
+}
+
+
+
+
+</script>
+</html>
