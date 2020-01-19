@@ -44,9 +44,9 @@ app.get('/api/cashloan/getRetainCoupon', function (req, res) {
       "retainCouponType": {
         "title": "Hoki Anda bagus banget! Anda mendapatkan voucher bebas biaya admin pinjaman, hanya berlaku hari ini",
         "subTitle": "(Sudah terkirim ke akun Anda)",
-        "popupType": 6
+        "popupType": 2
       },
-      "coupons": [
+      "availableCoupons": [
         {
           "couponTemplateId": 10008,
           "name": "授信7+天未借款免服务费券",
@@ -80,14 +80,171 @@ app.get('/api/cashloan/getRetainCoupon', function (req, res) {
             "relativeDays": 1
           },
         }
+      ],
+      "coupons": [
+        {
+          "couponTemplateId": 10008,
+          "name": "授信7+天未借款免服务费券",
+          "description": "{\"desc\": \"Syarat pinjam:Rp300.000-Rp3.000.000\", \"discount\": 100, \"moreDesc\": [\"Bunga: Diskon 100%\"]}",
+          "discount": "Diskon100%",
+          "type": 3,
+          "timeParams": {
+            "relative": true,
+            "relativeDays": 1
+          },
+        },
+        // {
+        //   "couponTemplateId": 10008,
+        //   "name": "授信7+天未借款免服务费券",
+        //   "description": "{\"desc\": \"Syarat pinjam:Rp300.000-Rp3.000.000\", \"discount\": 100, \"moreDesc\": [\"Bunga: Diskon 100%\"]}",
+        //   "discount": "Diskon100%",
+        //   "type": 3,
+        //   "timeParams": {
+        //     "relative": true,
+        //     "relativeDays": 1
+        //   },
+        // },
+        // {
+        //   "couponTemplateId": 10008,
+        //   "name": "授信7+天未借款免服务费券",
+        //   "description": "{\"desc\": \"Syarat pinjam:Rp300.000-Rp3.000.000\", \"discount\": 100, \"moreDesc\": [\"Bunga: Diskon 100%\"]}",
+        //   "discount": "Diskon100%",
+        //   "type": 3,
+        //   "timeParams": {
+        //     "relative": true,
+        //     "relativeDays": 1
+        //   },
+        // }
       ]
     }
   }
 
   res.send(response)
 
+})
+
+app.get('/api/coupon/business/receive/list', function (req, res) {
+  console.log("receive/list:")
+  let response = {
+    "success": true,
+    "sysTime": 1579061160963,
+    "data": [
+      {
+        "couponTemplateId": 10001,
+        "name": "Pinjaman tanpa bunga, terbatas!",
+        "description": "{\"desc\": \"Syarat pinjam:Rp300.000-Rp3.000.000\", \"discount\": 100, \"moreDesc\": [\"Bunga: Diskon 100%\"]}",
+        "discount": "Diskon100%",
+        "type": 3,
+        "timeParams": {
+          "relative": true,
+          "relativeDays": 3
+        }
+      },
+      // {
+      //   "couponTemplateId": 10014,
+      //   "name": "Diskon bunga 40% khusus pinjaman",
+      //   "description": "{\"desc\": \"Syarat pinjam:Rp300.000-Rp3.000.000\", \"discount\": 40, \"moreDesc\": [\"Bunga: Diskon 40%\"]}",
+      //   "discount": "Diskon40%",
+      //   "type": 3,
+      //   "timeParams": {
+      //     "relative": true,
+      //     "relativeDays": 3
+      //   }
+      // },
+      // {
+      //   "couponTemplateId": 10013,
+      //   "name": "Diskon bunga 30% khusus pinjaman",
+      //   "description": "{\"desc\": \"Syarat pinjam:Rp300.000-Rp3.000.000\", \"discount\": 30, \"moreDesc\": [\"Bunga: Diskon 30%\"]}",
+      //   "discount": "Diskon30%",
+      //   "type": 3,
+      //   "timeParams": {
+      //     "relative": true,
+      //     "relativeDays": 3
+      //   }
+      // },
+      // {
+      //   "couponTemplateId": 10015,
+      //   "name": "Diskon bunga 80% khusus pinjaman",
+      //   "description": "{\"desc\": \"Syarat pinjam:Rp300.000-Rp3.000.000\", \"discount\": 80, \"moreDesc\": [\"Bunga: Diskon 80%\"]}",
+      //   "discount": "Diskon80%",
+      //   "type": 3,
+      //   "timeParams": {
+      //     "relative": true,
+      //     "relativeDays": 3
+      //   }
+      // }
+    ]
+  }
+
+
+  res.send(response)
+
 
 })
+
+app.get('/api/coupon/business/use/list', function (req, res) {
+  console.log("use/list:")
+  let response =
+  {
+    "success": true,
+    "sysTime": 1579085926209,
+    "data": {
+      "availableCoupons": [
+        {
+          "couponId": "60327673305505792",
+          "couponTemplateId": "10009",
+          "name": "Pinjaman tanpa bunga, terbatas!",
+          "description": "{\"desc\": \"Syarat pinjam:Rp300.000-Rp3.000.000\", \"discount\": 100, \"moreDesc\": [\"Bunga: Diskon 100%\"]}",
+          "discount": "Diskon100%",
+          "type": 3,
+          "beginTime": 1579000838150,
+          "endTime": 1579087238150,
+          "bestCoupon": true
+        },
+        {
+          "couponId": "60327673305505793",
+          "couponTemplateId": "10009",
+          "name": "Pinjaman tanpa bunga, terbatas!",
+          "description": "{\"desc\": \"Syarat pinjam:Rp300.000-Rp3.000.000\", \"discount\": 100, \"moreDesc\": [\"Bunga: Diskon 100%\"]}",
+          "discount": "Diskon100%",
+          "type": 3,
+          "beginTime": 1579000838150,
+          "endTime": 1579087238150,
+          "bestCoupon": true
+        },
+        // {
+        //   "couponId": "60327673305505793",
+        //   "couponTemplateId": "10009",
+        //   "name": "Pinjaman tanpa bunga, terbatas!",
+        //   "description": "{\"desc\": \"Syarat pinjam:Rp300.000-Rp3.000.000\", \"discount\": 100, \"moreDesc\": [\"Bunga: Diskon 100%\"]}",
+        //   "discount": "Diskon100%",
+        //   "type": 3,
+        //   "beginTime": 1579000838150,
+        //   "endTime": 1579087238150,
+        //   "bestCoupon": true
+        // },
+        // {
+        //   "couponId": "60327673305505793",
+        //   "couponTemplateId": "10009",
+        //   "name": "Pinjaman tanpa bunga, terbatas!",
+        //   "description": "{\"desc\": \"Syarat pinjam:Rp300.000-Rp3.000.000\", \"discount\": 100, \"moreDesc\": [\"Bunga: Diskon 100%\"]}",
+        //   "discount": "Diskon100%",
+        //   "type": 3,
+        //   "beginTime": 1579000838150,
+        //   "endTime": 1579087238150,
+        //   "bestCoupon": true
+        // }
+      ],
+      "unavailableCoupons": []
+    }
+  }
+
+
+  res.send(response)
+
+
+})
+
 
 app.post('/api/base/public/phone/captcha', function (req, res) {
   console.log("reqNum: HnSoBQ8IGfuiRkEwT5y1eW12ohk=", reqNum)
@@ -119,6 +276,10 @@ app.get('/api/cashloan/check-status', function (req, res) {
   res.send(checkStatus)
 })
 
+
+
+
+
 var server = app.listen(8081, function () {
 
   var host = server.address()
@@ -136,11 +297,11 @@ const checkStatus = {
   "success": true,
   "sysTime": 1578636224805,
   "data": {
-    "bankAccountStatus": 10, 
-    "creditStatus": 10, 
-    "orderStatus": 10, 
-    "billStatus": 10, 
-    "partialRejectInfo": [], 
+    "bankAccountStatus": 10,
+    "creditStatus": 10,
+    "orderStatus": 10,
+    "billStatus": 10,
+    "partialRejectInfo": [],
     "newsList": [{ "id": 388, "type": 100, "subType": 100004 }]
   }
 }
