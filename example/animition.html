@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        .box {
+            height: 100vh;
+            overflow: scroll;
+            /* 开启ios惯性滚动 */
+            -webkit-overflow-scrolling: touch;
+        }
+        
+        .item {
+            border: 1px solid gray;
+            height: 600px;
+            font-size: 30px;
+        }
+        
+        .btn {
+            width: 100%;
+            background: rgba(100, 100, 100, 0.5);
+            display: flex;
+            text-align: center;
+            align-items: center;
+            height: 40px;
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            z-index: 10;
+        }
+        
+        .btn>div {
+            width: 50%;
+            height: 40px;
+            line-height: 40px;
+        }
+        
+        #btn1 {
+            background: green;
+        }
+        
+        #btn2 {
+            background: yellow;
+        }
+        
+        #left {
+            width: 100px;
+            height: 100px;
+            background: red;
+            position: absolute;
+            right: 100px;
+            top: 100px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="box">
+        <div>
+            <div id="left"></div>
+            <div class="item">1</div>
+            <div class="item">1</div>
+            <div class="item">2</div>
+            <div class="item">3</div>
+            <div class="item">4</div>
+            <div class="item">5</div>
+            <div class="item">6</div>
+        </div>
+
+    </div>
+    <div class="btn">
+        <div id="btn1">点击1</div>
+        <div id="btn2">点击2</div>
+        <div id="btn3">right</div>
+        <div id="btn4">left</div>
+        <div id="btn5">opacity</div>
+    </div>
+</body>
+<script src="./js/animitionMove.js"></script>
+<script>
+    document.getElementById("btn1").onclick = ani1;
+    document.getElementById("btn2").onclick = ani2;
+    document.getElementById("btn3").onclick = ani3;
+    document.getElementById("btn4").onclick = ani4;
+    document.getElementById("btn5").onclick = ani5;
+    let box = document.getElementsByClassName("box")[0];
+    let left = document.getElementById("left")
+
+
+
+    function ani1() {
+        console.log("111111")
+        animitionMove({
+            dom: box,
+            attr: "scrollTop",
+            target: 3000,
+            type: "buffer"
+        })
+    }
+
+    function ani2() {
+        animitionMove({
+            dom: box,
+            attr: "scrollTop",
+            target: 0,
+            type: "buffer"
+        })
+    }
+
+    function ani3() {
+        animitionMove({
+            dom: left,
+            attr: "right",
+            target: 0,
+            speed: -10,
+            // type: "buffer"
+        })
+    }
+
+
+    function ani4() {
+        animitionMove({
+            dom: left,
+            attr: "left",
+            target: 0,
+            speed: -7,
+            // type: "buffer",
+            callback: () => {
+                console.log("cccccccc")
+            }
+        })
+    }
+
+    function ani5() {
+        animitionMove({
+            dom: left,
+            attr: "opacity",
+            target: 0,
+            speed: 0.01,
+            // type: "buffer",
+            callback: () => {
+                console.log("cccccccc")
+            }
+        })
+    }
+</script>
+
+</html>
