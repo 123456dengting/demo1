@@ -186,9 +186,9 @@ app.get('/api/coupon/business/use/list', function (req, res) {
   console.log("use/list:")
   let response =
   {
-    "success": true,
+    success: true,
     "sysTime": 1579085926209,
-    "data": {
+    data: {
       "availableCoupons": [
         {
           "couponId": "60327673305505792",
