@@ -49,8 +49,6 @@ app.use(
           resolve();
         });
       });
-      // 替换掉 {{root}} 为我们生成后的HTML
-      console.log("shtml", renderToString(<App />));
       ctx.response.body = shtml.replace('{{root}}', renderToString(<App />));
     })
     .routes()

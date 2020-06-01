@@ -19,5 +19,5 @@ function testClass(target){
     target.name = "张三"
 }
 
-let p = new Per();
-console.log("ppp", p)
+// let p = new Per();
+// console.log("ppp", p)

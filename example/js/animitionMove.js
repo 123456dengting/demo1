@@ -111,16 +111,21 @@
 
 
      function styleMove() {
-         let selfTarget = StylesConfig[attr].getStyle(dom);
-         if (target != selfTarget) {
-             let nextValue = StylesConfig[attr].getNextValue(selfTarget);
-             console.log("111111, ", selfTarget, nextValue)
-             StylesConfig[attr].setStyle(dom, nextValue)
-             window.animitionMoveing = window.requestAnimationFrame(styleMove);
-         } else {
-             callback && callback()
-             return
+         try {
+            let selfTarget = StylesConfig[attr].getStyle(dom);
+            if (target != selfTarget) {
+                let nextValue = StylesConfig[attr].getNextValue(selfTarget);
+                console.log("111111, ", selfTarget, nextValue)
+                StylesConfig[attr].setStyle(dom, nextValue)
+                window.animitionMoveing = window.requestAnimationFrame(styleMove);
+            } else {
+                callback && callback()
+                return
+            }
+         } catch (error) {
+             console.log("error", error)
          }
+
      }
 
      window.animitionMoveing = window.requestAnimationFrame(styleMove);

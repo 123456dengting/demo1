@@ -140,28 +140,28 @@ app.get('/api/coupon/business/receive/list', function (req, res) {
           "relativeDays": 3
         }
       },
-      // {
-      //   "couponTemplateId": 10014,
-      //   "name": "Diskon bunga 40% khusus pinjaman",
-      //   "description": "{\"desc\": \"Syarat pinjam:Rp300.000-Rp3.000.000\", \"discount\": 40, \"moreDesc\": [\"Bunga: Diskon 40%\"]}",
-      //   "discount": "Diskon40%",
-      //   "type": 3,
-      //   "timeParams": {
-      //     "relative": true,
-      //     "relativeDays": 3
-      //   }
-      // },
-      // {
-      //   "couponTemplateId": 10013,
-      //   "name": "Diskon bunga 30% khusus pinjaman",
-      //   "description": "{\"desc\": \"Syarat pinjam:Rp300.000-Rp3.000.000\", \"discount\": 30, \"moreDesc\": [\"Bunga: Diskon 30%\"]}",
-      //   "discount": "Diskon30%",
-      //   "type": 3,
-      //   "timeParams": {
-      //     "relative": true,
-      //     "relativeDays": 3
-      //   }
-      // },
+      {
+        "couponTemplateId": 10014,
+        "name": "Diskon bunga 40% khusus pinjaman",
+        "description": "{\"desc\": \"Syarat pinjam:Rp300.000-Rp3.000.000\", \"discount\": 40, \"moreDesc\": [\"Bunga: Diskon 40%\"]}",
+        "discount": "Diskon40%",
+        "type": 3,
+        "timeParams": {
+          "relative": true,
+          "relativeDays": 3
+        }
+      },
+      {
+        "couponTemplateId": 10013,
+        "name": "Diskon bunga 30% khusus pinjaman",
+        "description": "{\"desc\": \"Syarat pinjam:Rp300.000-Rp3.000.000\", \"discount\": 30, \"moreDesc\": [\"Bunga: Diskon 30%\"]}",
+        "discount": "Diskon30%",
+        "type": 3,
+        "timeParams": {
+          "relative": true,
+          "relativeDays": 3
+        }
+      },
       // {
       //   "couponTemplateId": 10015,
       //   "name": "Diskon bunga 80% khusus pinjaman",
