@@ -72,4 +72,28 @@ let InsertSoryIndex = 0;
      return arr
  }
 
- console.log("111111-2", InsertSory(arr), InsertSoryIndex);
+
+
+
+ // 斐波那契数列优化算法
+
+
+  function fn(n){
+    if(n === 0 || n === 1){
+      return 1
+    }else{
+      return fn(n - 1) + fn(n - 2)
+    }
+  }
+
+
+
+//   function fn2{
+//       let 
+//   }
+//  let arr = [1, 1, 2, 3, 5, 8, 13, 21, 34, 55, 89];
+  let time1 = new Date().getTime()
+  let result = fn1(40)  //写50就会爆栈
+  let time2 = new Date().getTime()
+  console.log("111111-time", (time2 - time1) / 1000, result);
+
