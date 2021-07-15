@@ -1,24 +1,282 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
-    <style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title></title>
+  <style>
+    .page {
+      height: 100vh;
+      background: #f7f7f7;
+      overflow: hidden;
+    }
 
-    </style>
+    .content {
+      padding: 20px;
+      max-height: 340px;
+      overflow: auto;
+    }
+
+    li {
+      padding: 20px;
+      height: 20px;
+      margin: 10px;
+      background: white;
+    }
+
+    .refresh-loading {
+      transition: all 300ms ease 0s;
+      height: 0;
+      padding-top: 10px;
+      overflow: hidden;
+    }
+
+    .type-1 .con,
+    .refresh-loading .g-m--c {
+      width: 16px;
+      height: 16px;
+      border-radius: 50%;
+      -webkit-animation-name: locate-loading;
+      -moz-animation-name: locate-loading;
+      animation-name: locate-loading;
+      -webkit-animation-duration: 1.58s;
+      -moz-animation-duration: 1.58s;
+      animation-duration: 1.58s;
+      -webkit-animation-timing-function: linear;
+      -moz-animation-timing-function: linear;
+      animation-timing-function: linear;
+      -webkit-animation-iteration-count: infinite;
+      -moz-animation-iteration-count: infinite;
+      animation-iteration-count: infinite;
+      border-top: 2px solid #f43939;
+      border-left: 2px solid #df5555;
+      margin: auto;
+    }
+
+    @keyframes locate-loading {
+      0% {
+        opacity: 1;
+        -webkit-transform: rotate(0deg);
+        -moz-transform: rotate(0deg);
+        transform: rotate(0deg);
+      }
+      100% {
+        opacity: 1;
+        -webkit-transform: rotate(360deg);
+        -moz-transform: rotate(360deg);
+        transform: rotate(360deg);
+      }
+    }
+
+    @-webkit-keyframes locate-loading {
+      0% {
+        opacity: 1;
+        -webkit-transform: rotate(0deg);
+        -moz-transform: rotate(0deg);
+        transform: rotate(0deg);
+      }
+      100% {
+        opacity: 1;
+        -webkit-transform: rotate(360deg);
+        -moz-transform: rotate(360deg);
+        transform: rotate(360deg);
+      }
+    }
+
+    @-moz-keyframes locate-loading {
+      0% {
+        opacity: 1;
+        -webkit-transform: rotate(0deg);
+        -moz-transform: rotate(0deg);
+        transform: rotate(0deg);
+      }
+      100% {
+        opacity: 1;
+        -webkit-transform: rotate(360deg);
+        -moz-transform: rotate(360deg);
+        transform: rotate(360deg);
+      }
+    }
+
+    .refresh-txt {
+      color: #999;
+      text-align: center;
+      font-size: 12px;
+    }
+
+    .more-c {
+      font-size: 12px;
+    }
+
+    .more-c .con {
+      margin: 0 5px 0 0;
+    }
+
+    .more-c .type {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .type-1:after {
+      content: '加载中...';
+      display: inline-block
+    }
+  </style>
 </head>
+
 <body>
-
-  <div class="mask"></div>
-  
-
-    
+  <div class="page">
+    <div class="refresh-loading">
+      <div class="g-m--c"></div>
+      <p class="refresh-txt">下拉可刷新</p>
+    </div>
+    <div class="content">
+      <ul class="scrollview">
+        <li>t条目1</li>
+        <li>t条目2</li>
+        <li>t条目3</li>
+        <li>t条目4</li>
+        <li>t条目5</li>
+        <li>t条目6</li>
+      </ul>
+      <div class="more-c">
+        <div id="loadMore" class="type">
+          <div class="con"></div>
+        </div>
+      </div>
+    </div>
+  </div>
 </body>
 
-<script src="./js/defineProperty.js"></script>
-<script >
-  
+<script>
+  //下拉刷新
+  var moveEle = document.getElementsByClassName('content')[0]; //内容容器，可视区域
+  var scrollView = document.getElementsByClassName('scrollview')[0]; //真正的内容
+  var refreshEle = document.getElementsByClassName('refresh-loading')[0]; //刷新的loading
+  var refreshTxtEle = document.getElementsByClassName('refresh-txt')[0]; //刷新显示的提示文字
+  var touch, moved, startY, diff, moveDiff = 60,
+    pagePull = true;
+  moveEle.addEventListener('touchstart', function (e) {
+    if (moveEle.scrollTop > 0) {
+      //当页面已经有滚动或者不是置顶的时候，不需要进行下拉刷新，是页面正常的滑动
+      touch = false;
+      return;
+    }
+    touch = true; //触摸开始
+    moved = false; //还没有进行下拉刷新的滑动
+    startY = e.touches[0].clientY; //记录当前手指在屏幕上的纵向坐标，用于判断页面是上滑还是下滑
+  }, false);
+  moveEle.addEventListener('touchmove', function (e) {
+    if (!touch || !pagePull) {
+      return;
+    }
+    var touchesDiff = e.touches[0].clientY - startY; //计算的移动位移
+    if (touchesDiff < 0) {
+      //说明页面是向上滑的，不做任何操作
+      moved = false;
+      return;
+    }
+    moved = true;
+    diff = touchesDiff;
+    var distance = 0;
+    if (diff <= moveDiff) {
+      //moveDiff至少要等于loading的高度
+      //当滑动小于规定的临界值时
+      distance = diff;
+      refreshTxtEle.innerHTML = '下拉可刷新';
+    } else {
+      refreshTxtEle.innerHTML = '释放可刷新';
+      //弹性
+      if (touchesDiff <= (2 * moveDiff)) {
+        distance = moveDiff + 0.5 * (touchesDiff - moveDiff);
+      } else {
+        distance = moveDiff + 0.1 * (touchesDiff - moveDiff) + 0.05 * (touchesDiff - 2 * moveDiff);
+      }
+    }
+    if (distance > 0) {
+      //滑动的距离
+      css(refreshEle, 0);
+      refreshEle.style.height = distance + 'px';
+    }
+  }, false);
+  moveEle.addEventListener('touchend', function (e) {
+    if (!touch || !moved) {
+      refreshEle.style.height = '0px';
+      return;
+    }
+    css(refreshEle, 300);
+    pagePull = false;
+    if (diff > moveDiff) {
+      refreshTxtEle.innerHTML = '刷新中';
+      refreshEle.style.height = moveDiff + 'px';
+      setTimeout(() => {
+        var childNodes = scrollView.children;
+        for (var j = childNodes.length - 1; j >= 0; j--) {
+          scrollView.removeChild(childNodes[j]);
+        }
+        //假设每页有6条数据
+        for (var i = 1; i < 7; i++) {
+          var li = document.createElement('li');
+          var index = i;
+          li.innerHTML = 't条目' + index;
+          scrollView.appendChild(li);
+        }
+        //延迟模拟接口调用
+        css(refreshEle, 300);
+        refreshEle.style.height = '0px';
+        setTimeout(() => {
+          pagePull = true; //控制在刷新期间，重复向下拉动，不做任何操作   
+        }, 300);
+      }, 500);
+    } else {
+      pagePull = true;
+      refreshEle.style.height = '0px';
+    }
+  }, false);
+
+  function css(ele, t) {
+    ele.style.transition = "all " + t + "ms";
+    ele.style.webkitTransition = "all " + t + "ms";
+  }
+
+  var loadMore = document.getElementById('loadMore');
+  var className = loadMore.getAttribute('class');
+  var loadData = false;
+  //上拉加载
+  moveEle.addEventListener('scroll', function (e) {
+    requestAnimationFrame(function () {
+      //当数据正在加载时，直接返回
+      if (loadData) {
+        return;
+      }
+      var contentHeight = scrollView.offsetHeight;
+      //滚动的距离，加上可视窗口的高度，因为设置了content的max-height为300px
+      var scrollTop = moveEle.scrollTop + 300;
+      if (contentHeight && scrollTop > contentHeight - 30) {
+        //当滚动距离内容底部30px的时候，拉取下一页数据  
+        //html5提供的classList
+        loadMore.classList.add('type-1');
+        loadData = true;
+        setTimeout(() => {
+          //延迟模拟接口调用
+          loadMore.classList.remove('type-1');
+          var len = scrollView.childElementCount;
+          for (var i = 1; i < 7; i++) {
+            var li = document.createElement('li');
+            var index = len + i;
+            li.innerHTML = 't条目' + index;
+            scrollView.appendChild(li);
+          }
+          loadData = false;
+        }, 300);
+        // var classVal = className.concat('type-1');
+        // loadMore.setAttribute('class',classVal);
+      }
+
+    });
+  }, false);
 </script>
+
 </html>
