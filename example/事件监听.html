@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        #div3{
+            height: 500px;
+            border: 1px solid black;
+        }
+    </style>
+</head>
+<body>
+    <div id="div1">
+        <div id="div2">
+            <div id="div3"></div>
+        </div>
+    
+    </div>
+    
+</body>
+<script>
+/*
+
+    普通标准事件 addEventListener() 第三个参数,默认false事件冒泡  true事件捕获
+    ie8以下 attachEvent() 只有事件冒泡
+
+    阻止事件冒泡方法
+    ie window.event.cancelBubble = true
+    普通 e.stopPropagation()
+    window.event? window.event.cancelBubble = true : e.stopPropagation();
+    取消默认事件
+*/
+
+
+
+document.getElementById("div1").addEventListener("click", function(e){
+        // e.stopPropagation();
+    console.log("111111-div1")
+})
+
+document.getElementById("div2").addEventListener("click", function(e){
+    console.log("111111-div2")
+})
+
+document.getElementById("div3").addEventListener("click", function(e){
+    e.cancelBubble = true
+    console.log("111111-div3")
+})
+
+// 贪心算法1
+var findContentChildren1 = function(g, s) {
+    g.sort((a, b) => (a - b))
+    s.sort((a, b) => (a - b))
+    let n = 0;
+    let b = 0;
+    for (let i = 0; i < s.length; i++) {
+        const item = s[i];
+        for (let k = b; k < g.length; k++) {
+            const j = g[k];
+            if(item >= j){
+                g.splice(k, 1)
+                k--;
+                n++;
+                b = k + 1;
+                break;
+            }
+        }
+    }
+    return n;
+};
+
+// 贪心算法2
+var findContentChildren2 = function(g, s) {
+    g.sort((a, b) => a - b)
+    s.sort((a, b) => a - b)
+    let n = 0;
+    let gLen = g.length;
+    let sLen = s.length;
+    while(sLen--){
+        if(s[sLen] >= g[gLen]){
+            
+        }
+    }
+
+
+
+    return n;
+};
+
+// let c = findContentChildren2([1,2,3], [1,1]);
+
+
+
+
+
+
+</script>
+</html>

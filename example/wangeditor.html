@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title></title>
+		<style>
+			body{
+				height: 100vh;
+        padding: 20px;
+        padding-top: 100px;
+			}
+      #html1{
+        padding: 10px;
+        border-radius: 8px;
+        border: 1px solid #e8e8e8;
+        width: 100%;
+        min-height: 300px;
+      }
+      #html2{
+        border: 1px solid red;
+        width: 375px;
+        height: 664px;
+        overflow-y: scroll;
+      }
+		</style>
+	</head>
+	<body>
+    <div id="div1"></div>
+    <h1>生成dom </h1> 
+    <div id="html1"></div>
+    <h2>预览窗口</h2>
+    <div id="html2"></div>
+	</body>
+  <script
+  type="text/javascript"
+  src="https://cdn.jsdelivr.net/npm/wangeditor@latest/dist/wangEditor.min.js"
+></script>
+<script type="text/javascript">
+  const E = window.wangEditor;
+  const editor = new E("#div1")
+  // 或者 const editor = new E(document.getElementById('div1'))
+  editor.create()
+  editor.config.height = 1000;
+  editor.config.onchange = function (html) {
+        // 第二步，监控变化，同步更新到 textarea
+        let reg1 = /<!--\[if-->/ig;
+        let reg2 = /<!--\[endif\]-->/ig;
+        let newHtml = html.replace(reg1, "");
+        newHtml = newHtml.replace(reg2, "");
+        document.getElementById('html1').innerText = newHtml;
+        document.getElementById('html2').innerHTML = newHtml;
+    }
+
+</script>
+</html>

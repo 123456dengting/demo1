@@ -5,13 +5,17 @@
   <meta charset="utf-8" />
   <title></title>
   <style>
-    div{
-      display: flex;
-      align-items: center;
-      justify-content: flex-end;
-    }
-    img{
-      height: 20px;
+    .div{
+      position: absolute;
+      left: 10px;
+      top: 30px;
+      width: 300px;
+      height: 100px;
+      border: 1px solid red;
+      background-color: rgba(255, 255, 255, 0.5);
+      /* backdrop-filter: saturate(180%) blur(20px); */
+      /* -webkit-backdrop-filter: saturate(180%) blur(20px); */
+      filter: blur(20px);
     }
   </style>
 </head>
@@ -19,16 +23,58 @@
 
 <body>
   <div>
+    <!-- <img src="./img/home_ti_gma_2.jpg" alt="" srcset=""> -->
+  </div>
+  <div class="div">
 
   </div>
-  
-
 </body>
-<script src="./js/algorithm.js"></script>
+<!-- <script src="./js/algorithm.js"></script> -->
 <script>
   
+console.log("111111")
+
+let src = [
+  "/Users/dengting/project/work/pid-copys/web-mobile-pid-loan-copy/components/UI/TopBar/images/back-icon-shadow.png",
+  "/Users/dengting/project/work/pid-copys/web-mobile-pid-loan-copy/out/installment/loanIndexNew/guide.html",
+  "/Users/dengting/project/work/pid-copys/web-mobile-pid-loan-copy/pages/component/SelectAddress/images/address_icon.svg",
+]
+
+let suffixs = ['Png', 'jpg', 'svg', 'gif', 'jpeg', 'webp'];
 
 
+let targetSuffixs = suffixs.map(item => {
+      try {
+        return item.toLowerCase()  
+      } catch (error) {
+        return item
+      }
+    });
+
+
+
+
+// 过滤指定后缀的文件
+function filterTargetSrc(srcs, targetSuffixs){
+    if(srcs === "string"){
+      let strs = srcs.split(".");
+      let suffix = strs[strs.length - 1];
+      return targetSuffixs.includes(suffix.toLowerCase()) ? srcs : false;
+    }else if(Array.isArray(srcs)){
+      let result = srcs.filter(item => {
+        let strs = item.split(".");
+        let suffix = strs[strs.length - 1];
+        
+        return targetSuffixs.includes(suffix.toLowerCase())
+      })
+      console.log("222222-filterTargetSrc", result);
+      return result;
+    }else{  
+      return srcs
+    }
+  }
+
+  console.log("111111-", filterTargetSrc(src, targetSuffixs));
 
 
 </script>
