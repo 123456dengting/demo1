@@ -17,6 +17,15 @@
       /* -webkit-backdrop-filter: saturate(180%) blur(20px); */
       filter: blur(20px);
     }
+
+    .preload-img{
+  width: 0;
+  height: 0;
+  opacity: 0;
+  display: none;
+}
+
+
   </style>
 </head>
 
@@ -26,6 +35,7 @@
     <!-- <img src="./img/home_ti_gma_2.jpg" alt="" srcset=""> -->
   </div>
   <div class="div">
+      <div class="prefetch_img" style="background-image: url('./img/home_ti_gma_2.jpg')"></div>
 
   </div>
 </body>
@@ -75,6 +85,10 @@ function filterTargetSrc(srcs, targetSuffixs){
   }
 
   console.log("111111-", filterTargetSrc(src, targetSuffixs));
+
+  console.log("test reset --soft")
+
+  
 
 
 </script>
