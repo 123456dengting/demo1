@@ -9,6 +9,7 @@
 <body>
     <button id="ajaxGet">ajaxGet</button>
     <button id="ajaxPost">ajaxPost</button>
+    <button id="ajaxGetPP">ajaxGet合同</button>
 </body>
 <script src="./js/jquery.min.js"></script>
 <script>
@@ -62,13 +63,40 @@ document.getElementById("ajaxGet").addEventListener("click", ajaxGetDemo, false)
 
 document.getElementById("ajaxPost").addEventListener("click", ajaxPostDemo, false)
 
+document.getElementById("ajaxGetPP").addEventListener("click", ajaxGetPP, false)
+
+
+let dataJson = {
+                age: 1,
+                name: "aaa",
+                list: [1,2,3]
+            };
+
+function ajaxGetPP(){
+    let startTime = new Date().getTime()    
+    $.ajax({
+        url: "http://finance-pos-loan-test.oss-cn-hongkong-internal.aliyuncs.com/20211009/290027918112108545.pdf?Expires=1633781256&OSSAccessKeyId=LTAI4Fvc6Ve92c2NRWPox2Lt&Signature=cbDOt9wB%2BWwmdKckSDga%2FX1x39g%3D",
+        method: "get",
+        success: (res) => {
+            let endTime = new Date().getTime()
+            console.log("success", res, endTime - startTime)
+        },
+        error: (err) => {
+            console.log("error", err)
+        }
+    })
+}
 
 function ajaxGetDemo(){
     let startTime = new Date().getTime()    
     $.ajax({
         url: "http://127.0.0.1:7001/ajaxGet",
         method: "get",
-        data: {},
+        dataType: "json",
+        data: {
+            name: "zhangsan",
+            age: 18
+        },
         success: (res) => {
             let endTime = new Date().getTime()
             console.log("success", res, endTime - startTime)
@@ -84,16 +112,8 @@ function ajaxPostDemo(){
     $.ajax({
         url: "http://127.0.0.1:7001/ajaxPost",
         method: "post",
-        contentType: "application/json; charset=utf-8",
-        dataType: "json",
-        data: [{
-                age: 1,
-                name: "aaa"
-            },
-        {
-            age: 2,
-            name: "bbb"
-        }],
+        contentType: "application/json",
+        data: JSON.stringify(dataJson),
         success: (res) => {
             let endTime = new Date().getTime()
             console.log("success", res, endTime - startTime)

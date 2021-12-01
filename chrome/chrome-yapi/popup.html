@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>yapi接口生成ts</title>
+    <style>
+        html,body{
+            margin: 0;
+            padding: 0;
+        }
+        .content{
+            display: flex;
+            padding: 10px;
+            min-height: 1200px;
+            min-width: 820px;
+        }
+        .req_content{
+            width: 400px;
+        }
+        .res_content{
+            width: 400px;
+        }
+
+        #req_copy,#res_copy{
+            margin-left: 10px;
+            color: #2395F1;
+            cursor: pointer;
+            font-size: 14px;
+        }
+
+        #get_api{
+            margin-left: 20px;
+            margin-top: 20px;
+        }
+
+    </style>
+</head>
+<body>
+    <button id="get_api">重新获取TS</button>
+    <div class="content">
+        <div class="req_content">
+            <div>接口请求参数 <span id="req_copy">复制</span> </div>
+            <pre class="req_data"></pre>
+        </div>
+        <div class="res_content">
+            <div>接口返回值 <span  id="res_copy">复制</span> </div>
+            <pre class="res_data"></pre>
+        </div>
+        
+    </div>
+</body>
+<script src="./func.js"></script>
+<script src="popup.js"></script>
+</html>

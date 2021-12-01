@@ -1,0 +1,22 @@
+{
+  "name": "Getting Started Example123",
+  "description": "Build an Extension!",
+  "permissions": ["storage", "activeTab", "scripting"],
+  "version": "1.0",
+  "manifest_version": 3,
+  "background": {
+    "service_worker": "back.js"
+  },
+  "action": {
+    "default_page": "main.html"
+  },
+  "options_page": "options.html",
+  "content_scripts": [
+      {
+          "matches": ["https://www.baidu.com/*", "http://www.baidu.com/*"],
+          "js": ["./jquery.js", "./main.js"],
+          "css": ["./main.css"],
+          "run_at": "document_idle"
+      }
+  ]
+}

@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8" />
+  <title></title>
+  <style>
+    .testdiv{
+      height: 120px;
+    } 
+
+
+  </style>
+</head>
+  <button id="btn">点击</button>
+
+<body>
+  <div>
+
+
+  </div>
+</body>
+<script src="./js/common.js"></script>
+<script>
+  document.getElementById("btn").onclick = function(){
+    messageHandle('message')
+  }
+
+  function messageHandle (text){
+    var elementID = "message_chrome_toast";
+    var tag = document.getElementById(elementID);
+    if(!tag){
+        tag = document.createElement('div');
+        tag.setAttribute('id', elementID);
+        tag.style.position = "fixed";
+        tag.style.top = "10%";
+        tag.style.left = "50%";
+        tag.style.padding = "10px";
+        tag.style.borderRadius = "4px";
+        tag.style.color = "#FFF";
+        tag.style.transform = "translateX(-50%)";
+        tag.style.background = "rgba(21,17,17,0.7)";
+        tag.innerText = text;
+        document.body.appendChild(tag);
+        setTimeout(() => {
+          tag.style.display = "none";
+        }, 1000)
+    }else{
+      tag.innerText = text;
+      tag.style.display = "block";
+      setTimeout(() => {
+        tag.style.display = "none";
+        }, 1000)
+    }
+  }
+</script>
+
+
+
+</html>

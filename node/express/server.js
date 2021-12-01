@@ -273,7 +273,19 @@ app.get('/api/cashloan/loan/public/type', function (req, res) {
 
 app.get('/api/cashloan/check-status', function (req, res) {
   console.log("typesss")
+  res.status(429);
   res.send(checkStatus)
+})
+
+app.post('/api/cashloan/loan/submit', function (req, res) {
+  console.log("submit")
+
+  setTimeout(() => {
+    res.status(429);
+    res.send()
+  }, 3000)
+  
+
 })
 
 

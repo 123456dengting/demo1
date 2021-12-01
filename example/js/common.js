@@ -462,16 +462,17 @@ const _findArrChild = arr => {
 	let findChildren = t => {
 		return arr.filter(s => t.id === s.parentId)
 	}
-
 	return arr.filter(item => {
 		let ch = findChildren(item)
 		if (ch && ch.length > 0) {
 			item['children'] = ch	
 		}
 		return item.parentId === 0
-		
 	})
 }
+
+
+console.log("111111-_findArrChild", _findArrChild(arrs));
 
 
 

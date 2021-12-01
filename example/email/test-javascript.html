@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no"
+        />
+        <title>
+        </title>
+    </head>
+    <body style="background-color:#FFFFFF;padding: 20px;margin: 0;font-size: 12px;">
+        <h1>hello world</h1>
+        <div id="arr"></div>
+    </body>
+    <script type="text/javascript">
+        let arr = [1, 2, 3, 4, 5];
+        let arrDom = "<div>"
+        arr.forEach(item => {
+            arrDom += "<h3>" + item + "</h3>"
+        })
+        arrDom += "</div>"
+        document.getElementById("arr").innerHTML = arrDom;
+    </script>
+</html>

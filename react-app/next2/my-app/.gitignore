@@ -4,28 +4,31 @@
 /node_modules
 /.pnp
 .pnp.js
-node_modules
-npm-debug.log
-package-lock.json
-*/node_modules
-*/node_modules/*
 
 # testing
 /coverage
 
+# next.js
+/.next/
+/out/
+
 # production
 /build
-build.zip
 
 # misc
 .DS_Store
+*.pem
+
+# debug
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# local env files
 .env.local
 .env.development.local
 .env.test.local
 .env.production.local
 
-npm-debug.log*
-yarn-debug.log*
-yarn-error.log*
-demo.html
-src/pages/Adstatictis/demo.js
+# vercel
+.vercel

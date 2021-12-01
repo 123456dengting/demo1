@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8" />
+  <title></title>
+  <style>
+
+
+
+  </style>
+</head>
+
+
+<body>
+  <div>
+    <!-- <img src="./img/home_ti_gma_2.jpg" alt="" srcset=""> -->
+  </div>
+  <div class="div">
+    <button>通知333333</button>
+    <input type="file" class="input" accept="image/jpg, image/jpeg" capture="camera">
+    <pre>
+      
+    </pre>
+
+  </div>
+</body>
+<!-- <script src="./js/algorithm.js"></script> -->
+<script>
+  let index = 0;
+  document.getElementsByTagName("button")[0].onclick = function(){
+
+    // document.getElementById('content').contentWindow.postMessage({ isClose: true, type: 2}, '*');
+
+    window.top.postMessage({ isClose: true, type: 2}, '*');
+
+    let resBody = JSON.parse(`{\n  \"type\": \"object\",\n  \"properties\": {\n    \"success\": {\n      \"type\": \"boolean\"\n    },\n    \"errMsg\": {\n      \"type\": \"string\"\n    },\n    \"errCode\": {\n      \"type\": \"string\"\n    },\n    \"data\": {\n      \"type\": \"object\",\n      \"required\": [\n        \"last\",\n        \"pageNo\",\n        \"pageSize\",\n        \"totalRecords\"\n      ],\n      \"properties\": {\n        \"pageNo\": {\n          \"type\": \"integer\",\n          \"format\": \"int32\",\n          \"description\": \"当前页\"\n        },\n        \"pageSize\": {\n          \"type\": \"integer\",\n          \"format\": \"int32\",\n          \"description\": \"每页大小\"\n        },\n        \"totalRecords\": {\n          \"type\": \"integer\",\n          \"format\": \"int32\",\n          \"description\": \"总记录数\"\n        },\n        \"last\": {\n          \"type\": \"boolean\",\n          \"description\": \"是否结束\"\n        },\n        \"records\": {\n          \"type\": \"array\",\n          \"description\": \"数据列表\",\n          \"items\": {\n            \"type\": \"object\",\n            \"required\": [\n              \"beginTime\",\n              \"createTime\",\n              \"creatorName\",\n              \"enabled\",\n              \"endTime\",\n              \"id\",\n              \"priority\",\n              \"status\",\n              \"tagIdsJsonStr\",\n              \"text\"\n            ],\n            \"properties\": {\n              \"id\": {\n                \"type\": \"string\",\n                \"description\": \"ID\"\n              },\n              \"text\": {\n                \"type\": \"string\",\n                \"description\": \"文本内容\"\n              },\n              \"buttonText\": {\n                \"type\": \"string\",\n                \"description\": \"按钮文本内容\"\n              },\n              \"jumpLink\": {\n                \"type\": \"string\",\n                \"description\": \"跳转链接\"\n              },\n              \"tagIdsJsonStr\": {\n                \"type\": \"string\",\n                \"description\": \"人群标签ID列表Json字符串（不限制时为[]）\"\n              },\n              \"beginTime\": {\n                \"type\": \"string\",\n                \"description\": \"开始时间\"\n              },\n              \"endTime\": {\n                \"type\": \"string\",\n                \"description\": \"结束时间\"\n              },\n              \"priority\": {\n                \"type\": \"integer\",\n                \"format\": \"int32\",\n                \"description\": \"优先级（DESC排序，0为未参与排序，不予展示）\"\n              },\n              \"enabled\": {\n                \"type\": \"boolean\",\n                \"description\": \"是否启用\"\n              },\n              \"status\": {\n                \"type\": \"integer\",\n                \"format\": \"int32\",\n                \"description\": \"状态：1、未开始；2、已开始；3、已结束；\"\n              },\n              \"creatorName\": {\n                \"type\": \"string\",\n                \"description\": \"创建者姓名\"\n              },\n              \"createTime\": {\n                \"type\": \"string\",\n                \"description\": \"创建时间\"\n              }\n            },\n            \"$$ref\": \"#/definitions/Message消息\"\n          }\n        }\n      },\n      \"$$ref\": \"#/definitions/MessageGetPageListOut获取消息分页列表出参\"\n    }\n  },\n  \"$$ref\": \"#/definitions/ApiResultMessageGetPageListOut获取消息分页列表出参\"\n}`);
+    let reqBody = JSON.parse(`{\n  \"type\": \"object\",\n  \"required\": [\n    \"pageNo\",\n    \"pageSize\"\n  ],\n  \"properties\": {\n    \"pageNo\": {\n      \"type\": \"integer\",\n      \"format\": \"int32\",\n      \"description\": \"当前页码\",\n      \"minimum\": 1\n    },\n    \"pageSize\": {\n      \"type\": \"integer\",\n      \"format\": \"int32\",\n      \"description\": \"每页大小\",\n      \"minimum\": 1,\n      \"maximum\": 20\n    },\n    \"criteria\": {\n      \"type\": \"object\",\n      \"properties\": {\n        \"onlySelf\": {\n          \"type\": \"boolean\",\n          \"description\": \"是否只看自己创建的\"\n        },\n        \"status\": {\n          \"type\": \"integer\",\n          \"format\": \"int32\",\n          \"description\": \"状态：1、未开始；2、已开始；3、已结束；\"\n        },\n        \"sortType\": {\n          \"type\": \"integer\",\n          \"format\": \"int32\",\n          \"description\": \"排序类型：1、正常；2、按照优先级递减；3、按照优先级递增；\"\n        }\n      },\n      \"$$ref\": \"#/definitions/Criteria查询条件\"\n    }\n  },\n  \"$$ref\": \"#/definitions/MessageGetPageListIn获取消息分页列表入参\"\n}`);
+    console.log("11111-reqBody-1", reqBody);
+    let resDataObj = resBody.properties.data;
+    let reqDataObj = reqBody
+
+    function trans (name = '', data, required = []){
+      if(data.type === "object"){
+        return resolveObject(name, data.properties, required);
+      }else if(data.type === "array"){
+        return resolveArray(name, data);
+      }else if(data.type === "integer"){
+        return 
+        `/**
+         * ${data.description || ""}
+        */   
+        ${name}${required.includes(name) ? "" : "?"}: number; `
+      }else{
+        return 
+        `/**
+         * ${data.description || ""}
+        */   
+        ${name}${required.includes(name) ? "" : "?"}: ${data.type}; `
+      }
+    };
+
+    function resolveObject (name, data, required){
+      let objJson = ``
+      if(data.description){
+        objJson = 
+        `/**
+         * ${data.description || ""}
+        */  
+       ${name ? name + ":" : ''} {
+          
+        `
+      }else{
+        objJson = ` 
+        ${name ? name + ":" : ''} {
+        `
+      }
+
+        for (const key in data) {
+          if (Object.hasOwnProperty.call(data, key)) {
+            const element = data[key];
+            objJson += trans(key, element, required)
+          }
+        }
+      return objJson += `\n }`  
+    }
+
+    function resolveArray (name, data){
+      let arrJson = 
+      `/**
+         * ${data.description || ""}
+        */   
+         `;
+        console.log("111111-resolveArray", name, data.items, data.items.required)
+        arrJson += trans(name, data.items, data.items.required)
+       
+        return arrJson += `[]\n`;
+    }
+
+    let json = trans("", resBody, resBody.required);
+
+    document.getElementsByTagName("pre")[0].innerHTML = json;
+
+  }
+
+
+
+</script>
+
+
+</html>

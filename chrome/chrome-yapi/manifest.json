@@ -1,0 +1,22 @@
+{
+  "manifest_version": 2,  
+  "name": "yapi生成接口",
+  "version": "1.0.0",
+  "description": "yapi to TS demo",
+  "icons": {
+    "48" : "icon_48.png",
+    "128" : "icon_128.png"
+  },
+ "browser_action": {
+    "default_title": "Test",
+    "default_popup": "popup.html"
+  },  
+  "content_scripts":
+  [
+      {
+          "matches": ["http://testyapi.akulaku.com/*"],
+          "js": ["./func.js", "./jquery.js", "./trans.js", "./main.js"],
+          "run_at": "document_end"
+      }
+  ]
+}

@@ -1,0 +1,78 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>创建linkid或shortid</title>
+</head>
+<link rel="stylesheet" href="css/main.css">
+<script src="js/md5.js"></script>
+<script src="js/functions.js"></script>
+<script src="js/main.js"></script>
+
+<body>
+<span id="tips">正在初始化<img src='img/loading.gif' style="width:16px;margin-left:10px"></span><span id="cancel_reg" style="display:none;margin-left:10px;cursor:pointer;color:gray">注销</span><br>
+
+<div id="table_log" style="display:none">
+  <div >
+      <h1 id="main-logo">AMS 广告系统</h1>
+      <!-- <div id="main-logo"><img id="logo-img" src="./logo.png" alt="" srcset=""></div> -->
+    <div class="form-item username-content">
+      <input type="text" id="username"  value="" placeholder="请输入用户名或用户邮箱"><br />
+      <span class="err-msg" id="username-err" ></span>
+    </div>
+    <div class="form-item password-content">
+      <input type="password" id="pwd"  value="" placeholder="请输入密码"><br />
+      <span class="err-msg" id="password-err"></span>
+    </div>  
+    <p class="err-msg" id="login-err" style="visibility:hidden">该账户已停用</p>
+    <input type="button" value="登       录" id="btn_login">
+  </div>
+  <p>若需要开通账号请联系<a id="login-link" href="https://docs.google.com/spreadsheets/d/1GmTdWZaQQpVQ_9oQS6Fi4dGWFqR6L_neUy1v5R_NBTg/edit#gid=802436570" target="_blank" rel="noopener noreferrer">部门对接人或系统管理员</a></p>
+</div>
+
+<table id="table_link" style="display:none">
+<tr><td>
+	<table style="width:500px;padding-top:0px;margin-top:0px;" cellspacing="6px">
+		<tr><td colspan="2"><span name="info"></span></td></tr>
+    <tr><td style="width:110px">对应网站*</td><td>
+        <select id="link_website" style="width:400px">
+          <option></option>
+          <option website_id="2" website_id2="4" value="www.sammydress.com">SammyDress</option>
+          <option website_id="14" website_id2="40" value="www.gearbest.com">GearBest</option>
+          <option website_id="15" website_id2="21" value="www.rosewholesale.com">RoseWholesale</option>
+          <option website_id="16" website_id2="18" value="www.dresslily.com">DressLily</option>
+          <option website_id="27" website_id2="33" value="www.rosegal.com">Rosegal</option>
+          <option website_id="33" website_id2="41" value="www.twinkledeals.com">TwinkleDeals</option>
+          <option website_id="35" website_id2="42" value="www.trendsgal.com">Trendsgal</option>
+          <option website_id="37" website_id2="43" value="www.nastydress.com">Nastydress</option>
+          <option website_id="4" website_id2="1" value="www.everybuying.com">Everybuying</option>
+          <option website_id="40" website_id2="45" value="www.zaful.com">Zaful</option>
+        </select>
+      </td>
+    </tr>
+		<tr><td style="width:110px">广告账户*</td><td><select id="account_id" style="width:400px"><option></option></select></td></tr>
+		<tr><td style="width:110px">affiliate*</td><td><select id="affiliate_account_id" style="width:400px"><option></option></select></td></tr>
+		<tr><td>广告名称*</td><td><input type="text" id="link_name" style="width:400px"><input type="hidden" name="user_id" value=""/></td></tr>
+		<tr><td valign="top">链接网址*</td><td><textarea type="text" id="link_url"  style="width:400px;height:80px"></textarea></td></tr>
+		<tr><td valign="top">短链接</td><td><input id='shorturl' style='width:260px' readonly='readonly'><input type='button' id='btn_create_shorturl' value='生成短链接' style='margin-left:10px;width:100px' ></td></tr>
+		<tr><td valign="top">文字内容</td><td><textarea id="link_text" style="width:400px;height:80px"></textarea></td></tr>
+		<tr><td valign="top">描述</td><td><textarea id="link_desc" style="width:400px;height:80px"></textarea></td></tr>
+		<tr><td>图像</td><td><input type="text" id="link_img" style="width:400px"/></td></tr>
+		<tr><td colspan="2"><input type="button" value="生成linkid" style="margin-top:5px;width:150px;height:30px" id="btn_create_linkid"><input type="button" value="关闭窗口" style="margin-left:15px;margin-top:5px;width:150px;height:30px" id="btn_close"></td></tr>
+	</table>
+</td><td valign="top">
+	<table style="height:100%">
+		<tr><td>
+			<table cellspacing="6px">
+				<tr><td>SKU:</td></tr>
+				<tr><td><input type="text" id="sku" style="width:170px"></td></tr>
+				<tr><td><input type="button" id="btn_add" value="增加" style="width:80px"><input type="button" id="btn_remove" value="删除" style="margin-left:10px;width:80px"></td></tr>
+				<tr><td><select id="skulist" style="height:150px;width:170px" multiple size="6"></select></tr>
+			</table>
+		</td></tr>
+		<tr><td valign="bottom"><img id="img" style="width:160px"></td></tr></td></tr>
+	</table>  
+</table>
+</div>
+</body>
+</html>

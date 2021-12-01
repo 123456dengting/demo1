@@ -1,10 +1,9 @@
-"use strict";
 var a = true;
-let aa = false;
-const AAB = "d;asjfjsodpfjpsa";
-const AABC = "d;asjfjsodpfjps1a";
-const Arr = [1, 2, 3, 4, 5];
-const Brr = [1, 2, 3, 4, 5];
+var aa = false;
+var AAB = "d;asjfjsodpfjpsa";
+var AABC = "d;asjfjsodpfjps1a";
+var Arr = [1, 2, 3, 4, 5];
+var Brr = [1, 2, 3, 4, 5];
 console.log("Arr", Arr, Brr);
 function reverse(x) {
     if (typeof x === 'number') {
@@ -28,4 +27,3 @@ var Days;
     Days[Days["Sat"] = 6] = "Sat";
 })(Days || (Days = {}));
 ;
-console.log("Days", Days, Days[0], Days["Sun"]);

@@ -1,0 +1,438 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8"/>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+	<meta http-equiv="X-UA-Compatible" content="ie=edge"/>
+	<title>Document</title>
+</head>
+<style>
+	.body {
+		padding: 10px;
+	}
+
+	.body div {
+		color: #666;
+		font-size: 10px;
+	}
+
+	table {
+		width: 100%;
+		border: 1px solid #999;
+		border-spacing: 0;
+		margin-bottom: 1px;
+		font-size: 9px;
+	}
+
+	table tr {
+		border-bottom: 1px solid #999
+	}
+
+	table td {
+		border-right: 1px solid #999;
+		border-bottom: 1px solid #999;
+		width: 50%;
+	}
+
+	table tr td:last-child {
+		border-right: 0
+	}
+
+	table tr:last-child td {
+		border-bottom: 0
+	}
+
+	.text-center {
+		text-align: center;
+		margin: 0 6px 6px 0;
+	}
+
+	.text-indent {
+		padding-left: 1rem;
+	}
+
+	.margin-r-5 {
+		margin-right: 5rem;
+	}
+
+	.margin-b-1{
+		margin-bottom: 8px;
+	}
+
+	.margin-t-1{
+		margin-top: 12px;
+	}
+
+	.font-bold{
+		font-weight: bold;
+		color: #333;
+	}
+
+	.split-line {
+		height: 1px;
+		width: 100%;
+		background-color: #0c0303;
+	}
+
+</style>
+<body>
+<div class="body">
+	<h4 class="text-center">
+		PERJANJIAN PEMBIAYAAN MULTIGUNA UNTUK <br />
+		PEMBELIAN DENGAN PEMBAYARAN SECARA ANGSURAN
+	</h4>
+	<div class="split-line"></div>
+	<div class="text-center margin-b-1">
+		Nomor Perjanjian: <u>{lineItemId}</u>
+	</div>
+	<div>
+		Dokumen ini adalah Perjanjian Pembiayaan Multiguna (“Perjanjian”) untuk Pembelian Dengan Pembayaran Secara Angsuran 
+		(“Pembiayaan”) yang dibuat pada tanggal {billDate}, Perjanjian ini   terdiri  atas    informasi yang diberikan  oleh    Konsumen  
+		untuk maksud  diadakannya suatu perikatan melalui Perjanjian  ini,    Syarat dan  Ketentuan, bukti 
+		pembayaran/tagihan/kuitansi/terkait, dan seluruh lampiran yang disebutkan.
+	</div>
+	<h5 class="text-center">PERINCIAN PEMBIAYAAN MULTIGUNA</h5>
+	<div class="split-line"></div>
+	<div class="font-bold margin-b-1 margin-t-1">A.DEBITUR</div>
+	<div class="margin-b-1">Konsumen adalah Debitur dalam Perjanjian ini   yang    beridentitas sebagai berikut: Nama {userName},   
+			Nomor KTP/NIK {userIdNo},   Kontak Telepon/Hp {userPhone},   dan    Alamat sesuai yang tertera pada KTP Debitur, yang salinannya baik    
+			dalam bentuk cetak maupun dokumen elektronik merupakan bagian dari    Perjanjian ini.
+	</div>
+	<div class="margin-b-1"><span class="font-bold">B.</span> 
+		Debitur telah mengajukan permohonan Pembiayaan tertentu dengan jenis    
+		produk sesuai dengan Rincian Pesanan No: {poId} di aplikasi Akulaku seharga Rp {itemPrice},- dan/atausebagaimana dirinci dalam bukti 
+		pembayaran/tagihan/kuitansi terkait yang merupakan bagian tak terpisahkan dari Perjanjian ini, dan Debitur akan melunasinya 
+		denganpembayaran secara angsuran. Dalam hal ini Debitur diwakili oleh PT Akulaku Silvrr Indonesiamelalui Direkturnya dan oleh 
+		karenanya berhak dan berwenang untuk menyepakati Perjanjian Pembiayaan serta menandatangani Perjanjian ini untuk dan atas serta demi kepentingan Debitur.
+	</div>
+	<div class="margin-b-1"><span class="font-bold"> C. KREDITUR</span>, adalah :</div>
+	<div class="text-indent margin-b-1">
+		<div>(i) PT   AKULAKU FINANCE INDONESIA, suatu Perusahaan Pembiayaan yang    terdaftar dan    diawasi oleh Otoritas Jasa    Keuangan, yang    beralamat di  Sahid Sudirman Centre Lantai 11 Unit    C, Jalan    Jenderal Sudirman Kav.    86 Jakarta Pusat;  dan</div>
+		<div>(ii) PT   BANK PERMATA Tbk., suatu Bank yang    terdaftar dan    diawasi oleh    Otoritas Jasa    Keuangan, yang    beralamat di  Gedung World Trade Center II,   Jalan     Jendral Sudirman Kav.    29-31, Jakarta Pusat. Dalam hal ini   diwakili oleh    PT   AKULAKU FINANCE INDONESIA, berdasarkan perjanjian kerja sama pembiayaan secara bersama.</div>
+		<div>Dalam hal   ini secara bersama-sama bertindak selaku Kreditur dengan PT AKULAKU FINANCE INDONESIA.</div>
+	</div>
+	<div class="font-bold">D. RINCIAN OBJEK PEMBIAYAAN</div>
+	<table cellspacing="0">
+		<tr>
+			<td>Jumlah Pembiayaan:</td>
+			<td>{principal}</td>
+		</tr>
+		<tr>
+			<td>Uang Muka:</td>
+			<td>{itemDownPayment}</td>
+		</tr>
+		<tr>
+			<td>Biaya Administrasi:</td>
+			<td>Rp{itemManagementFee},-</td>
+		</tr>
+		<tr>
+			<td>Objek:</td>
+			<td>{spuName}</td>
+		</tr>
+		<tr>
+			<td>Suku Bunga per bulan:</td>
+			<td>{itemMonthInterest} %</td>
+		</tr>
+		<tr>
+			<td>Nama Platform & Nama Penjual:</td>
+			<td>{itemVendorName}</td>
+		</tr>
+	</table>
+	<div class="margin-b-1">Kreditur akan mengenakan bunga terhadap Jumlah Pembiayaan yang sudah termasuk dalam jumlah Pembayaran Angsuran Bulanan. 
+		Jumlah Total Bunga yang wajib dibayar oleh Debitur adalah senilai Jumlah Pembiayaan dikalikan dengan Suku Bunga per Bulan dan 
+		dikalikan Jumlah Angsuran, yaitu sejumlah [*].
+	</div>
+	<div class="font-bold">E. PEMBAYARAN ANGSURAN BULANAN</div>
+	<table cellspacing="0">
+		<tr>
+			<td>Kesepakatan Tanggal Pembayaran Angsuran Pertama:</td>
+			<td>{billStartDate}</td>
+		</tr>
+		<tr>
+			<td>Kesepakatan Tanggal Pembayaran Angsuran Terakhir:</td>
+			<td>{billEndDate}</td>
+		</tr>
+		<tr>
+			<td>Tenor Angsuran(Bulan):</td>
+			<td>{billPeriod}</td>
+		</tr>
+		<tr>
+			<td>Jumlah Pembayaran Angsuran Per Bulan:</td>
+			<td>{itemMonthPayment}</td>
+		</tr>
+		<tr>
+			<td>Tgl Jatuh Tempo:</td>
+			<td>{billEndDate}</td>
+		</tr>
+	</table>
+	<div>Debitur wajib melakukan Pembayaran Angsuran Bulanan secara teratur dan tepat     
+		waktu dimana angsuran wajib dibayarkan Debitur setiap bulannya mulai dari    
+		Tanggal Pembayaran Angsuran Pertama sampai dengan Tanggal Pembayaran Angsuran Terakhir, atau    
+		hingga seluruh jumlah hutang Debitur berdasarkan Perjanjian ini   telah    dibayarkepada Kreditur dengan nilai    
+		dan jadwal Pembayaran Angsuran Bulanan sebagaimana diatur dalam Jadwal Pembayaran Angsuran. Debitur wajib melakukan 
+		pembayaranangsuran dengan memilih metode pembayaran yang    disediakan dalam aplikasi elektronik untuk melaksanakan Perjanjian ini, 
+		dengan pilihan yang    berupa pembayaran via Bank Transfer, Virtual Account, Indomaret, Alfamart dan saluran lain yang telah 
+		bekerjasama dengan Kreditur.
+	</div>
+	<div class="font-bold margin-t-1">F. DENDA KETERLAMBATAN PEMBAYARAN ANGSURAN</div>
+	<table cellspacing="0">
+		<tr>
+			<td class="font-bold">Keterlambatan</td>
+			<td class="font-bold">Nilai Denda</td>
+		</tr>
+		<tr>
+			<td>0-5 Hari Kalender sejak Tanggal Jatuh Tempo</td>
+			<td>0% dari Jumlah Angsuran per Bulan</td>
+		</tr>
+		<tr>
+			<td>Lebih dari 5 Kalender sejak Tanggal Jatuh Tempo</td>
+			<td>10% dari Jumlah Angsuran per Bulan</td>
+		</tr>
+	</table>
+	<div>Illustrasi atas Denda Keterlambatan Pembayaran Angsuran yang akan dikenakan kepada Konsumen untuk setiap keterlambatan 
+		Pembayaran Angsuran Bulanan yang terhutang dan jatuh tempo.
+	</div>
+	<div class="margin-t-1"><span class="font-bold">G.</span> Apabila terjadi Perselisihan antara Debitur dan Kreditur, maka disepakati untuk 
+		Mekanisme Penyelesaian Sengketa melalui tahapan sebagai berikut: 1) Penyelesaian sengketa melalui unit pengaduan konsumen atau unit 
+		lain yang sejenis dimana telah disediakan oleh Kreditur; 2) Penyelesaian sengketa melalui Lembaga Alternatif Penyelesaian Sengketa 
+		yang ditetapkan oleh Otoritas Jasa Keuangan, berupa proses mediasi atau ajudikasi; 3) Apabila tidak mencapai kesepakatan atas 
+		permasalahan yang timbul, maka Para Pihak sepakat untuk menunjuk domisili hukum yang umum dan tetap melalui Kepaniteraan Pengadilan 
+		Negeri Jakarta Pusat.
+	</div>
+	<div class="margin-t-1"><span class="font-bold">H.</span> Debitur telah membaca, memahami dan sepakat untuk mematuhi seluruh Perjanjian 
+		ini, termasuk seluruh prosedur, syarat dan ketentuan dan tidak terbatas pada <span class="font-bold"> Syarat dan Ketentuan </span> Pembiayaan yang dilampirkan dalam 
+		aplikasi elektronik dan merupakan satu bagian yang tidak terpisahkan dari Perjanjian ini. Segala Persetujuan yang diberikan oleh 
+		Debitur melalui penggunaan aplikasi elektronik dan/atau persetujuan pada dokumen-dokumen elektronik lainnya (termasuk namun tidak 
+		terbatas yang terkait data pribadi Debitur) menjadi satu kesatuan yang tak terpisahkan dengan Perjanjian ini.
+	</div>
+	<div style="margin-top: 30px;margin-bottom: 30px;">
+		<div style="width:47%;float:left;border-right: 1px solid #0c0303;padding-right: 2%;">
+			<div><span class="margin-r-5">Tempat: Jakarta Pusat</span> Tanggal: {billDate}</div>
+			<div style="height: 140px">
+				<div class="font-bold" style="margin-bottom: 30px;">KREDITUR</div>
+				<div class="font-bold">PT Akulaku Finance Indonesia</div>
+				<div class="font-bold">dalam kapasitasnya sebagai: </div>
+				<div class="font-bold"> Kreditur  </div>
+			</div>
+			<div>Ini adalah tanda tangan elektronik yang dapat dicetak secara otomatis dan sah</div>
+			<div>Nama	 : [*]</div>
+			<div>Jabatan  :  Direktur</div>
+		</div>
+		<div style="width:48%;float:left;padding-left: 2%;">
+			<div><span class="margin-r-5">Tempat: Jakarta Pusat</span> Tanggal: {billDate}</div>
+			<div style="height: 140px;">
+				<div class="font-bold">DEBITUR</div>
+				<div class="font-bold">__({userName})__</div>
+				<div class="font-bold">dalam hal ini diwakili oleh PT Akulaku Silvrr Indonesia</div>
+				<div class="font-bold">Selaku Penerima Kuasa Berdasarkan Surat Kuasa tertanggal</div>
+				<div class="font-bold">(tgl kuasa) </div>
+			</div>
+
+			<div>Ini adalah tanda tangan elektronik yang dapat dicetak secara otomatis dan sah	</div>
+			<div>Nama	 : [*]</div>
+			<div>Kapasitas     : Selaku Kuasa dari ....{userName}.... </div>
+
+		</div>
+		<div style="clear:both;"></div>
+	</div>
+	<div style="page-break-after:always;"></div>
+
+	<h4 class="text-center">LAMPIRAN: SYARAT DAN KETENTUAN</h4>
+	<h5 class="text-center">PERJANJIAN PEMBIAYAAN MULTIGUNA UNTUK PEMBELIAN DENGAN PEMBAYARAN SECARA ANGSURAN</h5>
+	<div class="split-line"></div>
+	<div class="text-center">Nomor Perjanjian:<u>{lineItemId}</u></div>
+	<div class="font-bold margin-t-1">A. Syarat dan Ketentuan Umum</div>
+	<div class="split-line"></div>
+	<div>1. Syarat dan Ketentuan ini merupakan bagian yang tidak terpisahkan dari Perjanjian Pembiayaan dan memiliki rujukan terhadap Pembiayaan, Penggunaan & Pembelian Produk, Kreditur, Debitur, Jumlah Pembiayaan, Uang Muka, Suku Bunga per bulan, Tenor Angsuran, Jangka Waktu Pembiayaan, Jumlah Pembayaran Angsuran Bulanan, Tanggal Jatuh Tempo Setiap Bulan, Denda Keterlambatan Pembayaran Angsuran, biaya-biaya lain dan hal-hal lainnya yang ditetapkan dan diistilahkan dalam huruf besar, dengan arti yang sesuai dengan Perincian Pembiayaan Multiguna, dan mengatur seluruh hal yang berhubungan dengan Pembiayaan.
+	</div>
+	<div>2. Debitur menyetujui bahwa: (a) Hubungan hukum antara Kreditur dan Debitur adalah sehubungan hanya dengan Pembiayaan; (b) Hubungan hukum yang diciptakan berdasarkan Penggunaan Pembiayaan berupa Pembelian Produk adalah hanya antara Debitur dengan Penjual; dan (c) Debitur tidak diperbolehkan untuk menerima uang sebagai pengganti Penggunaan Pembiayaan berupa Pembelian Produk.
+	</div>
+	<div>3. Data Pribadi berarti informasi identitas Debitur (yang bersifat umum atau rahasia), dokumen, pekerjaan, posisi keuangan, sidik jari (jika diperlukan), foto, data profil media sosial, serta kontak darurat (emergency contact) yang telah diberikan oleh Debitur kepada Kreditur secara sukarela, atau telah diperoleh secara sah oleh Kreditur dari berbagai sumber yang tersedia secara sah, termasuk mitra e-commerce Kreditur. Debitur memberikan kewenangan kepada Kreditur dan pihak yang ditunjuk oleh Kreditur untuk: (a) Mengumpulkan, menyimpan, menganalisis dan menggunakan Data Pribadi yang diperoleh Kreditur; (b) Memeriksa dan memverifikasi Data Pribadi, catatan-catatan biro kredit, referensi-referensi terkait dengan Debitur, satu dan lain hal berupa serangkaian tindakan yang bertujuan untuk mengetahui perihal kelayakan pemberian pembiayaan kepada Debitur; (c) Memperoleh dan/atau membagikan dan mengungkapkan Data Pribadi kepada pihak-pihak berikut: setiap perusahaan afiliasi dari Kreditur, setiap biro informasi kredit yang tersedia, setiap basis data identitas yang tersedia sah secara hukum milik pihak ketiga, setiap lembaga keuangan, setiap otoritas pemerintahan atau pihak ketiga lainnya yang sah secara hukum terikat pada Kreditur; (d) memperbaiki kesalahan penulisan/pengetikan Data Pribadi Debitur pada Aplikasi dan/atau Perjanjian, apabila ada; (e) Memverifikasi dan menganalisis Data Pribadi terhadap data dan informasi yang tersedia sah secara hukum sehubungan dengan: (i) jasa telekomunikasi dan telepon genggam yang digunakan oleh Debitur; (ii) informasi perihal keterangan pajak Debitur, dan (iii) data jaminan sosial Debitur; dan (iv) penggunaan Data Pribadi untuk tujuan lainnya sebagaimana dipandang perlu dan patut oleh Kreditur sehubungan dengan Pembiayaan dan jasa keuangan lainnya yang diperbolehkan menurut peraturan perundang-undangan yang berlaku.
+	</div>
+	<div class="font-bold margin-t-1">B. Aplikasi Pembiayaan</div>
+	<div class="split-line"></div>
+	<div>1. Debitur telah secara sukarela mengajukan Pembiayaan dengan menyediakan Data Pribadi yang benar dan akurat melalui suatu formulir aplikasi elektronik yang difasilitasi oleh Kreditur dan/atau Mitra Kreditur (“Aplikasi”), yang merupakan bagian tidak terpisahkan dari Perjanjian ini.
+	</div>
+	<div>2. Debitur wajib untuk memberitahu Kreditur setiap terjadi perubahan data Debitur yang telah diberikan dalam Aplikasi.
+	</div>
+	<div class="font-bold margin-t-1">C. Penggunaan Pembiayaan untuk Pembelian Produk</div>
+	<div class="split-line"></div>
+	<div>1. Pembiayaan hanya diberikan kepada Debitur untuk digunakan dalam hal Pembelian Produk melalui aplikasi elektronik yang telah bekerjasama dengan Kreditur dengan rincian pembelian sebagaimana dimaksud dalam Perjanjian.
+	</div>
+	<div>2. Debitur akan menandatangani, memberikan, serta menyerahkan kepada Kreditur sebagaimana diinstruksikan oleh Kreditur,  setiap dokumen yang disyaratkan oleh Kreditur untuk memverifikasi bahwa Jumlah Pembiayaan digunakan sesuai dengan penggunaan tertentu, termasuk bukti pembayaran/tagihan/kuitansi yang dapat diterbitkan melalui aplikasi elektronik.
+	</div>
+	<div>3. Debitur memberikan kuasa kepada Kreditur untuk: (a) Mencairkan Jumlah Pembiayaan kepada Penjual Produk yang terkait atau sebagaimana dicantumkan dalam Aplikasi; (b) Melakukan pemeriksaan setiap saat selama dan sesudah Jangka Waktu Pembiayaan untuk membuktikan bahwa Pembiayaan benar digunakan sesuai dengan Penggunaan, dan (c) Memperbaiki kesalahan penulisan/pengetikan dalam bukti pembayaran/tagihan/kuitansi terkait Perjanjian, apabila ada.
+	</div>
+	<div class="font-bold margin-t-1">D. Pengakuan Hutang</div>
+	<div class="split-line"></div>
+	<div>1. Debitur dalam Perjanjian ini dan benar secara sah berhutang kepada Kreditur untuk Jumlah Pembiayaan, Jumlah
+		Total Bunga, Total Uang Muka, Biaya Proses Pembayaran Angsuran dan biaya-biaya lainnya sebagaimana tercantum
+		dalam Perincian Pembiayaan.
+	</div>
+	<div>2. Pembiayaan dianggap telah diberikan kepada Debitur pada saat Kreditur dan Debitur menandatangani Perjanjian
+		ini.
+	</div>
+	<div class="font-bold margin-t-1">E. Hak dan Kewajiiban Para Pihak</div>
+	<div class="split-line"></div>
+	<div>Tanpa mengesampingkan hak dan kewajiban Para Pihak yang telah diatur dalam Perjanjian termasuk Syarat dan
+		Ketentuan, hak dan kewajiban Para Pihak adalah sebagai berikut:
+	</div>
+	<div>1. Debitur berhak untuk mengetahui jumlah hutangnya yang tersisa, mendapatkan tanda pelunasan pada akhir
+		Pembiayaan, dan hak-hak lainnya telah diatur dan dijamin pemberlakuannya berdasarkan peraturan hukum yang
+		berlaku.
+	</div>
+	<div>2. Kreditur berhak untuk menerima pembayaraan dari Debitur, melakukan dan/atau mengupayakan penagihan kepada
+		Debitur, meminta data dan/atau dokumen dari Debitur yang diperlukan guna pemutakhiran data dan informasi.
+	</div>
+	<div>3. Debitur berkewajiban untuk melakukan pembayaran sebagaimana diperjanjikan secara tepat waktu dan dengan
+		itikad baik, menunjukkan keberadaan barang yang dibiayai apabila diminta, menjamin penggunaan barang yang
+		dibiayai sebagaimana mestinya, memberi ijin kepada Kreditur setiap saat selama masa berlakunya Perjanjian untuk
+		memasuki tanah perkarangan dan bangunan tempat dimana barang yang dibiayai berada, guna pemeriksaan dan
+		pengujian keberlangsungan pembayaran hutang, wajib memberitahukan secara tertulis apabila pindah alamat, serta
+		mematuhi Perjanjian Pembiayaan yang telah disepakati bersama.
+	</div>
+	<div>4. Kreditur berkewajiban untuk menghormati hak-hak Debitur sesuai peraturan hukum yang berlaku, memberitahukan
+		jumlah sisa hutang Debitur apabila diminta, memberikan bukti kuitansi pelunasan, serta mematuhi Perjanjian
+		Pembiayaan yang telah disepakati bersama.
+	</div>
+	<div class="font-bold margin-t-1">F. Pengiriman dan Penyerahan Produk</div>
+	<div class="split-line"></div>
+	<div>1. Pengiriman dan penyerahan Produk merupakan tanggung jawab Penjual sepenuhnya. Debitur setuju untuk
+		membebaskan Kreditur dari setiap kegagalan dan/atau kelalaian sehubungan dengan pengiriman dan penyerahan
+		Produk.
+	</div>
+	<div>2. Dalam hal Debitur telah menerima Produk dan menandatangani Kuitansi, Debitur sepakat bahwa telah memeriksa
+		dan puas terhadap Produk yang diterima.
+	</div>
+	<div>3. Debitur setuju untuk tetap membayar angsuran hingga lunas kepada Kreditur atas Produk yang telah diterima
+		sebagaimana dimaksud walaupun Produk rusak, hilang, cacat, atau terjadi kegagalan pada pihak Penjual.
+	</div>
+	<div class="font-bold margin-t-1">G. Bunga, Angsuran, dan Biaya-Biaya Lainnya</div>
+	<div class="split-line"></div>
+	<div>1. Kreditur akan membebankan bunga dan biaya lainnya terhadap Jumlah Pembiayaan kepada Debitur sebagaimana yang
+		tercantum dalam perincian Pembiayaan Multiguna.
+	</div>
+	<div>2. Setiap uang muka dan biaya administrasi wajib dibayar sebelum Debitur menerima Produk dari Penjual.</div>
+	<div>3. Debitur wajib membayar Pembayaran Angsuran Per Bulan melalui: (a) Saluran pembayaran resmi Kreditur, atau
+		(b) Pihak yang mewakili Kreditur secara sah dan wajib menyimpan bukti pembayaran tersebut.
+	</div>
+	<div>4. Setiap Pembayaran Angsuran Bulanan dapat terdiri dari Jumlah Pembiayaan (Pokok), Bunga dan Biaya Proses
+		Pembayaran Angsuran.
+	</div>
+	<div class="font-bold margin-t-1">H. Pelunasan Lebih Awal</div>
+	<div class="split-line"></div>
+	<div>Debitur memiliki hak untuk mengakhiri Perjanjian setiap waktu atas persetujuan Kreditur dan tetap membayar (i) 
+		Jumlah Pembayaran Angsuran Bulanan berikutnya dan (ii) seluruh Jumlah Pembiayaan yang belum dibayar. Pelunasan lebih 
+		awal tanpa persetujuan Kreditur terlebih dahulu menjadi tanggung jawab Debitur secara pribadi.
+	</div>
+
+	<div class="font-bold margin-t-1">I. Pernyataan dan Persetujuan di Masa Mendatang</div>
+	<div class="split-line"></div>
+	<div>1. Debitur setuju untuk menggunakan fasilitas Pembiayaan sebagaimana yang dipersyaratkan.</div>
+	<div>2. Debitur setuju untuk memberikan segala informasi/keterangan/data-data sehubungan dengan keuangan Debitur dan
+		apabila terjadi keadaan yang dapat mempengaruhi keuangan Debitur, baik diminta maupun tidak diminta oleh
+		Kreditur.
+	</div>
+	<div>3. Debitur tidak akan membebankan biaya penjaminan/fidusia, biaya survey, biaya provisi dan/atau biaya Notaris
+		kepada Kreditur.
+	</div>
+	<div>4. Debitur memberikan kuasa kepada Kreditur atau perwakilannya untuk: (a) Menghubungi Debitur dan
+		kontak(-kontak) alternatifnya melalui sarana komunikasi pribadi dalam setiap waktu selama dan setelah Jangka
+		Waktu Pembiayaan sebagaimana yang diperbolehkan oleh peraturan perundang-undangan yang berlaku, (b) Membagikan
+		dan menggunakan Data Pribadi Debitur untuk berbagai macam skema penawaran pembiayaan lainnya (“Penawaran
+		Pembiayaan Tambahan”) atau skema promosi lainnya (“Promosi”), yang dapat ditawarkan dan disediakan oleh Kreditur
+		atau pihak ketiga lainnya yang bekerja sama dengan Kreditur; dan (c) Menggunakan rincian kontak Debitur sebagai
+		sarana untuk memperoleh setiap kesepakatan dan persetujuan di masa mendatang dari Debitur untuk Penawaran
+		Pembiayaan Tambahan dan Promosi tersebut, yang dapat ditawarkan dan diberikan oleh Kreditur atau pihak lain yang
+		bekerjasama dengan Kreditur.
+	</div>
+	<div>5. Persetujuan Debitur yang diberikan baik secara elektronik maupun melalui rincian kontak Debitur akan menjadi
+		cukup dan mengikat secara hukum terhadap seluruh pembiayaan di kemudian hari yang dapat ditawarkan oleh Kreditur
+		dan dapat diterima oleh Debitur.
+	</div>
+	<div>6. Debitur menyetujui bahwa seluruh bentuk pembicaraan, kesepakatan, dan/atau persetujuan melalui
+		telekomunikasi yang dilakukan secara elektronik maupun melalui Rincian Kontak Terdaftar milik Debitur akan
+		direkam dan disimpan oleh Kreditur menurut kewenangannya.
+	</div>
+	<div class="font-bold margin-t-1">J. Wanprestasi / Cidera Janji</div>
+	<div class="split-line"></div>
+	<div>1. Debitur dianggap telah melakukan cidera janji apabila: (a) Debitur telah lalai atau gagal untuk memenuhi salah satu atau lebih kewajibannya sebagaimana ditentukan dalam Perjanjian ini, termasuk Syarat dan Ketentuan; (b) Debitur berpindah tempat dan/atau melakukan perubahan alamat dan tidak memberitahukan secara tertulis kepada Kreditur; (c) Debitur sengaja mengalihkan/menghilangkan/memindah tangankan barang yang dibiayai kepada pihak lain tanpa mendapat persetujuan tertulis terlebih dahulu dari Kreditur; (d) Debitur telah lalai atau gagal melakukan Pembayaran Angsuran Bulanan pada saat pembayaran angsuran terkait jatuh tempo; (e) Debitur memberikan suatu pernyataan/keterangan/dokumen palsu dan/atau diragukan keabsahannya; dan/atau (f) Debitur melakukan perbuatan lain yang dapat menimbulkan kerugian bagi Kreditur.
+	</div>
+	<div>2. Dalam hal Cidera Janji sebagaimana dimaksud di atas, Kreditur berhak untuk mengakhiri Perjanjian ini dan Debitur akan melakukan pelunasan atas seluruh kewajibannya secara seketika, termasuk Jumlah Pembiayaan yang belum dibayar, Jumlah Total Bunga, dan denda keterlambatan pembayaran dan seluruh biaya-biaya lainnya yang terhutang.
+	</div>
+	<div>3. Kreditur dan Debitur dengan ini mengesampingkan Pasal 1266 dan 1267 Kitab Undang-undang Hukum Perdata sehingga putusan pengadilan tidak disyaratkan sebelum Perjanjian ini dapat diakhiri.
+	</div>
+	<div>4. Kreditur dan Debitur dengan ini mengesampingkan Pasal 1266 dan 1267 Kitab Undang-undang Hukum Perdata
+		sehingga putusan pengadilan tidak disyaratkan sebelum Perjanjian ini dapat diakhiri.
+	</div>
+	<div class="font-bold margin-t-1">K. Penyelesaian Perselisihan</div>
+	<div class="split-line"></div>
+	<div>Apabila terjadi Perselisihan antara Debitur dan Kreditur, maka disepakati untuk Mekanisme Penyelesaian Sengketa
+		melalui tahapan sebagai berikut:
+	</div>
+	<div>1. Penyelesaian sengketa melalui unit pengaduan konsumen atau unit lain yang sejenis dimana telah disediakan
+		oleh Kreditur;
+	</div>
+	<div>2. Penyelesaian sengketa melalui musyawarah untuk mufakat;</div>
+	<div>3. Penyelesaian sengketa melalui Lembaga Alternatif Penyelesaian Sengketa yang ditetapkan oleh Otoritas Jasa
+		Keuangan yaitu Badan Penyelesaian Sengketa Perusahaan Pembiayaan, Pegadaian, dan Modal Ventura Indonesia, berupa
+		proses mediasi atau ajudikasi;
+	</div>
+	<div>4. Apabila belum dirasa cukup menyelesaikan permasalahan yang timbul, maka Para Pihak sepakat untuk menunjuk
+		domisili hukum yang umum dan tetap melalui Kepaniteraan Pengadilan Negeri Jakarta Pusat.
+	</div>
+	<div class="font-bold margin-t-1">L. Lain-Lain</div>
+	<div class="split-line"></div>
+	<div>1. Debitur memahami dan setuju bahwa Pembiayaan sebagaimana disebutkan dalam Rincian Pembiayaan dapat diterima oleh Debitur dari lebih dari 1 (satu) kreditur, dan/atau dapat beralih dari satu Kreditur kepada kreditur lainnya. Dengan demikian, Debitur dengan ini setuju bahwa:</div>
+	<div>a)Kreditur berhak dan berwenang untuk mengalihkan baik seluruh maupun sebagian hak dan kewajibannya yang timbul berdasarkan Perjanjian ini kepada pihak ketiga mana pun; dan</div>
+	<div>b)dalam hal sebagaimana disebutkan pada butir a) di atas, Debitur menerima bahwa Perjanjian yang diperbarui kemudian tersebut dapat ditandatangani pada tanggal kapanpun setelah Pembiayaan diterima oleh Debitur.</div>
+	<div>Untuk menghindari keraguan, dalam hal apapun, pengalihan kewajiban Pembiayaan dari Kreditur kepada kreditur lainnya tidak mempengaruhi jumlah Pembiayaan yang diterima dan jumlah kewajiban yang harus dibayar oleh Debitur, maupun hak-hak Debitur lainnya berdasarkan Perjanjian ini. Debitur akan menerima notifikasi sehubungan dengan adanya perubahan ketentuan dalam Perjanjian Pembiayaan ini melalui email yang didaftarkan Debitur melalui aplikasi AKULAKU atau melalui saluran lain yang ditentukan oleh Kreditur. Namun, perubahan dapat berlaku efektif secara seketika tanpa pemberitahuan terlebih dahulu apabila pemberitahuan terlebih dahulu secara wajar dianggap tidak efektif, atau dalam penerapan fungsinya tidak memiliki manfaat terhadap Debitur atau diperlukan secara hukum.</div>
+	<div>2. Kreditur dapat, dalam hal tersebut, melanjutkan pelaksanaan administrasi hak dan kewajiban tersebut. Debitur dengan ini setuju bahwa, dalam hal tersebut, Kreditur dapat menggunakan informasi mengenai hak dan kewajiban yang dialihkan tersebut untuk pemenuhan kewajiban-kewajiban lainnya, dari Kreditur, yang timbul dari Perjanjian ini.
+	</div>
+	<div>3.PERJANJIAN DAN SELURUH DOKUMEN YANG MENJADI BAGIAN DARI PERJANJIAN INI TELAH DISESUAIKAN DENGAN KETENTUAN PERATURAN PERUNDANG-UNDANGAN TERMASUK KETENTUAN PERATURAN OTORITAS JASA KEUANGAN.
+	</div>
+
+
+	<div style="page-break-after:always;"></div>
+	<h4 class="text-center">RINGKASAN PERJANJIAN PEMBIAYAAN MULTIGUNA UNTUK PEMBELIAN DENGAN PEMBAYARAN SECARA ANGSURAN</h4>
+	<div class="split-line"></div>
+	<table cellspacing="0">
+		<tr>
+			<td>1</td>
+			<td>Jenis/Tujuan Pembiayaan</td>
+			<td>Pembelian produk dengan rincian Pesanan No.{poId}</td>
+		</tr>
+		<tr>
+			<td>2</td>
+			<td>Objek Pembiayaan</td>
+			<td>{spuName}</td>
+		</tr>
+		<tr>
+			<td>3</td>
+			<td>Uang Muka</td>
+			<td>Rp {itemDownPayment}</td>
+		</tr>
+		<tr>
+			<td>4</td>
+			<td>Nilai Pembiayaan</td>
+			<td>Rp {principal}</td>
+		</tr>
+		<tr>
+			<td>5</td>
+			<td>Tingkat Suku Bunga Pembiayaan</td>
+			<td>{itemMonthInterest}% per bulan</td>
+		</tr>
+		<tr>
+			<td>6</td>
+			<td>Jangka Waktu Pembiayaan</td>
+			<td>{billPeriod} Bulan/Hari/Tahun</td>
+		</tr>
+		<tr>
+			<td>7</td>
+			<td>Biaya Administrasi</td>
+			<td>Rp {itemManagementFee}</td>
+		</tr>
+	</table>
+</div>
+</body>
+</html>

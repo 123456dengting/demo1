@@ -1,0 +1,87 @@
+body{
+  margin: 0px;
+  padding: 0px;
+  background: #d9d9d9;
+}
+
+#table_log{
+  background: #fff;
+  width: 400px;
+  margin: 0 auto;
+  text-align: center;
+  margin-top: 10%;
+  box-sizing: border-box;
+  padding: 30px;
+  border-radius: 6px;
+}
+#table_log #login-link{
+  color: #1890ff;
+  text-decoration: none;
+}
+#table_log #main-logo{
+  width: 100%;
+  height: 30px;
+  color: #1890ff;
+}
+#logo-img{
+  width: 100%;
+  height: 100%;
+}
+#table_log .form-item{
+  margin-bottom: 20px;
+  height: 40px;
+}
+.form-item .err-msg{
+  display: none;
+}
+.username-err #username{
+  border-color: red;
+}
+.password-err #pwd{
+  border-color: red;
+}
+.username-err .err-msg{
+  display: inline;
+}
+
+.password-err .err-msg{
+  
+  display: inline;
+}
+
+.err-msg{
+  color: red;
+}
+
+#table_log input{
+  width: 250px;
+  box-sizing: border-box;
+  margin: 0;
+  font-variant: tabular-nums;
+  list-style: none;
+  -webkit-font-feature-settings: "tnum";
+  font-feature-settings: "tnum","tnum";
+  position: relative;
+  display: inline-block;
+  height: 32px;
+  padding: 4px 11px;
+  /* color: rgba(0,0,0,.65); */
+  font-size: 14px;
+  line-height: 1.5;
+  background-color: #fff;
+  background-image: none;
+  border: 1px solid #d9d9d9;
+  border-radius: 4px;
+  transition: all .3s;
+  margin-bottom: 4px;
+  
+}
+
+#table_log #btn_login{
+  cursor: pointer;
+  color: #fff;
+  background-color: #1890ff;
+  border-color: #1890ff;
+  /* line-height: 30px; */
+  font-size: 18px;
+}

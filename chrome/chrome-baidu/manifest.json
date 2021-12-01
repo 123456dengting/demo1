@@ -1,0 +1,32 @@
+{
+  "manifest_version": 2,  
+  "name": "百度测试",
+  "version": "2.0",
+  "permissions": [
+    "tabs","<all_urls>","downloads","storage","clipboardRead","clipboardWrite","activeTab"
+    ],
+  "description": "描述",
+  "icons": {
+    "16" : "./images/16x16.png",
+    "48" : "./images/48x48.png",
+    "128" : "./images/128x128.png"
+  },
+"homepage_url": "https://www.baidu.com",
+"devtools_page": "./devtools_page.html",
+ "browser_action": {
+    "default_title": "Test"
+  },  
+  "background": {
+    "persistent": true,
+    "scripts": ["./back.js"]
+  },
+  "content_scripts":
+  [
+      {
+          "matches": ["https://www.baidu.com/*", "http://www.baidu.com/*"],
+          "js": ["./func.js", "./jquery.js", "./main.js"],
+          "css": ["./main.css"],
+          "run_at": "document_idle"
+      }
+  ]
+}
