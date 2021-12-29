@@ -15,19 +15,26 @@ class HomeController extends Controller {
 
   async ajaxGet() {
     const { ctx } = this;
-    ctx.body = { 
-      id: 111 ,
-      method: "get",
+    ctx.body = {
+      id: 111,
+      method: 'get',
       name: ctx.query.name,
+    };
+    const aa = {
+      "appVersion": "4.4.1",
+      "description": "web-离线包测试",
+      "isDisabled": "true",
+      "isMandatory": "true",
+      "rollout": "1",
     };
     // ctx.status = 200;
   }
 
   async ajaxPost() {
     const { ctx } = this;
-    ctx.body = { 
-      id: 222 ,
-      method: "post"
+    ctx.body = {
+      id: 222,
+      method: 'post',
     };
     // ctx.status = 200;
   }
@@ -36,11 +43,11 @@ class HomeController extends Controller {
   async getInfo() {
     const { ctx } = this;
     const result = await ctx.service.getData.getUserInfo();
-    let id = ctx.request.body.id
+    const id = ctx.request.body.id;
     ctx.body = {
       ...result,
-      id
-    }
+      id,
+    };
     this.ctx.logger.info('getUserInfo', id);
     // ctx.status = 200;
   }

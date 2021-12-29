@@ -8,8 +8,6 @@
     .testdiv{
       height: 120px;
     } 
-
-
   </style>
 </head>
 
@@ -19,59 +17,22 @@
     <!-- <img src="./img/home_ti_gma_2.jpg" alt="" srcset=""> -->
   </div>
   <div class="div">
-    <button>通知111</button>
-    
-    <input type="file" class="input" accept="image/jpg, image/jpeg" capture="camera">
-    <button>跳转</button>
-    <iframe
-    id="content"
-    style="height: 600px;"
-    src="https://test-www.wisecartapp.com/test-setcookie"
-  ></iframe>
-  <div class="testdiv">111111111</div>
+    <div id="btn">点击</div>
+    <div id="show_value">111111111</div>
+
 
   </div>
 </body>
-<!-- <script src="./js/algorithm.js"></script> -->
-<script src="https://unpkg.com/js-cookie@3.0.1/dist/js.cookie.min.js"></script>
+
+
 <script>
-  let index = 0;
-  document.getElementsByTagName("button")[0].onclick = function(){
-    window.top.postMessage({ isClose: true, type: 2}, '*');
-  }
 
-
-  document.getElementsByTagName("button")[1].onclick = function(){
-    window.location.href = "./index2.html";
-  }
-
-
-  const handdle = (event) => {
-      console.log("111111-event", event.data);
-      // if (event.origin === targetHost && event.data.type === 2 && event.data.isClose === true) {
-      //   // 代码块
-      //   pop.close();
-      //   callback && callback();
-      // }
-    };
-    window.addEventListener("message", handdle, false);
-
-  
-
-//   function setCookie(key,value,t){
-//     var oDate=new Date();
-//     oDate.setDate(oDate.getDate()+t);
-//     document.cookie=key+"="+value+"; expires="+oDate.toDateString();
-// }
-
-// setCookie("token-ccccc", "aaa-bbb-ccc")
-
-// sessionStorage.setItem("token-ccc", "aaa-bbb-ccc");
-
-const obj = {name: 'aaaa', age: 18};
-const {name : aa, age} = obj;
-console.log("111111-", aa)
-
+window.onload = function(){
+  setTimeout(() => {
+    console.log("is __MOBX__observer__", window.__MOBX__observer__)
+    window.__MOBX__observer__ && window.__MOBX__observer__({name: 1, age: 2});
+  }, 1000)
+}
 
 
 </script>
