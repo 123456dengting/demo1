@@ -14,7 +14,7 @@
   "content_scripts":
   [
       {
-          "matches": ["http://testyapi.akulaku.com/*"],
+          "matches": ["http://testyapi.AxxxB.com/*"],
           "js": ["./func.js", "./jquery.js", "./trans.js", "./main.js"],
           "run_at": "document_end"
       }

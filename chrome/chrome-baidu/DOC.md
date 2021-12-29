@@ -17,9 +17,9 @@
 
 ## 2.1 如何加载本地开发的扩展
   - 浏览器右上角设置 --> 更多工具 --> 扩展程序
-  ![](https://test-bimg.akulaku.net/biz/openapi/9541df430156426ab026cf270f6daf455035.png)
+  ![](https://test-bimg.AxxxB.net/biz/openapi/9541df430156426ab026cf270f6daf455035.png)
   - 打开右上角的开发者模式 --> 加载已解压的扩展程序 --> 选择自己的文件夹
- ![](https://test-bimg.akulaku.net/biz/openapi/0d973d32352e4f0d92ec26adcc523b873017.png)
+ ![](https://test-bimg.AxxxB.net/biz/openapi/0d973d32352e4f0d92ec26adcc523b873017.png)
 
 ## 2.2 mainfest.json
 
@@ -226,7 +226,7 @@ chrome.runtime.onMessage.addListener(
   "content_scripts":
   [
       {
-          "matches": ["http://testyapi.akulaku.com/*"],
+          "matches": ["http://testyapi.AxxxB.com/*"],
           "js": ["./func.js", "./jquery.js", "./trans.js", "./main.js"],
           "run_at": "document_end"
       }
@@ -252,7 +252,7 @@ chrome.runtime.onMessage.addListener(
     function ajaxGetDemo(apiId){
       let reqTs, resTs;
       $.ajax({
-          url: "http://testyapi.akulaku.com/api/interface/get",
+          url: "http://testyapi.AxxxB.com/api/interface/get",
           data: {
             id: apiId
           },

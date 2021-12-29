@@ -8,7 +8,7 @@
     function ajaxGetDemo(apiId){
       let reqTs, resTs;
       $.ajax({
-          url: "http://testyapi.akulaku.com/api/interface/get",
+          url: "http://testyapi.AxxxB.com/api/interface/get",
           data: {
             id: apiId
           },

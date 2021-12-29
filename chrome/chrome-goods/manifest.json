@@ -20,8 +20,8 @@
   },
   "content_scripts":  [
     {
-      "matches": ["http://testyapi.akulaku.com/*"],
-      "js": ["./js/akulaku.js"],
+      "matches": ["http://testyapi.AxxxB.com/*"],
+      "js": ["./js/aaa.js"],
       "run_at": "document_end",
       "comment":"接口生成"
     },

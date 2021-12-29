@@ -58,7 +58,7 @@
 					"status": 1,
 					"nameEn": "test_liulu_2",
 					"nameZh": "test_liulu_2",
-					"imageUrl": "https://dev-bimg.akulaku.net/goods/other/3b617d84645c4d6db3de2209bb8b07983157.png",
+					"imageUrl": "https://dev-bimg.AxxxB.net/goods/other/3b617d84645c4d6db3de2209bb8b07983157.png",
 					"pid": 70072
 				}
 			],
@@ -68,7 +68,7 @@
 			"status": 0,
 			"nameEn": "test_liulu",
 			"nameZh": "test_liulu",
-			"imageUrl": "https://dev-bimg.akulaku.net/goods/other/15e6bf176af64eda8e20d6e64a8ff79c5137.png",
+			"imageUrl": "https://dev-bimg.AxxxB.net/goods/other/15e6bf176af64eda8e20d6e64a8ff79c5137.png",
 			"pid": 0
 		},
 		{
@@ -89,7 +89,7 @@
 							"status": 1,
 							"nameEn": "Book",
 							"nameZh": "图书",
-							"imageUrl": "https://bimg.akulaku.net/goods/category/img_pld.png",
+							"imageUrl": "https://bimg.AxxxB.net/goods/category/img_pld.png",
 							"pid": 20126
 						},
 						{
@@ -102,7 +102,7 @@
 							"status": 1,
 							"nameEn": "Stationery",
 							"nameZh": "文具",
-							"imageUrl": "https://bimg.akulaku.net/goods/category/img_pld.png",
+							"imageUrl": "https://bimg.AxxxB.net/goods/category/img_pld.png",
 							"pid": 20126
 						}
 					],
@@ -112,7 +112,7 @@
 					"status": 0,
 					"nameEn": "Books & stationery",
 					"nameZh": "图书和文具",
-					"imageUrl": "https://bimg.akulaku.net/goods/category/img_pld.png",
+					"imageUrl": "https://bimg.AxxxB.net/goods/category/img_pld.png",
 					"pid": 20125
 				},
 				{
@@ -129,7 +129,7 @@
 							"status": 1,
 							"nameEn": "Pet food",
 							"nameZh": "宠物食品",
-							"imageUrl": "https://bimg.akulaku.net/goods/category/img_pld.png",
+							"imageUrl": "https://bimg.AxxxB.net/goods/category/img_pld.png",
 							"pid": 20127
 						},
 						{
@@ -142,7 +142,7 @@
 							"status": 1,
 							"nameEn": "Pet care tools",
 							"nameZh": "宠物护理工具",
-							"imageUrl": "https://bimg.akulaku.net/goods/category/img_pld.png",
+							"imageUrl": "https://bimg.AxxxB.net/goods/category/img_pld.png",
 							"pid": 20127
 						},
 						{
@@ -155,7 +155,7 @@
 							"status": 1,
 							"nameEn": "Toy for pet",
 							"nameZh": "宠物玩具",
-							"imageUrl": "https://bimg.akulaku.net/goods/category/img_pld.png",
+							"imageUrl": "https://bimg.AxxxB.net/goods/category/img_pld.png",
 							"pid": 20127
 						}
 					],
@@ -165,7 +165,7 @@
 					"status": 0,
 					"nameEn": "Pet care",
 					"nameZh": "宠物护理",
-					"imageUrl": "https://bimg.akulaku.net/goods/category/img_pld.png",
+					"imageUrl": "https://bimg.AxxxB.net/goods/category/img_pld.png",
 					"pid": 20125
 				},
 				{
@@ -178,7 +178,7 @@
 					"status": 1,
 					"nameEn": "Musical instrument",
 					"nameZh": "乐器",
-					"imageUrl": "https://bimg.akulaku.net/goods/category/img_pld.png",
+					"imageUrl": "https://bimg.AxxxB.net/goods/category/img_pld.png",
 					"pid": 20125
 				},
 				{
@@ -191,7 +191,7 @@
 					"status": 1,
 					"nameEn": "Musical instrument accessories",
 					"nameZh": "乐器配件",
-					"imageUrl": "https://bimg.akulaku.net/goods/category/img_pld.png",
+					"imageUrl": "https://bimg.AxxxB.net/goods/category/img_pld.png",
 					"pid": 20125
 				}
 			],
@@ -201,7 +201,7 @@
 			"status": 0,
 			"nameEn": "Hobby",
 			"nameZh": "爱好",
-			"imageUrl": "https://bimg.akulaku.net/goods/category/img_pld.png",
+			"imageUrl": "https://bimg.AxxxB.net/goods/category/img_pld.png",
 			"pid": 0
 		}
 	]
