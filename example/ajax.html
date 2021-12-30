@@ -63,7 +63,6 @@ document.getElementById("ajaxGet").addEventListener("click", ajaxGetDemo, false)
 
 document.getElementById("ajaxPost").addEventListener("click", ajaxPostDemo, false)
 
-document.getElementById("ajaxGetPP").addEventListener("click", ajaxGetPP, false)
 
 
 let dataJson = {
@@ -72,20 +71,6 @@ let dataJson = {
                 list: [1,2,3]
             };
 
-function ajaxGetPP(){
-    let startTime = new Date().getTime()    
-    $.ajax({
-        url: "http://finance-pos-loan-test.oss-cn-hongkong-internal.aliyuncs.com/20211009/290027918112108545.pdf?Expires=1633781256&OSSAccessKeyId=LTAI4Fvc6Ve92c2NRWPox2Lt&Signature=cbDOt9wB%2BWwmdKckSDga%2FX1x39g%3D",
-        method: "get",
-        success: (res) => {
-            let endTime = new Date().getTime()
-            console.log("success", res, endTime - startTime)
-        },
-        error: (err) => {
-            console.log("error", err)
-        }
-    })
-}
 
 function ajaxGetDemo(){
     let startTime = new Date().getTime()    
