@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="smock"></div>
+</body>
+
+<script>
+const str = "帮我订：23.85元新庐山，47.7元黄精品庐山，53元软大前门，57.24元金圣庐山，61.5元金圣硬红十二生肖，66.78元软金圣，71元白七匹狼，88元金圣滕王阁，104.94元硬金圣，121.9元金圣赣，121.9元黄山记忆，122.96元利群，132.5元红七匹狼，185.5元灰七匹狼，190.8元利群软红长嘴，219.42元吉品金圣，318元利群软长嘴，381.6元硬中华。谢谢！"
+arr = str.split("，");
+const div = document.getElementById("smock");
+let items = ""
+for (let index = 0; index < arr.length; index++) {
+    items += `<div>${arr[index]}</div>`  ;   
+}
+div.innerHTML = items
+</script>
+
+
+</html>
