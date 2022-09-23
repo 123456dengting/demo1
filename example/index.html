@@ -5,37 +5,86 @@
   <meta charset="utf-8" />
   <title></title>
   <style>
-    .testdiv{
+    .testdiv {
       height: 120px;
-    } 
+    }
   </style>
 </head>
 
 
-<body>
-  <div>
-    <!-- <img src="./img/home_ti_gma_2.jpg" alt="" srcset=""> -->
-  </div>
-  <div class="div">
-    <div id="btn">点击</div>
-    <div id="show_value">111111111</div>
-
-
-  </div>
-</body>
-
-
+<div id="app">
+  <input type="text" id="input">
+  <div> TODO: <span id="text"></span> </div>
+  <div id="btn">Add To Todo List</div>
+  <ul id="list"></ul>
+</div>
 <script>
+  const input = document.getElementById('input') 
+  const text = document.getElementById('text') 
+  const list = document.getElementById('list') 
+  const btn = document.getElementById('btn') 
+    let render
+  const inputObj = new Proxy({}, {
+    get(target, key, receiver) {
+      return Reflect.get(target, key, receiver)
+    },
+    set(target, key, value, receiver) {
+      if (key === 'text') {
+        input.value = value 
+        text.innerHTML = value
+      }
+      return Reflect.set(target, key, value, receiver)
+    }
+  }) 
 
-window.onload = function(){
-  setTimeout(() => {
-    console.log("is __MOBX__observer__", window.__MOBX__observer__)
-    window.__MOBX__observer__ && window.__MOBX__observer__({name: 1, age: 2});
-  }, 1001)
-}
-
-
+  class Render {
+    constructor(arr) {
+      this.arr = arr
+    }
+    init() {
+      const fragment = document.createDocumentFragment()
+       for (let i = 0; i < this.arr.length; i++) {
+        const li = document.createElement('li') 
+        li.textContent = this.arr[i] 
+        fragment.appendChild(li)
+      }
+      list.appendChild(fragment)
+    }
+    addList(val) {
+      const li = document.createElement('li') 
+      li.textContent = val
+      list.appendChild(li)
+    }
+  }
+  const todoList = new Proxy([], {
+    get(target, key, receiver) {
+      return Reflect.get(target, key,
+        receiver)
+    },
+    set(target, key, value, receiver) {
+      if (key !== 'length') {
+        render.addList(value)
+      }
+      return
+      Reflect.set(target, key, value, receiver)
+    }
+  }) 
+  window.onload = () => {
+  render = new Render([]) 
+  render.init()
+  }
+  input.addEventListener('keyup', e => {
+    inputObj.text = e.target.value
+  }) 
+  btn.addEventListener('click', () => {
+    todoList.push(inputObj.text) 
+    inputObj.text = ''
+  })
 </script>
+
+<script src="./js/高频面试题.js"></script>
+
+
 
 
 </html>
