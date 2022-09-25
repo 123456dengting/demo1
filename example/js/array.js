@@ -3,7 +3,7 @@
 
 //数组去重简便方法 1
 function delRepeat(arr){
-    var arr2 = arr.filter(  (x, index,self) => self.indexOf(x) === index)  
+    var arr2 = arr.filter((x, index,self) => self.indexOf(x) === index)  
     return arr2;
 }
 
