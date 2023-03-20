@@ -5,11 +5,16 @@
   "author": "dengting <dengting@globalegrow.com>",
   "private": true,
   "scripts": {
-    "dev": "webpack-dev-server --inline --progress --config build/webpack.dev.conf.js",
-    "start": "npm run dev",
-    "build": "node build/build.js"
+    // "dev": "webpack-dev-server --inline --progress --config build/webpack.dev.conf.js",
+    // "start": "npm run dev",
+    // "build": "node build/build.js",
+    "server": "babel-node src/server.js",
+    "serve": "vue-cli-service serve",
+    "build": "vue-cli-service build",
+    "build:server": "cross-env WEBPACK_TARGET=node vue-cli-service build --mode server"
   },
   "dependencies": {
+    "element-ui": "^2.15.12",
     "swiper": "^5.4.1",
     "vue": "^2.5.2",
     "vue-awesome-swiper": "4.1.1",
@@ -32,6 +37,8 @@
     "file-loader": "^1.1.4",
     "friendly-errors-webpack-plugin": "^1.6.1",
     "html-webpack-plugin": "^2.30.1",
+    "less": "^3.0.4",
+    "less-loader": "^5.0.0",
     "node-notifier": "^5.1.2",
     "optimize-css-assets-webpack-plugin": "^3.2.0",
     "ora": "^1.2.0",

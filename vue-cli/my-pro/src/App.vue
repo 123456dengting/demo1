@@ -1,13 +1,20 @@
 <template>
   <div id="app">
     <!-- <img src="./assets/logo.png"> -->
-    <router-view/>
+    <!-- <router-view/> -->
+    <p>hello world</p>
+    <button @click="sayHello">say hello</button>
   </div>
 </template>
 
 <script>
 export default {
-  name: 'App'
+  name: 'App',
+  methods: {
+    sayHello(){
+      alert(11111)
+    }
+  }
 }
 </script>
 

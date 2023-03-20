@@ -1,21 +1,43 @@
 
 var express = require('express');
 var fs = require("fs");
-
+const path = require('path');
 
 const app = express();
 const PORT = 3000;
 
-//最简单的ssr, 纯静态页面
+//加载引入文件404处理
+app.use(express.static(path.join(__dirname,'/')))
+
+
 app.get('/', (req, res) => {
-  fs.readFile('ssr1/index.html', function (err, data) {
+  fs.readFile('index.html', function (err, data) {
     if (err) {
         return console.error(err);
     }
     res.send(data.toString());
  });
-  
 });
+
+
+app.get('/b', (req, res) => {
+  fs.readFile('bbb.html', function (err, data) {
+    if (err) {
+        return console.error(err);
+    }
+    res.send(data.toString());
+ });
+});
+
+app.get('*', (req, res) => {
+  fs.readFile('index.html', function (err, data) {
+    if (err) {
+        return console.error(err);
+    }
+    res.send(data.toString());
+ });
+});
+
 
 app.listen(PORT, err => {
   if (err) {

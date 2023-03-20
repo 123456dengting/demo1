@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body,
+html {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+}
+canvas {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: #FFF;
+}
+
+    </style>
+</head>
+<body>
+    <div style="display: none">三维球体轮廓线动画</div>
+</body>
+<script>
+    var cvs = document.createElement('canvas'),
+    context = cvs.getContext("2d");
+
+document.body.appendChild(cvs);
+
+var centerPt = {
+        x: 0,
+        y: 0
+    },
+    PI = Math.PI,
+    numRings = 10,
+    p, r,
+    rings = [];
+
+resizeHandler();
+window.onresize = resizeHandler;
+
+function createPoints() {
+    r = numRings;
+    while (r--) {
+        rings.push({
+            ang: (1 - Math.random() * 2) * PI,
+            radius: 100,
+            spin: Math.random() * PI,
+            speed_spin: (1 - Math.random() * 2) * 0.05,
+            speed_rot: (1 - Math.random() * 2) * 0.05
+        });
+    }
+}
+
+function drawPoints() {
+    console.log("drawPoints");
+
+    var _centerPt = centerPt,
+        _context = context,
+        currRing,
+        dX = 0,
+        dY = 0;
+
+    _context.clearRect(0, 0, cvs.width, cvs.height);
+
+    r = numRings;
+    while (r--) {
+        currRing = rings[r];
+        currRing.ang += currRing.speed_rot;
+        currRing.spin += currRing.speed_spin;
+        drawElipse(_context, currRing.radius, Math.sin(currRing.spin), currRing.ang);
+    }
+    //draw rings
+
+    window.requestAnimationFrame(drawPoints);
+}
+
+function drawElipse(_context, radius, spin, ang) {
+    _context.save();
+    _context.translate(centerPt.x, centerPt.y);
+    _context.rotate(ang);
+    _context.scale(spin, 1);
+    _context.beginPath();
+    _context.arc(0, 0, radius, 0, 2 * Math.PI, false);
+    _context.restore();
+
+    _context.lineWidth = 1;
+    _context.strokeStyle = '#333333';
+    _context.stroke();
+
+    _context.closePath();
+}
+
+function resizeHandler() {
+    var box = cvs.getBoundingClientRect();
+    var w = box.width;
+    var h = box.height;
+    cvs.width = w;
+    cvs.height = h;
+    centerPt.x = Math.round(w / 2);
+    centerPt.y = Math.round(h / 2);
+}
+
+createPoints();
+drawPoints();
+
+</script>
+</html>

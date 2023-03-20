@@ -1,91 +1,120 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 
 <head>
-  <meta charset="utf-8" />
-  <title></title>
-  <style>
-    .testdiv {
-      height: 120px;
-    }
-  </style>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .box {
+            width: 400px;
+            height: 400px;
+            margin: 100px 0 0 100px;
+        }
+
+        .content {
+            width: 400px;
+            height: 400px;
+            position: relative;
+            border: 1px solid #ccc;
+        }
+
+        .content>img {
+            width: 400px;
+            height: 400px;
+        }
+
+        .mask {
+            width: 200px;
+            height: 200px;
+            background-color: yellow;
+            opacity: 0.5;
+            position: absolute;
+            top: 0;
+            left: 0;
+            border: 1px solid #ccc;
+            display: none;
+            /* border-radius: 50%; */
+        }
+
+        .big {
+            width: 400px;
+            height: 400px;
+            position: absolute;
+            top: 0;
+            left: 410px;
+            border: 1px solid #ccc;
+            overflow: hidden;
+            display: none;
+            /* border-radius: 50%; */
+        }
+
+        .big>img {
+            width: 800px;
+            height: 800px;
+            position: absolute;
+            top: 0;
+            left: 0;
+        }
+    </style>
 </head>
 
+<body>
+    <div class="box">
+        <div class="content">
+            <img src="./img/home_ti_gma_2.jpg" alt="">
+            <div class="mask"></div>
+            <div class="big">
+                <img src="./img/home_ti_gma_2.jpg" alt="">
+            </div>
+        </div>
+    </div>
+    <script>
+        var content = document.querySelector('.content')
+    var mask = document.querySelector('.mask')
+    var big = document.querySelector('.big')
+    content.addEventListener('mouseenter', function () {
+        mask.style.display = 'block'
+        big.style.display = 'block'
+    })
+    content.addEventListener('mouseleave', function () {
+        console.log(1111);
+        mask.style.display = 'none'
+        big.style.display = 'none'
+    })
+    content.addEventListener('mousemove', function (e) {
+        const x = e.pageX - content.getBoundingClientRect().left;
+        const y = e.pageY - content.getBoundingClientRect().top;
+        var maskX = x - mask.offsetWidth / 2
+        var maskY = y - mask.offsetHeight / 2
 
-<div id="app">
-  <input type="text" id="input">
-  <div> TODO: <span id="text"></span> </div>
-  <div id="btn">Add To Todo List</div>
-  <ul id="list"></ul>
-</div>
-<script>
-  const input = document.getElementById('input') 
-  const text = document.getElementById('text') 
-  const list = document.getElementById('list') 
-  const btn = document.getElementById('btn') 
-    let render
-  const inputObj = new Proxy({}, {
-    get(target, key, receiver) {
-      return Reflect.get(target, key, receiver)
-    },
-    set(target, key, value, receiver) {
-      if (key === 'text') {
-        input.value = value 
-        text.innerHTML = value
-      }
-      return Reflect.set(target, key, value, receiver)
-    }
-  }) 
+        console.log('mask', mask.offsetWidth, 'content', content.offsetWidth);
+        var XMAX = content.offsetWidth - mask.offsetWidth
+        var YMAX = content.offsetHeight - mask.offsetHeight
 
-  class Render {
-    constructor(arr) {
-      this.arr = arr
-    }
-    init() {
-      const fragment = document.createDocumentFragment()
-       for (let i = 0; i < this.arr.length; i++) {
-        const li = document.createElement('li') 
-        li.textContent = this.arr[i] 
-        fragment.appendChild(li)
-      }
-      list.appendChild(fragment)
-    }
-    addList(val) {
-      const li = document.createElement('li') 
-      li.textContent = val
-      list.appendChild(li)
-    }
-  }
-  const todoList = new Proxy([], {
-    get(target, key, receiver) {
-      return Reflect.get(target, key,
-        receiver)
-    },
-    set(target, key, value, receiver) {
-      if (key !== 'length') {
-        render.addList(value)
-      }
-      return
-      Reflect.set(target, key, value, receiver)
-    }
-  }) 
-  window.onload = () => {
-  render = new Render([]) 
-  render.init()
-  }
-  input.addEventListener('keyup', e => {
-    inputObj.text = e.target.value
-  }) 
-  btn.addEventListener('click', () => {
-    todoList.push(inputObj.text) 
-    inputObj.text = ''
-  })
-</script>
-
-<!-- <script src="./js/高频面试题.js"></script> -->\
-<script src="./js/event_loop.js"></script>
-
-
-
+        if (maskX <= 0) {
+            maskX = 0
+        } else if (maskX >= XMAX) {
+            maskX = XMAX
+        }
+        if (maskY <= 0) {
+            maskY = 0
+        } else if (maskY >= YMAX) {
+            maskY = YMAX
+        }
+        console.log('mask-x', maskX, maskY, XMAX);
+        mask.style.left = maskX + 'px'
+        mask.style.top = maskY + 'px'
+        var img = document.querySelector('.big>img')
+        imgXMax = img.offsetWidth - big.offsetWidth
+        imgYMax = img.offsetHeight - big.offsetHeight
+        img.style.left = -maskX * imgXMax / XMAX + 'px'
+        img.style.top = -maskY * imgYMax / YMAX + 'px'
+    })
+    </script>
+    <!-- <script src="./放大镜.js"></script> -->
+</body>
 
 </html>
+
