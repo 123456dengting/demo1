@@ -95,8 +95,8 @@ function ajaxGetDemo(){
 function ajaxPostDemo(){
     let startTime = new Date().getTime()    
     $.ajax({
-        url: "http://127.0.0.1:7001/ajaxPost",
-        method: "post",
+        url: "http://localhost:9000/lowcode/get/user/list",
+        method: "get",
         contentType: "application/json",
         data: JSON.stringify(dataJson),
         success: (res) => {
@@ -111,6 +111,21 @@ function ajaxPostDemo(){
 
 
 }
+
+
+
+
+
+ 
+// 将字符串转换为字节数组
+var debug = "好的";
+    var blob = new Blob([debug],{type : 'text/plain'});
+    console.log(blob)
+ 
+console.log('11111=>', blob);
+
+
+
 
 </script>
 </html>

@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body, html {
+            margin: 0;
+            padding: 0;
+        }
+        body {
+            height: 100vh;
+            /* box-sizing: border-box; */
+            /* padding-top: 1px; */
+            /* border-top: 1px solid transparent;         */
+            /* overflow: hidden; */
+        }
+        .div1{
+            margin-top: 100px;
+        }
+        /* .div2{
+            margin-top: 100px;
+        } */
+        .test{
+            height: 300px;
+            border: 1px solid red;
+        }
+        .div3{
+            height: 700px;
+            overflow-y: scroll;
+        }
+        .ddd{
+            height: 200px;
+            border: 1px solid green;
+        }
+        .cccc{
+            overflow: hidden;
+            overscroll-behavior:contain;
+        }
+    </style>    
+</head>
+<body>
+    <div class="div1 test">11</div>
+    <div class="div2 test">22</div>
+    <div class="cccc">
+        <div class="div3 test">
+            <div class="ddd">aaa</div>
+            <div class="ddd">bbb</div>
+            <div class="ddd">ccc</div>
+            <div class="ddd">ddd</div>
+            <div class="ddd">eee</div>
+            <div class="ddd">fff</div>
+    
+        </div>
+    </div>
+
+    <div class="div4 test">44</div>
+    <div class="div5 test">55</div>
+</body>
+</html>

@@ -7,8 +7,8 @@
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>Document</title>
 </head>
-<script src="./js/xlsx.core.min.js"></script>
-<script src="./jquery.min.js"></script>
+
+
 
 <body>
   <div>111
@@ -17,106 +17,198 @@
   <input type="file" id="excel-file"  multiple="multiple" value="">
   <button id="down">导出11</button>
 </body>
-
+<!-- <script src="./js/jquery.min.js"></script> -->
+<script src="./js/xlsx.core.min.js"></script>
 <script>
 
-   //文件导入
-   $('#excel-file').change(function(e) {
-    getFiles(e.target.files)
-  });
+  //  //文件导入
+  //  $('#excel-file').change(function(e) {
+  //   getFiles(e.target.files)
+  // });
 
-  function getFiles(files){
-    let len = files.length; 
-    let result = [];
-    let readArr = [];
-    for (let index = 0; index < len; index++) {
-      file = files[index];
-      ////xls(csv), xlsx
-      let accptTypeArr = ['application/vnd.ms-excel', 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet'];
-      if (accptTypeArr.includes(file.type) ) {
-        readArr.push(readXLSXdata1(files[index]))
-      }else{
-        console.log('请选择正确的文件格式导入')
-      }
-    }
+  // function getFiles(files){
+  //   let len = files.length; 
+  //   let result = [];
+  //   let readArr = [];
+  //   for (let index = 0; index < len; index++) {
+  //     file = files[index];
+  //     ////xls(csv), xlsx
+  //     let accptTypeArr = ['application/vnd.ms-excel', 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet'];
+  //     if (accptTypeArr.includes(file.type) ) {
+  //       readArr.push(readXLSXdata1(files[index]))
+  //     }else{
+  //       console.log('请选择正确的文件格式导入')
+  //     }
+  //   }
 
-    let t = Promise.all(readArr).then(res => {
-      console.log('result', res)
-    })
-  }
+  //   let t = Promise.all(readArr).then(res => {
+  //     console.log('result', res)
+  //   })
+  // }
 
-  //解析 xlsx 表格内容
-  function readXLSXdata(file, cb){
-    var fileReader = new FileReader();
-    fileReader.onload = function(ev) {
-        try {
-            var data = ev.target.result,
-                workbook = XLSX.read(data, {
-                    type: 'binary'
-                }), // 以二进制流方式读取得到整份excel表格对象
-                persons = []; // 存储获取到的数据
-        } catch (e) {
-            console.log('文件类型不正确');
-            return;
+  // //解析 xlsx 表格内容
+  // function readXLSXdata(file, cb){
+  //   var fileReader = new FileReader();
+  //   fileReader.onload = function(ev) {
+  //       try {
+  //           var data = ev.target.result,
+  //               workbook = XLSX.read(data, {
+  //                   type: 'binary'
+  //               }), // 以二进制流方式读取得到整份excel表格对象
+  //               persons = []; // 存储获取到的数据
+  //       } catch (e) {
+  //           console.log('文件类型不正确');
+  //           return;
+  //       }
+
+  //       // 表格的表格范围，可用于判断表头是否数量是否正确
+  //       var fromTo = '';
+  //       // 遍历每张表读取
+  //       for (var sheet in workbook.Sheets) {
+  //           if (workbook.Sheets.hasOwnProperty(sheet)) {
+  //               fromTo = workbook.Sheets[sheet]['!ref'];
+  //               persons = persons.concat(XLSX.utils.sheet_to_json(workbook.Sheets[sheet]));
+  //               // break; // 如果只取第一张表，就取消注释这行
+  //           }
+  //       }
+  //       cb(persons)
+  //   };
+
+  //   // 以二进制方式打开文件
+  //   fileReader.readAsBinaryString(file);
+  // }      
+
+
+  // //解析 xlsx 表格内容
+  // function readXLSXdata1(file, cb){
+  //   var fileReader = new FileReader();
+  //   // 以二进制方式打开文件
+
+  //   return new Promise((resolve, reject) => {
+  //     fileReader.onload = function(ev) {
+  //       try {
+  //           var data = ev.target.result,
+  //               workbook = XLSX.read(data, {
+  //                   type: 'binary'
+  //               }), // 以二进制流方式读取得到整份excel表格对象
+  //               persons = []; // 存储获取到的数据
+  //       } catch (e) {
+  //           reject('文件类型不正确')
+  //           console.log('文件类型不正确');
+  //           return;
+  //       }
+
+  //       // 表格的表格范围，可用于判断表头是否数量是否正确
+  //       var fromTo = '';
+  //       // 遍历每张表读取
+  //       for (var sheet in workbook.Sheets) {
+  //           if (workbook.Sheets.hasOwnProperty(sheet)) {
+  //               fromTo = workbook.Sheets[sheet]['!ref'];
+  //               persons = persons.concat(XLSX.utils.sheet_to_json(workbook.Sheets[sheet]));
+  //               // break; // 如果只取第一张表，就取消注释这行
+  //           }
+  //       }
+  //       resolve(persons)
+  //       return persons
+  //     };
+  //     fileReader.readAsBinaryString(file);
+  //   })
+  // }  
+
+
+
+
+  function workbook2blob(workbook) {
+          // 生成excel的配置项
+          var wopts = {
+            // 要生成的文件类型
+            bookType: "xlsx",
+            // // 是否生成Shared String Table，官方解释是，如果开启生成速度会下降，但在低版本IOS设备上有更好的兼容性
+            bookSST: false,
+            type: "binary"
+          };
+          var wbout = XLSX.write(workbook, wopts);
+          // 将字符串转ArrayBuffer
+          function s2ab(s) {
+            var buf = new ArrayBuffer(s.length);
+            var view = new Uint8Array(buf);
+            for (var i = 0; i != s.length; ++i) view[i] = s.charCodeAt(i) & 0xff;
+            return buf;
+          }
+          var blob = new Blob([s2ab(wbout)], {
+            type: "application/octet-stream"
+          });
+          return blob;
         }
 
-        // 表格的表格范围，可用于判断表头是否数量是否正确
-        var fromTo = '';
-        // 遍历每张表读取
-        for (var sheet in workbook.Sheets) {
-            if (workbook.Sheets.hasOwnProperty(sheet)) {
-                fromTo = workbook.Sheets[sheet]['!ref'];
-                persons = persons.concat(XLSX.utils.sheet_to_json(workbook.Sheets[sheet]));
-                // break; // 如果只取第一张表，就取消注释这行
-            }
-        }
-        cb(persons)
-    };
-
-    // 以二进制方式打开文件
-    fileReader.readAsBinaryString(file);
-  }      
 
 
-  //解析 xlsx 表格内容
-  function readXLSXdata1(file, cb){
-    var fileReader = new FileReader();
-    // 以二进制方式打开文件
-
-    return new Promise((resolve, reject) => {
-      fileReader.onload = function(ev) {
-        try {
-            var data = ev.target.result,
-                workbook = XLSX.read(data, {
-                    type: 'binary'
-                }), // 以二进制流方式读取得到整份excel表格对象
-                persons = []; // 存储获取到的数据
-        } catch (e) {
-            reject('文件类型不正确')
-            console.log('文件类型不正确');
-            return;
+// 将blob对象创建bloburl，然后用a标签实现弹出下载框
+function openDownloadDialog(blob, fileName) {
+          if (typeof blob == "object" && blob instanceof Blob) {
+            blob = URL.createObjectURL(blob); // 创建blob地址
+          }
+          var aLink = document.createElement("a");
+          aLink.href = blob;
+          // HTML5新增的属性，指定保存文件名，可以不要后缀，注意，有时候 file:///模式下不会生效
+          aLink.download = fileName || "";
+          var event;
+          if (window.MouseEvent) event = new MouseEvent("click");
+          //   移动端
+          else {
+            event = document.createEvent("MouseEvents");
+            event.initMouseEvent( "click", true, false, window, 0, 0, 0, 0, 0, false,                 
+       false, false, false, 0, null );
+          }
+          aLink.dispatchEvent(event);
         }
 
-        // 表格的表格范围，可用于判断表头是否数量是否正确
-        var fromTo = '';
-        // 遍历每张表读取
-        for (var sheet in workbook.Sheets) {
-            if (workbook.Sheets.hasOwnProperty(sheet)) {
-                fromTo = workbook.Sheets[sheet]['!ref'];
-                persons = persons.concat(XLSX.utils.sheet_to_json(workbook.Sheets[sheet]));
-                // break; // 如果只取第一张表，就取消注释这行
-            }
-        }
-        resolve(persons)
-        return persons
-      };
-      fileReader.readAsBinaryString(file);
-    })
-  }  
 
 
-  
+  const handleExport = () => {
+  const data1 = [{
+          id: '1',
+          name: '张三丰',
+          phone: '16834567890',
+           },
+           {
+          id: '2',
+          name: '李四',
+          phone: '16834567891',
+           }]
+  const sheetData1 = data1.map(item => ({
+    'ID': item.id,
+    '收件人': item.name,
+    '手机号': item.phone,
+  }));
+  console.log("111111-sheetData1", XLSX);
+  // 支持多 sheet
+  // const sheetData2 = data2.map(item => ({
+  //   // 在这里设置表头和对应项的值
+  // }));
+  // const sheetData3 = data3.map(item => ({
+  //   // 在这里设置表头和对应项的值
+  // }));
+  // ...
+ 
+  const sheet1 = XLSX.utils.json_to_sheet(sheetData1);
+  // 支持多 sheet
+  // const sheet2 = XLSX.utils.json_to_sheet(sheetData2);
+  // const sheet3 = XLSX.utils.json_to_sheet(sheetData3);
+  const wb = XLSX.utils.book_new();
+  XLSX.utils.book_append_sheet(wb, sheet1, '收件人列表');
+  // 支持多 sheet
+  // XLSX.utils.book_append_sheet(wb, sheet2, '表格 sheet2');
+  // XLSX.utils.book_append_sheet(wb, sheet2, '表格 sheet2');
+  const workbookBlob = workbook2blob(wb);
+  // 导出最后的总表
+  openDownloadDialog(workbookBlob, '收件人列表.xlsx');
+}
 
+
+
+
+document.getElementById("down").onclick = handleExport;
 
 </script>
   

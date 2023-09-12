@@ -23,16 +23,19 @@
 
 <script>
   document.getElementById('imgfile').onchange = function(){
+    console.log("this.files", this.files);
       reads(this.files[0],function(reader){
         //获取图片的base64格式，显示   
           document.getElementById("img").src= reader.result;
           var blob = dataURItoBlob(reader.result); //转换为blob格式
+          console.log("111111-blob", blob);
           blobToDataURI(blob,function(result){    //blob格式再转换为base64格式
               document.getElementById('img2').src = result;
           })
       });
   }
   function reads(_file,callback){
+
       var reader = new FileReader();
       reader.readAsDataURL(_file);
       reader.onload = function(){

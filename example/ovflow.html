@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    .div1{
+        height: 800px;
+        background-color: hotpink;
+    }
+    .div2{
+        height: 400px;
+        width: 400px;
+        border: 1px solid green;
+        overflow-y: auto;
+        position: relative;
+    }
+
+    .div2:hover .div3{
+        display: block;
+    }
+    .div3{
+        height: 600px;
+        width: 600px;
+        border: 1px solid goldenrod;
+        background-color: rgba(0,0,0,0.2);
+        display: none;
+        position: fixed;
+        top: 0;
+        left: 0;
+    }
+</style>
+<body>
+    <div class="div1"></div>
+    <div class="div2">
+        <h1>11111111</h1>
+        <h1>2222222222</h1>
+        <h1>3333333333333</h1>
+        <h1>444444444444</h1>
+        <h1>555555555555</h1>
+        <h1>6666666666</h1>
+        <h1>777777777777</h1>
+        <h1>8888888888888</h1>
+        <h1>999999999999</h1>
+        <h1>aaaaaaaaaaa</h1>
+        <h1>vvvvvvvvvvv</h1>
+        <div class="div3">
+            <h1>777777777777777777777777777777777777777777777777777777777777</h1>
+            <h1>88888888888888888888888888888888888888888888888888888888888888888</h1>
+            <h1>999999999999</h1>
+            <h1>aaaaaaaaaaa</h1>
+            <h1>vvvvvvvvvvv</h1>
+            <h1>11111111</h1>
+            <h1>2222222222</h1>
+            <h1>3333333333333</h1>
+            <h1>444444444444</h1>
+            <h1>555555555555</h1>
+            <h1>6666666666</h1>
+
+        </div>
+    </div>
+</body>
+</html>

@@ -16,10 +16,31 @@ sss = [...new Set(sss)]
 console.log('sss', sss)
 
 
+let arr1111 = [
+    { id: 0, name: "张三" },
+    { id: 1, name: "李四" },
+    { id: 2, name: "王五" },
+    { id: 3, name: "赵六" },
+    { id: 1, name: "孙七" },
+    { id: 2, name: "周八" },
+    { id: 2, name: "吴九" },
+    { id: 3, name: "郑十" },
+  ];
 
+// 数据对象根据key去重
+const removeDuplicateObj = (arr, key) => {
+    let obj = {};
+    arr = arr.reduce((newArr, next) => {
+    if(!obj[next[key]]){
+        obj[next[key]] = true;
+        newArr.push(next)
+    }
+    return newArr;
+    }, []);
+    return arr;
+};
 
-
-
+console.log("111111removeDuplicateObj", removeDuplicateObj(arr1111, "id"));
 
 
 //entries()、keys()、values() 

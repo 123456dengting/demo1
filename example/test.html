@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+</head>
+
+<body>
+    <!-- <button id="btn">点击设置版本号</button> -->
+</body>
+<!-- <script src="./js/arrayToTree.js"></script> -->
+<!-- <script src="./js/jquery.min.js"></script> -->
+<script>
+
+const NUM = 10000000;
+let resArr = Array.from({length: NUM}).map((t, index) => {
+    return index + 1
+});
+
+
+
+function forLoop (arr){
+    let time1 = new Date().getTime();
+    for (let index = 0; index < arr.length; index++) {
+        const element = arr[index];
+    }
+    let time2 = new Date().getTime();
+    return time2 - time1
+}
+
+console.log("111111-forLoop", forLoop(resArr))
+
+
+function forForEach (arr){
+    let time1 = new Date().getTime();
+    const res = arr.forEach(t => {
+        t
+    });
+    let time2 = new Date().getTime();
+    return time2 - time1
+}
+
+console.log("111111-forForEach", forForEach(resArr))
+
+function forMap (arr){
+    let time1 = new Date().getTime();
+    const res = arr.map(t => t);
+    let time2 = new Date().getTime();
+    return time2 - time1
+}
+
+console.log("111111-forMap", forMap(resArr))
+
+
+function forFilter (arr){
+    let time1 = new Date().getTime();
+    const res = arr.filter(t => t >= NUM / 2);
+    let time2 = new Date().getTime();
+    console.log("111111-forFilter-res", res)
+    return time2 - time1
+}
+
+console.log("111111-forFilter", forFilter(resArr))
+
+
+function forFind (arr){
+    let time1 = new Date().getTime();
+    const res = arr.find(t => t >= NUM / 2);
+    let time2 = new Date().getTime();
+    console.log("111111-forFind-res", res)
+    return time2 - time1
+}
+
+
+console.log("111111-forFind", forFind(resArr))
+
+function forIndexOf (arr){
+    let time1 = new Date().getTime();
+    const res = arr.indexOf(NUM);
+    let time2 = new Date().getTime();
+    console.log("111111-forIndexOf-res", res)
+    return time2 - time1
+}
+
+console.log("111111-forIndexOf", forIndexOf(resArr))
+
+
+
+
+function forIncludes (arr){
+    let time1 = new Date().getTime();
+    const res = arr.includes(NUM);
+    let time2 = new Date().getTime();
+    console.log("111111-forIncludes-res", res)
+    return time2 - time1
+}
+
+console.log("111111-forIncludes", forIncludes(resArr))
+
+
+
+
+</script>
+
+</html>
+
