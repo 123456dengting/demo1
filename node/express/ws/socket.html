@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div>
+        <button onClick="onConnect()">开始连接</button>
+        <button onClick="onClose()">断开连接</button>
+    </div>
+    <textarea name="" id="wsMsg" cols="30" rows="10" ></textarea>
+    
+    <button onClick="onSend()">发送</button>
+</body>
+<script>
+
+setInterval(() => {
+    document.getElementById('wsMsg').blur();
+}, 3000)
+
+let socket;
+const onConnect = () => {
+    socket = new WebSocket("ws://localhost:9000");
+    console.log("111111-开始连接")
+    socket.onmessage = function(event){
+        console.log("111111-接受消息", event.data)
+    }
+    socket.onopen = function(event) {
+        console.log("111111-连接成功")
+    }
+
+    socket.onclose = function(event) {
+        console.log("111111-连接关闭")
+        setTimeout(() => {
+            onConnect();
+        }, 2000);
+        
+    }
+
+    socket.onerror = function(event) {
+        console.log("111111-连接错误")
+    }
+
+}
+
+const onSendMsg = (msg) => {
+    if(socket){
+        const str = msg.trim() ? msg.trim() : "空消息"
+        console.log("111111-发送socket", socket)
+        console.log("111111-发送消息",str)
+        socket.send(str)
+    }
+    
+}
+
+const onClose = () => {
+    console.log("111111-关闭socket", socket)
+    if(socket){
+        socket.close()
+    }
+}
+
+function onSend() {
+    const msg = document.getElementById('wsMsg').value;
+    onSendMsg(msg)
+}
+
+
+
+</script>
+</html>

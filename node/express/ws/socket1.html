@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div>
+        <button onClick="onConnect()">开始连接</button>
+        <button onClick="onClose()">断开连接</button>
+    </div>
+    <textarea name="" id="wsMsg" cols="30" rows="10" ></textarea>
+    
+    <button onClick="onSend()">发送</button>
+</body>
+<script>
+let socket;
+
+
+
+const onConnect = () => {
+    socket = new WebSocket("ws://127.0.0.1:7788/test")
+    socket.onmessage = function(event){
+        console.log("111111-接受消息", event.data)
+    }
+    socket.onopen = function(event) {
+        console.log("111111-socket", socket)
+        console.log("111111-event", event)
+        console.log("111111-连接成功")
+        socket.send("fbBjq:111888");
+    }
+
+    socket.onclose = function(event) {
+        console.log("111111-连接关闭")
+    }
+
+}
+
+const onSendMsg = (msg) => {
+    if(socket){
+        let str = msg.trim() || "Start"
+        console.log("111111-发送socket", socket)
+        console.log("111111-发送消息",str)
+        socket.send(str)
+    }
+    
+}
+
+const onClose = () => {
+    console.log("111111-关闭socket", socket)
+    if(socket){
+        socket.close()
+    }
+}
+
+function onSend() {
+    const msg = document.getElementById('wsMsg').value;
+    onSendMsg(msg)
+
+}
+
+
+
+
+</script>
+</html>
