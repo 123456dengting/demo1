@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #test{
+            width: 200px;
+            height: 44px;
+            border: 1px solid red;
+            font-size: 24px;
+
+            word-wrap:break-word; 
+            word-break:break-all;
+
+
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+
+            /* overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical; */
+        }
+    </style>
+</head>
+<body>
+
+    <div id="test">
+       冻干粉申达股老客
+    </div>
+    
+</body>
+<script>
+
+const test = document.getElementById('test'); // 假设有一个元素的ID是myElement
+
+const getPadding = (el) => {
+  const style = window.getComputedStyle(el, null);
+  const paddingLeft = Number.parseInt(style.paddingLeft, 10) || 0
+  const paddingRight = Number.parseInt(style.paddingRight, 10) || 0
+  const paddingTop = Number.parseInt(style.paddingTop, 10) || 0
+  const paddingBottom = Number.parseInt(style.paddingBottom, 10) || 0
+  return {
+    pLeft: paddingLeft,
+    pRight: paddingRight,
+    pTop: paddingTop,
+    pBottom: paddingBottom,
+  }
+}
+
+// 判断文本是否存在省略号
+const checkEllipsis = (box) => {
+    let textContent = ""
+  const range = document.createRange();
+  range.setStart(box, 0)
+  range.setEnd(box, box.childNodes.length)
+  let rangeWidth = range.getBoundingClientRect().width;
+  console.log("111111-rangeWidth", rangeWidth);
+  let rangeHeight = range.getBoundingClientRect().height;
+
+  const contentWidth = rangeWidth - Math.floor(rangeWidth)
+  const { pLeft, pRight, pTop, pBottom } = getPadding(box)
+  const horizontalPadding = pLeft + pRight;
+  const verticalPadding = pTop + pBottom;
+  if (rangeWidth + horizontalPadding > box.clientWidth || rangeHeight + verticalPadding > box.clientHeight) {
+    textContent = '存在省略号'
+  } else {
+    textContent = '容器宽度足够，没有省略号了'
+  }
+  console.log("111111-textContent", textContent);
+}
+ 
+// 使用示例
+
+const hasTwoLines = checkEllipsis(test);
+console.log("hasTwoLines", hasTwoLines);
+
+</script>
+</html>

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>渲染SVG字符串</title>
+  </head>
+  <body>
+    <div id="render" style="width: 100px; height: 100px; background: red">123</div>
+    <br />
+    <div id="svg-container">
+      <!-- 这里是将SVG内容渲染到<img>标签中 -->
+      <img id="svg-image" alt="SVG图像" />
+    </div>
+
+    <script>
+        // safix浏览器可能出现文字和样式问题
+      const perfix =
+        "data:image/svg+xml;charset=utf-8,<svg xmlns='http://www.w3.org/2000/svg' width='100' height='100'><foreignObject x='0' y='0' width='100%' height='100%'>";
+      const surfix = "</foreignObject></svg>";
+
+      const render = document.getElementById("render");
+
+      render.setAttribute("xmlns", "http://www.w3.org/1999/xhtml");
+
+      const string = new XMLSerializer()
+        .serializeToString(render)
+        .replace(/#/g, "%23")
+        .replace(/\n/g, "%0A");
+
+      const image = document.getElementById("svg-image");
+
+      const src = perfix + string + surfix;
+
+      console.log(src);
+
+      image.src = src;
+    </script>
+  </body>
+</html>

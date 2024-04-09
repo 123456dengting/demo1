@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>electron</title>
+</head>
+<body>
+    this is a electron demo
+    <button id="aaa">aaa</button>
+    <button id="bbb">bbb</button>
+</body>
+<script src="node_modules/loudness/index.js"></script>
+<script>
+    const aaa = document.getElementById("aaa");
+    const bbb = document.getElementById("bbb");
+
+    aaa.addEventListener("click", () => {
+        loudness.setVolume(20)
+    });
+
+    bbb.addEventListener("click", () => {
+        const t = loudness.getVolume();
+        console.log("111111", t)
+    });
+</script>
+<!-- <script src="./utils/volume.js"></script>
+<script>
+
+
+
+</script> -->
+
+</html>
