@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+
+<script src="./dist/my-lib-umd.[hash].js"></script>
+<script>
+
+
+    // app
+    window.gtjt_jsbridge = function(key, params){
+        const action = key.split("__")[0];
+        if(action === 'getUserInfo'){
+            setTimeout(() => {
+                const data = {
+                naem: "张三",
+                age: 18
+            };
+            window[key] && window[key](data)
+            }, 1000)
+
+        }
+    }
+
+
+
+    console.log("111111-jsBridge", JsBridge);
+
+    JsBridge.getAppInfo({name: 111}, (res) => {
+        console.log("111111-res", res)
+    })
+
+
+
+</script>
+</html>

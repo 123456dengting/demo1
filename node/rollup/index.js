@@ -1,6 +1,3 @@
-import hello from "./src/hello.js"
+import JsBridge from "./src/index.js";
 
-hello();
-
-
-export const world = 'world'
+export default JsBridge;

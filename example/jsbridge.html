@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <button id="btn">按钮</button>
+    
+</body>
+
+<script>
+
+
+// app
+window.gtjt_jsbridge = function(key, params){
+    const action = key.split("__")[0];
+    if(action === 'getUserInfo'){
+        setTimeout(() => {
+            const data = {
+            naem: "张三",
+            age: 18
+        };
+        window[key] && window[key](data)
+        }, 1000)
+
+    }
+}
+
+
+
+// h5
+const bridgeGetUserInfo = function(){
+    // 避免全局的回调方法重名就行
+    const key = "getUserInfo" + '__' + new Date().getTime();
+    window[key] = function(data){
+            console.log("111111-key", key, data);
+            window[key] = undefined;
+            delete window[key];
+    }
+    window.gtjt_jsbridge(key, {name: 'gtjt'})
+}
+
+
+
+document.getElementById("btn").onclick = bridgeGetUserInfo;
+
+
+
+/*
+
+ jsBridge调用场景分类
+
+1.设置类型 
+    设置页面头部标题, 隐藏头部标题, 头部背景色, 右上角按钮文案设置,隐藏右上角按钮,  右上角按钮点击事件回调,  左上角返回按钮文案设置,左上角返回按钮隐藏, 左上角返回按钮回调,等等
+2.获取信息
+    用户信息,通讯录信息,设备信息,手机电量,位置信息,通讯录信息
+3.调用原生的流程,
+   短信验证流程,身份证验证流程,类似流程等等
+4.新开webView,打开第三方连接,预览文件等
+5.原生和js之间相互发送消息传递信息
+
+
+*/
+
+
+
+
+</script>
+</html>

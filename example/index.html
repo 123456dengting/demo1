@@ -8,137 +8,55 @@
     <title>Document</title>
     <style>
 
-
-
-
-        .box {
-            width: 400px;
-            height: 400px;
-            margin: 100px 0 0 100px;
-        }
-
-        .content {
-            width: 400px;
-            height: 400px;
-            position: relative;
-            border: 1px solid #ccc;
-        }
-
-        .content>img {
-            width: 400px;
-            height: 400px;
-        }
-
-        .mask {
+        .label-value{
             width: 200px;
-            height: 200px;
-            background-color: yellow;
-            opacity: 0.5;
-            position: absolute;
-            top: 0;
-            left: 0;
-            border: 1px solid #ccc;
-            display: none;
-            /* border-radius: 50%; */
+            display: flex;
+            border: 1px solid red;
         }
 
-        .big {
-            width: 400px;
-            height: 400px;
-            position: absolute;
-            top: 0;
-            left: 410px;
-            border: 1px solid #ccc;
+        .label-value .label{
+            display: flex;
+            flex-shrink: 0;
+        }
+
+        .label-value .value{
+            flex: 1;
+            /* width: calc(100% - 100px); */
             overflow: hidden;
-            display: none;
-            /* border-radius: 50%; */
+
         }
 
-        .big>img {
-            width: 800px;
-            height: 800px;
-            position: absolute;
-            top: 0;
-            left: 0;
+        .label-value .value .text{
+
         }
+
+
+
+
     </style>
 </head>
 
 <body>
-    <div class="box">
-        <input type="file" id="abc">
-        <!-- <div class="content">
-            <img src="./img/home_ti_gma_2.jpg" alt="">
-            <div class="mask"></div>
-            <div class="big">
-                <img src="./img/home_ti_gma_2.jpg" alt="">
-            </div>
-        </div> -->
+
+
+
+<div class="label-value">
+    <div class="label">注意事项1:</div>
+    <div class="value">
+        77788888835022535535785575775755752527557525252757552527575722572275227252525747477778888883502253553578557577575575252755752525275755252757572257227522725252574747
     </div>
+</div>
 
-    <div class="abc"></div>
-    <div class="abc"></div>
-    <div class="abc"></div>
-    <div class="abc"></div>
-    <div class="abc"></div>
-    <div class="abc"></div>
+<div class="label-value">
+    <div class="label">注意事项2:</div>
+    <div class="value">
+        77788888835022535535785575775
+    </div>
+</div>
 
-    <script>
-
-
-    var abc = document.querySelector('#abc')
-        abc.addEventListener('change', function (event) {
-            console.log("111111-e", event.target.files[0])
-         
-        })
-
-
-
-
-    // var content = document.querySelector('.content')
-    // var mask = document.querySelector('.mask')
-    // var big = document.querySelector('.big')
-    // content.addEventListener('mouseenter', function () {
-    //     mask.style.display = 'block'
-    //     big.style.display = 'block'
-    // })
-    // content.addEventListener('mouseleave', function () {
-    //     console.log(1111);
-    //     mask.style.display = 'none'
-    //     big.style.display = 'none'
-    // })
-    // content.addEventListener('mousemove', function (e) {
-    //     const x = e.pageX - content.getBoundingClientRect().left;
-    //     const y = e.pageY - content.getBoundingClientRect().top;
-    //     var maskX = x - mask.offsetWidth / 2
-    //     var maskY = y - mask.offsetHeight / 2
-
-    //     console.log('mask', mask.offsetWidth, 'content', content.offsetWidth);
-    //     var XMAX = content.offsetWidth - mask.offsetWidth
-    //     var YMAX = content.offsetHeight - mask.offsetHeight
-
-    //     if (maskX <= 0) {
-    //         maskX = 0
-    //     } else if (maskX >= XMAX) {
-    //         maskX = XMAX
-    //     }
-    //     if (maskY <= 0) {
-    //         maskY = 0
-    //     } else if (maskY >= YMAX) {
-    //         maskY = YMAX
-    //     }
-    //     console.log('mask-x', maskX, maskY, XMAX);
-    //     mask.style.left = maskX + 'px'
-    //     mask.style.top = maskY + 'px'
-    //     var img = document.querySelector('.big>img')
-    //     imgXMax = img.offsetWidth - big.offsetWidth
-    //     imgYMax = img.offsetHeight - big.offsetHeight
-    //     img.style.left = -maskX * imgXMax / XMAX + 'px'
-    //     img.style.top = -maskY * imgYMax / YMAX + 'px'
-    // })
-    // </script>
-    <!-- <script src="./放大镜.js"></script> -->
 </body>
+<script>
 
+</script>
 </html>
 
