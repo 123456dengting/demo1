@@ -1,11 +1,14 @@
-import React, { useState } from 'react';
-import { Layout, Button, theme } from 'antd';
-import Slider from "./components/Slider";
+import JsBridge from "@fy/bridge";
+import { Layout, theme } from 'antd';
+import React from 'react';
+import { useRoutes } from "react-router-dom";
 import Header from "./components/Header";
-import {  Route, Routes, useRoutes } from "react-router-dom"
-import Home from "./view/Home"
-import Sys from "./view/Sys"
-import routes from "./router"
+import Slider from "./components/Slider";
+import routes from "./router";
+
+
+console.log("111111-JsBridge", JsBridge);
+
 
 const { Content } = Layout;
 
