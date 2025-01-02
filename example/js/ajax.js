@@ -1,7 +1,7 @@
 function Ajax(config) {
     var xhr = window.XMLHttpRequest ? new XMLHttpRequest() : new ActiveXObject('Microsoft.XMLHTTP')
-    config.method = config.method.toLocalUpperCase()
-    let url = config.method === 'GET' ? config.url + '?' + config.data : config.url
+    config.method = config.method.toLocaleUpperCase()
+    let url = config.method === 'GET' &&  config.data  ? config.url + '?' + config.data : config.url
 
     if (config.method === 'GET') {
         xhr.open(config.method, url, true)

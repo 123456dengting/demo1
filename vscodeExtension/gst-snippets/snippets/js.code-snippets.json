@@ -1,34 +1,31 @@
 {
-	// Place your 全局 snippets here. Each snippet is defined under a snippet name and has a scope, prefix, body and 
-	// description. Add comma separated ids of the languages where the snippet is applicable in the scope field. If scope 
-	// is left empty or omitted, the snippet gets applied to all languages. The prefix is what is 
-	// used to trigger the snippet and the body will be expanded and inserted. Possible variables are: 
-	// $1, $2 for tab stops, $0 for the final cursor position, and ${1:label}, ${2:another} for placeholders. 
-	// Placeholders with the same ids are connected.
-	// Example:
-	"安监-abc": {
-		"scope": "javascript,typescript,typescriptreact",
-		"prefix": "abc",
-		"body": [
-			"console.log('111111-abc',$2);",
-		],
-		"description": "自定义-console"
-	},
-	"安监-console": {
-		"scope": "javascript,typescript,typescriptreact",
-		"prefix": "log",
+	"自定义-console1": {
+		"prefix": "log1",
 		"body": [
 			"console.log('111111-$1',$2);",
 		],
-		"description": "自定义-console"
+		"description": "console-111111"
 	},
-	"安监sync await ajax": {
-		"scope": "javascript,typescript,typescriptreact",
+	"自定义-console2": {
+		"prefix": "log2",
+		"body": [
+			"console.log('222222-$1',$2);",
+		],
+		"description": "console-222222"
+	},
+	"自定义-console3": {
+		"prefix": "log3",
+		"body": [
+			"console.log('333333-$1',$2);",
+		],
+		"description": "console-333333"
+	},
+	"自定义-sync await ajax": {
 		"prefix": "sync",
 		"body": [
 			"const params = {}",
 			"const [err, res] = await sync($service(params));",
-			"if(err){",
+			"if(!err){",
 			"",
 			"}else{",
 			"",
@@ -36,14 +33,13 @@
 		],
 		"description": "异步代码块"
 	},
-	"安监sync await function": {
-		"scope": "javascript,typescript,typescriptreact",
+	"自定义-sync await function": {
 		"prefix": "syncFun",
 		"body": [
 			"const syncFn = async () => {",
 			"\t\tconst params = {}",
 			"\t\tconst [err, res] = await sync($service(params));",
-			"\t\tif(err){",
+			"\t\tif(!err){",
 			"\t\t",
 			"\t\t}else{",
 			"\t\t",
@@ -52,13 +48,12 @@
 		],
 		"description": "异步函数"
 	},
-	"安监-useSimpleCols": {
-		"scope": "javascript,typescript,typescriptreact",
+	"自定义-列表-useSimpleCols": {
 		"prefix": "useSimpleCols",
 		"body": [
-			"import { useSimpleCols } from \"lmHooks/simple/useCols\";",
+			"import { useSimpleCols } from \"lmHooks/tools/useCols\";",
 			"",
-			"export default (unitId: string) =>",
+			"export default () =>",
 			"\tuseSimpleCols([",
 			"\t\t\"checkbox\",",
 			"\t\t\"idx\",",
@@ -98,64 +93,37 @@
 			"\t\t\"辨识日期|identifyDate|text-format:date-type:ymd|minWidth:110px\",",
 			"\t\t\"创建时间|createAt|text-format:date-type:ymdhms|width:165px\",",
 			"\t\t{",
-			"\t\t\tcol: \"故障级别|faultLevelName|tag\",",
-			"\t\t\tsetComProps: (row: any) => {",
-			"\t\t\t\tconst color: Record<string, any> = {",
-			"\t\t\t\t20804701: \"var(--level1-color)\", // 紧急",
-			"\t\t\t\t20804702: \"var(--level2-color)\", // 严重",
-			"\t\t\t\t20804703: \"var(--level3-color)\" // 一般",
-			"\t\t\t};",
-			"\t\t\treturn {",
-			"\t\t\t\tcolor: color[row.faultLevel],",
-			"\t\t\t\tsyncText: false,",
-			"\t\t\t\tfill: true,",
-			"\t\t\t\ttext: row.faultLevelName",
-			"\t\t\t};",
-			"\t\t}",
-			"\t\t},",
-			"\t\t{",
 			"\t\t\tcol: \"是否新增客户|isNewCustomer|text\",",
 			"\t\t\ttdFn: (h: any, { data }: any) => {",
 			"\t\t\t\tconst { row } = data;",
 			"\t\t\t\t\treturn h(\"span\", {}, row?.isNewCustomer ? \"是\" : \"否\");",
 			"\t\t\t\t}",
 			"\t\t},",
-			"\t\t\"actions|查看:view:get-编辑:edit:edit-删除:del:del\",",
+			"\t\t\"actions|查看:view:view-编辑:edit:edit-删除:del:del\",",
 			"\t\t{",
 			"\t\t\tcol: \"actions|width:150px\",",
 			"\t\t\tsetComProps: {",
-			"\t\t\t\tcmds: ({ row }: any) => {",
-			"\t\t\t\t\tif (unitId === row.unitId) {",
+			"\t\t\t\tcmds: () => {",
 			"\t\t\t\t\t\treturn [",
-			"\t\t\t\t\t\t\t{ action: \"view\", text: \"查看\", auth: \"see\" },",
+			"\t\t\t\t\t\t\t{ action: \"view\", text: \"查看\", auth: \"view\" },",
 			"\t\t\t\t\t\t\t{ action: \"disable\", text: \"作废\", viewFn: (row: any) => row.status === \"23083301\", auth: \"disable\" },",
 			"\t\t\t\t\t\t];",
-			"\t\t\t\t\t} else {",
-			"\t\t\t\t\t\treturn [{ action: \"view\", text: \"查看\", auth: \"see\" }];",
-			"\t\t\t\t\t}",
 			"\t\t\t\t}",
 			"\t\t\t}",
 			"\t\t\t}",
 			"\t]);"
 
 		],
-		"description": "自定义useSimpleCols"
+		"description": "赣数通-列表-useSimpleCols"
 	},
-	"安监-useSimpleBars": {
-		"scope": "javascript,typescript,typescriptreact",
+	"自定义-查询-useSimpleBars": {
 		"prefix": "useSimpleBars",
 		"body": [
-			"import { useSimpleBars } from \"lmHooks/simple/useBars\";",
-			"export default (unitIdRef: any, typeList:any = []) => {",
+			"import { useSimpleBars } from \"lmHooks/tools/useBars\";",
+			"export default (typeList:any = []) => {",
 			"\treturn useSimpleBars([",
-			"\t\t{",
-			"\t\t\tbar: \"单位名称|unitId|tree-type:org\",",
-			"\t\t\tconfig: {",
-			"\t\t\t\titemValue: unitIdRef",
-			"\t\t\t}",
-			"\t\t},",
 			"\t\t\"危险源|keyWord|input\",",
-			"\t\t\"状态|status1|enum-type:24031810-showAll:true\",",
+			"\t\t\"状态|status1|enum-type:24031810\",",
 			"\t\t{",
 			"\t\t\tbar: \"时间范围|checkTime|date-type:datetimerange-startKey:beginTime-endKey:endTime\",",
 			"\t\t\tconfig: {",
@@ -192,7 +160,24 @@
 			"\t]);",
 			"};"
 		],
-		"description": "自定义useSimpleBars"
+		"description": "赣数通-查询useSimpleBars"
+	},
+	"自定义-tdFn": {
+		"prefix": "tdFn",
+		"body": [
+			"tdFn(h: any, { data }: any) {",
+			"\tconst { row } = data;",
+			"\treturn h(",
+			"\t\t\"span\",",
+			"\t\t{",
+			"\t\t\tclass: \"text-overflow\",",
+			"\t\t\tstyle: { color: \"red\" }",
+			"\t\t},",
+			"\t\trow.text || \"--\"",
+			"\t);",
+			"}"
+		],
+		"description": "自定义渲染函数"
 	},
 }
 

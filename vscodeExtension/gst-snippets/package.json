@@ -1,0 +1,62 @@
+{
+  "name": "gst-snippets",
+  "publisher": "dengting",
+  "displayName": "gst-snippets",
+  "description": "",
+  "version": "0.0.3",
+  "engines": {
+    "vscode": "^1.88.0"
+  },
+  "scripts": {
+    "build": "vsce package"
+  },
+  "categories": [
+    "Snippets"
+  ],
+  "license": "MIT",
+  "repository": "123",
+  "contributes": {
+    "languages": [
+			{
+				"id": "vue",
+				"aliases": [
+					"Vue",
+					"vue"
+				],
+				"extensions": [
+					".vue"
+				]
+			}
+		],
+    "snippets": [
+      {
+        "language": "javascript",
+        "path": "./snippets/js.code-snippets.json"
+      },
+      {
+        "language": "typescript",
+        "path": "./snippets/js.code-snippets.json"
+      },
+      {
+        "language": "javascriptreact",
+        "path": "./snippets/js.code-snippets.json"
+      },
+      {
+        "language": "vue",
+        "path": "./snippets/js.code-snippets.json"
+      },
+      {
+        "language": "css",
+        "path": "./snippets/css.code-snippets.json"
+      },
+      {
+        "language": "less",
+        "path": "./snippets/css.code-snippets.json"
+      },
+      {
+        "language": "scss",
+        "path": "./snippets/css.code-snippets.json"
+      }
+    ]
+  }
+}

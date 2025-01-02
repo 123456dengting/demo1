@@ -1,14 +1,14 @@
-import React, { useState } from 'react';
 import {
-    MenuFoldOutlined,
-    MenuUnfoldOutlined,
+  MenuFoldOutlined,
+  MenuUnfoldOutlined,
   UserOutlined,
   VideoCameraOutlined,
 } from '@ant-design/icons';
-import { Button, Layout, Menu, theme  } from 'antd';
-import "./index.less"
-import { objToQueryStr } from "../../router";
+import { Button, Layout, Menu, theme } from 'antd';
+import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { objToQueryStr } from "../../router";
+import "./index.less";
 
 const {  Sider } = Layout;
 
@@ -19,12 +19,11 @@ const PageSider = () => {
     token: { colorBgContainer },
   } = theme.useToken();
 
-  console.log("111111-getMenuList", )
 
 
 
   const onselect = (data: any) => {
-    console.log("111111-data", data);
+
     navigate(objToQueryStr(data.key, {name: 1, age: 2}))
   }
 

@@ -1,0 +1,20 @@
+{
+  "name": "abc-snippets",
+  "displayName": "abc-snippets",
+  "description": "",
+  "version": "0.0.1",
+  "engines": {
+    "vscode": "^1.91.0"
+  },
+  "categories": [
+    "Snippets"
+  ],
+  "contributes": {
+    "snippets": [
+      {
+        "language": "javascript,typescript,css,less,scss,vue",
+        "path": "./snippets/snippets.code-snippets"
+      }
+    ]
+  }
+}

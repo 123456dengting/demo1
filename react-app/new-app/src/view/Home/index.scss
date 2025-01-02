@@ -1,0 +1,22 @@
+.app-home{
+    .list-container{
+        border: 1px solid red;
+        overflow-y: auto;
+        position: relative;
+        .list-content{
+            width: 100%;
+        }
+
+        .list-item-fixed{
+            width: 100%;
+            position: absolute;
+            top: 0;
+            left: 0;
+        }
+        .list-item{
+            line-height: 50px;
+            border-bottom: 1px solid gray;
+            text-align: center;
+        }
+    }
+}

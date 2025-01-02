@@ -3,49 +3,46 @@ var {terser} = require("rollup-plugin-terser")
 var resolve = require("@rollup/plugin-node-resolve")
 var commonjs = require("@rollup/plugin-commonjs")
 var json = require("@rollup/plugin-json")
-var hash = require("rollup-plugin-hash")
-
-
 
 
 module.exports = {
   input: "./index.js",
   output: [
     {
-      file: './dist/my-lib-umd.[hash].js',
+      file: './dist/umd/test.js',
       format: 'umd',
-      name: 'JsBridge'   
+      name: 'TestABC'   
       //当入口文件有export时，'umd'格式必须指定name
       //这样，在通过<script>标签引入时，才能通过name访问到export的内容。
     },
-    // {
-    //   file: './dist/my-lib-es.[hash].js',
-    //   format: 'es'
-    // },
-    // {
-    //   file: './dist/my-lib-cjs.[hash].js',
-    //   format: 'cjs'
-    // }
+    {
+      file: './dist/amd/test.js',
+      format: 'amd',
+    },
+    {
+      file: './dist/es/test.js',
+      format: 'es'
+    },
+    {
+      file: './dist/cjs/test.js',
+      format: 'cjs'
+    },
+    {
+      file: './dist/iife/test.js',
+      format: 'iife',
+    },
+    {
+      file: './dist/system/test.js',
+      format: 'system',
+    }
   ],
   plugins: [
-    hash({
-      target: [{format: "umd", ext: ".js"}],
-      // 可选项，默认为8
-      hashLength: 8,
-      // 可选项，默认为 'sha256'
-      hashFunction: 'sha256',
-      // 可选项，默认为 'base16'
-      hashDigest: 'base16',
-      // 可选项，默认为 'hex'
-      hashDigestLength: 'hex'
-    }),
+    resolve(),
+    json(),
     commonjs({
       include: /node_modules/
     }),
-    // terser(),
-    json(),
-    resolve(),
-
+    terser(),
   ],
-  external: ["lodash"],
+  external: [],
 }

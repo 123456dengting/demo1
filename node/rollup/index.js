@@ -1,3 +1,7 @@
-import JsBridge from "./src/index.js";
+const Test = {
+    getName: (a) => {
+        return a + "张三"
+    }
+}
 
-export default JsBridge;
+export default Test;

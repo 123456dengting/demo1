@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body{
+            padding:  100px 0;
+        }
+        #text{
+            margin-top: 24px;
+            border: 1px solid red;
+            min-height: 100px;
+            word-wrap: break-word;
+            margin-bottom: 24px;
+        }
+
+        .self-action{
+            margin-top: 20px;
+        }
+        img{
+            width: 100px;
+            height: 100px;
+        }
+    </style>
+</head>
+<body>
+    <button id="btn1">获取token</button>
+    <button id="btn2">获取用户信息</button>
+    <button id="btn3">选择图片</button>
+    <button id="btn4">选择文件</button>
+
+    <div class="self-action">
+        自定义调用
+        <br />
+        action:<input type="text" id="action" value="getToken" /> <br />
+        params: <input type="text" id="params" value='' placeholder="请输入json格式的字符串" />
+        <button id="submit">确定调用</button>
+    </div>
+
+
+    <div id="text"></div>
+
+
+    <div id="imgSrc"></div>
+    <img id="img" src="" />
+    <div id="fileimgSrc"></div>
+    <img id="fileimg" src="" />
+    <div id="networkImgSrc"></div>
+    <img id="networkImg" src="" />
+
+</body>
+<script src="./fy-bridge.min.js"></script>
+<script src="https://unpkg.com/vconsole@latest/dist/vconsole.min.js"></script>
+<script>
+
+    function getToken  ()  {
+        JsBridge.getToken({}, (res) => {
+                console.log('111111-getToken',res);
+                printInfo(res)
+            })
+    }
+
+    function getUserInfo  ()  {
+        JsBridge.getUserInfo({}, (res) => {
+                console.log('111111-getUserInfo',res);
+                printInfo(res)
+            })
+    }
+
+    function getPickImg  ()  {
+        JsBridge.getPickImg({}, (res) => {
+                console.log('111111-getPickImg',res);
+                let imgSrcUrl = res[0]?.url;
+                let fileimgSrcUrl = 'file://' + res[0]?.url;
+                let networkImgSrcUrl =  res[0]?.filePath
+
+                document.getElementById("img").setAttribute("src", imgSrcUrl)
+                document.getElementById("fileimg").setAttribute("src", fileimgSrcUrl)
+                document.getElementById("networkImg").setAttribute("src", networkImgSrcUrl)
+
+
+                document.getElementById("imgSrc").innerHTML = imgSrcUrl
+                document.getElementById("fileimgSrc").innerHTML = fileimgSrcUrl
+                document.getElementById("networkImgSrc").innerHTML = networkImgSrcUrl
+
+
+                printInfo(res)
+            })
+    }
+
+    function getPickFile  ()  {
+        JsBridge.getPickFile({}, (res) => {
+                console.log('111111-getPickFile',res);
+                printInfo(res)
+            })
+    }
+
+    function onSubmit(){
+        const action = document.getElementById("action").value.trim();
+        const params = document.getElementById("params").value.trim();
+        let data = "";
+        try {
+            data = params ? eval(params) : {};
+            data = typeof data === 'string' ? JSON.parse(data) : data;
+        } catch (error) {
+            data = ""
+        }
+        console.log("111111-getAnyBridge-params",  data);
+        if(action){
+            JsBridge.getAnyBridge(action, data, (res) => {
+                console.log('111111-getAnyBridge-res',res);
+                printInfo(res)
+            })
+        }
+    }
+
+
+
+
+    function printInfo (res) {
+        document.getElementById("text").innerText = JSON.stringify(res);
+    }
+
+
+    window.onload = function(){
+        var vConsole = new window.VConsole();
+
+        document.getElementById("btn1").onclick = getToken;
+        document.getElementById("btn2").onclick = getUserInfo;
+        document.getElementById("btn3").onclick = getPickImg;
+        document.getElementById("btn4").onclick = getPickFile;
+
+        document.getElementById("submit").onclick = onSubmit;
+    }
+
+
+
+    
+</script>
+</html>

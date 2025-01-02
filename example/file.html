@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <img src="./img/home_ti_gma_2.jpg" alt="">
+    <input type="file" id="file">
+    
+</body>
+<script>
+
+    document.getElementById("file").addEventListener('change', function(res){
+        console.log("111111-res", res.target);
+    })
+
+function getCodeFromImg(fileAllPath){
+        
+        var promise=new Promise(function(resolve,reject){    
+            
+            var imga = new Image();
+            imga.src=fileAllPath;
+            imga.onload=function(){          
+                 var canvas = document.createElement("canvas");
+                 canvas.width = imga.width;
+                 canvas.height = imga.height;
+                 var ctx = canvas.getContext("2d");
+                 ctx.drawImage(imga, 0, 0, imga.width, imga.height);
+                 var dataURL = canvas.toDataURL("image/png");
+                 var arr = dataURL.split(','),
+                  mime = arr[0].match(/:(.*?);/)[1],
+                 bstr = atob(arr[1]),
+                 n = bstr.length,
+                 u8arr = new Uint8Array(n);
+                 while (n--) {
+                     u8arr[n] = bstr.charCodeAt(n);
+                 }
+                 console.log(new File([u8arr], "mid_shot.jpg", { type: mime }));
+                 resolve(new File([u8arr], "mid_shot.jpg", { type: mime }));
+             
+            }
+            imga.onerror=function(){
+                reject('error，图片文件转file失败')  
+            }
+                   
+          });         
+          return promise; 
+          
+          
+     }
+
+
+    //  let filePath ="D:\/test\/demo1\/example\/img/home_ti_gma_2.jpg";
+    let filePath = "./img/home_ti_gma_2.jpg"
+
+     getCodeFromImg(filePath).then(res => {
+        console.log('111111-res',res);
+     })
+
+</script>
+</html>
