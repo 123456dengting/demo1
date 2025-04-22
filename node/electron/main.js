@@ -13,8 +13,9 @@ app.whenReady().then(() => {
     width: 1200,
     height: 800,
   })
-  console.log("111111", volume.setVol(60))
+
   
   // 加载 index.html
-  mainWindow.loadFile('index.html')
+  // mainWindow.loadFile('index.html')
+  mainWindow.loadURL("https://cscs.cert.org.cn/cscs-w/pages/login/login.jsp");
 })

@@ -55,7 +55,7 @@
 </div>
 
 </body>
-<script src="./js/array.js"></script>
+<!-- <script src="./js/array.js"></script> -->
 <script>
     const headers = new Headers();
     headers.append("Content-Type", "application/json");
@@ -69,6 +69,77 @@
       .then(response => response.text())
       .then(result => console.log(result))
       .catch(error => console.log('error', error));
+
+
+
+
+
+
+    const arr = [ ["江西省投资集团有限公司"],
+  ["http://www.jxic.com"],
+  ["江西铜业集团有限公司"],
+  ["http://www.jxcc.com"],
+  ["江西省国有资本运营控股集团有限公司"],
+  ["http://www.jxgzkg.com.cn"],
+  ["江西省建工集团有限责任公司"],
+  ["http://www.jxsjgjt.com"],
+  ["江西钨业控股集团有限公司"],
+  ["http://www.jxtc.com.cn/"],
+  ["江西省水利投资集团有限公司"],
+  ["http://www.jxsltz.com"],
+  ["江西省建材集团有限公司"],
+  ["http://www.jxsjcjtyxgs.com/"],
+  ["中国江西国际经济技术合作有限公司"],
+  ["http://www.cjic.cn/"],
+  ["江西省咨询投资集团有限公司"],
+  ["http://www.jxzxtz.com/"],
+  ["江西省盐业集团股份有限公司"],
+  ["http://www.jxsalt.com/"],
+  ["江西省农业发展集团有限公司"],
+  ["https://www.jxsnfjt.com/index"],
+  ["江西国泰集团股份有限公司"],
+  ["http://www.jxgtjtgw.com/"],
+  ["江西省军工控股集团有限公司"],
+  ["http://www.jxjgkg.com"],
+  ["江西长天集团有限公司"],
+  ["http://jxchangtian.com/"],
+  ["江西省铁路航空投资集团有限公司"],
+  ["http://www.jxrag.com.cn/"],
+  ["江西省交通投资集团有限责任公司"],
+  ["http://www.jxgsgl.com/"],
+  ["江西省港口集团有限公司"],
+  ["http://www.jxsgkjt.com/"],
+  ["中国瑞林工程技术股份有限公司"],
+  ["http://www.nerin.com/"],
+  ["江西省数字产业集团有限公司"],
+  ["http://www.jxdig.com/"],
+  ["江西省人才发展集团有限公司"],
+  ["https://www.jxrcfzjt.com/"]
+]
+const brr = [];
+
+
+for (let index = 0; index < arr.length; index++) {
+    const element = arr[index];
+    const seq = Math.floor(index / 2);
+    !brr[seq] && (brr[seq] = {});
+    if( index % 2 === 0){
+        brr[seq].text = element[0]
+    }else{
+        brr[seq].link = element[0]
+    }
+
+    
+}
+
+
+console.log("111111-vvvvvvvvvvvvvvv", arr);
+
+console.log("111111-brr", JSON.stringify(brr));
+
+
+
+
   </script>
 </html>
 

@@ -5,14 +5,63 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
+    <style>
+        body{
+            padding-top: 30px;
+        }
+        .warp{
+            width: 500px;
+            gap: 16px;
+            border: 1px solid green;
+            height: 300px;
+            overflow-y: auto;
+            /* align-items: flex-start; */
+            /* align-content: flex-start; */
+        }
+
+        .div1{
+            width: 100%;
+            height: 60px;
+            background-color: red;
+            position: sticky;
+            top: 0;
+            left: 0;
+        }
+
+
+    </style>
 </head>
 <body>
-    <button id="ajaxGet">ajaxGet</button>
+    <!-- <button id="ajaxGet">ajaxGet</button>
     <button id="ajaxPost">ajaxPost</button>
-    <button id="ajaxGetPP">ajaxGet合同</button>
+    <button id="ajaxGetPP">ajaxGet合同</button> -->
+
+    <div class="warp">
+        <h1>111111</h1>
+        <h1>111111</h1>
+        <div class="div1"></div>
+
+        <h1>111111</h1>
+        <h1>222222</h1>
+        <h1>222222</h1>
+        <h1>222222</h1>
+        <h1>222222</h1>
+        <h1>222222</h1>
+        <h1>222222</h1>
+
+        <h1>222222</h1>
+        <h1>222222</h1>
+        <h1>222222</h1>
+        <h1>222222</h1>
+
+    </div>
 </body>
 <script src="./js/jquery.min.js"></script>
 <script>
+
+    document.getElementsByClassName("warp")[0].addEventListener('scroll', () => {
+        console.log("1111111-22")
+    })
 
 /* 封装ajax函数
  * @param {string}opt.type http连接的方式，包括POST和GET两种方式
@@ -95,10 +144,12 @@ function ajaxGetDemo(){
 function ajaxPostDemo(){
     let startTime = new Date().getTime()    
     $.ajax({
-        url: "http://localhost:9000/lowcode/get/user/list",
-        method: "get",
+        url: "https://oa.jxtc.com.cn/api/portal_auth/verifyToken",
+        method: "post",
         contentType: "application/json",
-        data: JSON.stringify(dataJson),
+        data: JSON.stringify({
+            "wea-token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJPQUtleSI6IjIwNDE5IiwiZXhwIjoxNzM2Mjk5NDkxLCJ1c2VySWQiOiIifQ.cWWwFnUmVRCnbyaFKCZbDbCfIU8nrlVi7n-bVC4QKH5v-t_OpvDOEI-OtbiA4ekYEwuH9qpTvz_H8kbbpe8DB5KdlBdHdYEIVgc5ZGmOyvPjRo87FurhY84WF51W5HJqiYwSja6jDG4J5rjpbd6b4eqVZWUOWvQVL8dLOxGliVk"
+        }),
         success: (res) => {
             let endTime = new Date().getTime()
             console.log("success", res, endTime - startTime)

@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+
+        @keyframes myani {
+            from {
+                transform: rotate(0deg);
+            }
+            to {
+                transform: rotate(360deg);
+            }
+        }
+
+
+        .div1{
+            height: 200px;
+            border: 1px solid red;
+        }
+        .ani{
+            height: 200px;
+        }
+        .ani-item{
+            width: 100px;
+            height: 100px;
+            background-color: red;
+            animation: myani;
+            /* 动画从距离面底部10%开始,  距离顶部 20%结束 很大的兼容性问题 */
+            animation-timeline: view(block 20% 10%);
+        }
+    </style>
+</head>
+<body>
+    <div class="div1">111111111</div>
+    <div class="div1">2222222222</div>
+    <div class="div1">333333</div>
+    <div class="div1">44444444</div>
+    <div class="div1">555555555</div>
+    <div class="div1">66666666</div>
+    <div class="div1">77777777777</div>
+    <div class="ani">
+        <div class="ani-item">ddd</div>
+    </div>
+    <div class="div1">111111111</div>
+    <div class="div1">2222222222</div>
+    <div class="div1">333333</div>
+    <div class="div1">44444444</div>
+    <div class="div1">555555555</div>
+    <div class="div1">66666666</div>
+    <div class="div1">77777777777</div>
+</body>
+</html>
