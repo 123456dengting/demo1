@@ -1,15 +1,19 @@
 <template>
   <div class="about">
-    <h1>This is an about page</h1>
+    
+    <Line></Line>
+    <Line2></Line2> 
   </div>
 </template>
+<script setup>
+import Line from '@/components/Echarts/Line.vue'
+import Line2 from '@/components/Echarts/Line2.vue'
+
+
+</script>
 
 <style>
-@media (min-width: 1024px) {
-  .about {
-    min-height: 100vh;
-    display: flex;
-    align-items: center;
-  }
+.about{
+  height: 100%;
 }
 </style>

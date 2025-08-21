@@ -1,37 +1,57 @@
 <!DOCTYPE html>
 <html>
-	<head>
-		<meta charset="utf-8" />
-		<title></title>
-		<style>
-			body{
-				height: 100vh;
-			}
-		</style>
-	</head>
-	<body>
-	</body>
-  <!-- <script src="./js/yield-await.js"></script> -->
-  <script src="./js/common.js"></script>
-  <script>
-    let obj1 = {
-      name: [1, 2, 3],
-      ful: {
-        a: 'a',
-        b: 'b'
-      },
-      id: 20,
-      getId: function(){
-        console.log(this.id)
+  <head>
+    <meta charset="utf-8" />
+    <title></title>
+    <style>
+      body {
+        height: 100vh;
       }
-    }
+    </style>
+  </head>
+  <body></body>
+  <!-- <script src="./js/yield-await.js"></script> -->
+  <!-- <script src="./js/common.js"></script> -->
+  <script>
+    // let obj1 = {
+    //   name: [1, 2, 3],
+    //   ful: {
+    //     a: 'a',
+    //     b: 'b'
+    //   },
+    //   id: 20,
+    //   getId: function(){
+    //     console.log(this.id)
+    //   }
+    // }
 
-    let obj2 = deepCopy(obj1)
+    // let obj2 = deepCopy(obj1)
 
-    obj2.name[0] = 10
+    // obj2.name[0] = 10
 
-    obj2.getId()
-    console.log('111', obj1, obj2)
-  
+    // obj2.getId()
+    // console.log('111', obj1, obj2)
+
+    s = [73,74,75,71,69,72,76,73];
+    function dailyTemperatures (temperatures) {
+
+      temperatures = temperatures.map(t => {
+        return t - temperatures[0]
+      })
+
+      console.log("1111111-s", temperatures);
+
+      temperatures.forEach((t, index) => {
+        t = t - 
+      })
+
+
+
+
+      return temperatures
+
+    };
+
+    dailyTemperatures(s)
   </script>
 </html>

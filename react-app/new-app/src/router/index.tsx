@@ -2,6 +2,7 @@
 import {  useNavigate, useLocation, useSearchParams  } from 'react-router-dom';
 import Home from "../view/Home"
 import Sys from "../view/Sys"
+import Test from "../view/Test"
 
 const routes = [
 	{
@@ -15,6 +16,10 @@ const routes = [
 	{
 		path:'/sys',
 		element:<Sys/>
+	},
+	{
+		path:'/test',
+		element:<Test/>
 	},
 ];
 

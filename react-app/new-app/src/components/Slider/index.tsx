@@ -51,6 +51,11 @@ const PageSider = () => {
               icon: <VideoCameraOutlined />,
               label: '配置中心',
             },
+            {
+              key: '/test',
+              icon: <VideoCameraOutlined />,
+              label: '测试',
+            },
           ]}
         />
       </Sider>

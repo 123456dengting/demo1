@@ -12,13 +12,31 @@
     "format": "prettier --write src/"
   },
   "dependencies": {
+    "echarts": "^5.3.3",
+    "monaco-editor": "^0.34.0",
     "pinia": "^2.1.7",
     "vue": "^3.3.11",
-    "vue-router": "^4.2.5"
+    "vue-router": "^4.2.5",
+    "@grapecity-software/spread-excelio": "latest",
+    "@grapecity-software/spread-sheets": "latest",
+    "@grapecity-software/spread-sheets-barcode": "latest",
+    "@grapecity-software/spread-sheets-charts": "latest",
+    "@grapecity-software/spread-sheets-languagepackages": "latest",
+    "@grapecity-software/spread-sheets-pdf": "latest",
+    "@grapecity-software/spread-sheets-print": "latest",
+    "@grapecity-software/spread-sheets-shapes": "latest",
+    "@grapecity-software/spread-sheets-slicers": "latest",
+    "@grapecity-software/spread-sheets-formula-panel": "latest",
+    "@grapecity-software/spread-sheets-io": "latest",
+    "@grapecity-software/spread-sheets-vue": "latest",
+    "@grapecity-software/spread-sheets-resources-zh": "latest",
+    "@grapecity-software/spread-sheets-designer": "latest",
+    "@grapecity-software/spread-sheets-designer-vue": "latest",
+    "@grapecity-software/spread-sheets-designer-resources-cn": "latest"
   },
   "devDependencies": {
+    "@vitejs/plugin-vue": "^4.2.3",
     "@rushstack/eslint-patch": "^1.3.3",
-    "@vitejs/plugin-vue": "^4.5.2",
     "@vitejs/plugin-vue-jsx": "^3.1.0",
     "@vue/eslint-config-prettier": "^8.0.0",
     "@vue/test-utils": "^2.4.3",
